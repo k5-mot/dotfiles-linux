@@ -1,0 +1,211 @@
+add_newline = false
+scan_timeout = 30
+command_timeout = 700
+format = "$all"
+# format = """
+# $directory\
+# $git_branch\
+# $git_commit\
+# $git_state\
+# $git_status\
+# $line_break\
+# $character
+# """
+
+[character]
+success_symbol = "[\uf054](bold green)"
+error_symbol = "[\uf054](bold red)"
+vicmd_symbol = "[\uf054](bold yellow)"
+
+[username]
+style_user = "green"
+style_root = "red"
+format = "[\uf007 $user]($style)[@](purple)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+style = "blue"
+format =  "[$hostname]($style) "
+trim_at = "."
+disabled = false
+
+[directory]
+truncation_length = 100
+truncate_to_repo = false
+format = "[\uf413 $symbol$path ]($style)"
+style = "bright-cyan"
+
+#[aws]
+#format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+#
+#[cmake]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[cmd_duration]
+#format = '\[[⏱ $duration ]($style)\]'
+#
+#[cobol]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[conda]
+#format = '\[[$symbol$environment]($style)\]'
+#
+#[crystal]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[dart]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[deno]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[docker_context]
+#format = '\[[$symbol$context]($style)\]'
+#
+#[dotnet]
+#format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
+#
+#[elixir]
+#format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
+#
+#[elm]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[erlang]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[gcloud]
+#format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
+#
+[git_commit]
+disabled = true
+
+[git_state]
+disabled = true
+
+[git_metrics]
+added_style = "blue"
+deleted_style = "red"
+format = '[+$added]($added_style)/[-$deleted]($deleted_style)\] '
+#disabled = false
+
+[git_branch]
+symbol = "\uf7a1 "
+format = '[$symbol$branch ]($style)'
+style = "bright-green"
+
+[git_status]
+format = '([- $all_status$ahead_behind]($style))'
+style = "bright-red"
+conflicted = "[\ue728 ](red)"
+ahead      = "[\uf062 ${count} ](green)"
+behind     = "[\uf063 ${count} ](green)"
+diverged   = "${ahead_count} ${behind_count}"
+untracked  = "[\uf128 ${count} ](red)"
+stashed    = "[\uf44e ](blue)"
+modified   = "[\uf044 ${count} ](yellow)"
+staged     = "[\uf067 ${count} ](blue)"
+renamed    = "[\uf954 ${count} ](yellow)"
+deleted    = "[\uf655 ${count} ](red)"
+#
+#[golang]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[helm]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[hg_branch]
+#format = '\[[$symbol$branch]($style)\]'
+#
+#[java]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[julia]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[kotlin]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[kubernetes]
+#format = '\[[$symbol$context( \($namespace\))]($style)\]'
+#
+#[lua]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[memory_usage]
+#format = '\[$symbol[$ram( | $swap)]($style)\]'
+#
+#[nim]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[nix_shell]
+#format = '\[[$symbol$state( \($name\))]($style)\]'
+#
+#[nodejs]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[ocaml]
+#format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
+#
+#[openstack]
+#format = '\[[$symbol$cloud(\($project\))]($style)\]'
+#
+#[package]
+#format = '\[[$symbol$version]($style)\]'
+#
+#[perl]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[php]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[pulumi]
+#format = '\[[$symbol$stack]($style)\]'
+#
+#[purescript]
+#format = '\[[$symbol($version)]($style)\]'
+#
+[python]
+format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\)) ]($style)'
+symbol = "\ue235 "
+#
+#[red]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[ruby]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[rust]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[scala]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[sudo]
+#format = '\[[as $symbol]\]'
+#
+#[swift]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[terraform]
+#format = '\[[$symbol$workspace]($style)\]'
+#
+#[time]
+#format = '\[[$time]($style)\]'
+#
+#[username]
+#format = '\[[$user]($style)\]'
+#
+#[vagrant]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[vlang]
+#format = '\[[$symbol($version)]($style)\]'
+#
+#[zig]
+#format = '\[[$symbol($version)]($style)\]'
+
+
+

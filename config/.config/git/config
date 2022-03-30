@@ -1,0 +1,91 @@
+[init]
+  defaultBranch = main
+[include]
+  path          = ~/.config/git/gitconfig_user
+[color]
+  ui            = auto
+[core]
+  editor        = nvim
+  filemode      = false
+  excludefile   = ~/.config/git/gitignore_global
+[merge]
+  tool          = vimdiff
+  ff            = false
+[ghq]
+  root          = ~/.cache/ghq
+[pull]
+  rebase        = true
+[alias]
+  ## Print commit logs.
+  graph         = log --oneline --decorate --graph --branches --tags --remotes --pretty=format:'%C(green)%h %C(blue)[%cd] %C(red)%d %C(reset)%s %C(cyan)'
+  ## Discard changed files.
+  discard       = checkout --
+  ## Reset added files.
+  unstage       = reset -q HEAD --
+  ## Revise previous commit.
+  recommit      = commit --amend
+  ## Commit WIP(Work in Progress).
+  wip           = commit -m 'WIP'
+  ## Delete previous commit.
+  uncommit      = reset --mixed HEAD~
+  ## Generate .gitignore.
+  ignore        = !curl -L -s https://www.gitignore.io/api/$@
+  ## Pull without merge commit.
+  drug          = pull --rebase
+  ## Synchronize local & remote branch.
+  refresh       = !git fetch origin && git remote prune origin
+  ## Stage all files.
+  stageall      = !git add -A && git add -u && git status -s
+  ## Find in managed files by git.
+  find          = "!git ls-files | grep -i"
+  ## Check aliases.
+  aliaslist     = "!f()\
+    {\
+      if [ \"$#\" -eq 0 ];then \
+        git config --name-only --get-regexp ^alias\\.|cut -d"." -f2|column;\
+        return;\
+      fi;\
+      ret=0;\
+      for a in \"$@\";do \
+        git config --get-regexp ^alias\\.\"$a\"$;\
+        rettmp=$?;\
+        if [ $rettmp != 0 ];then \
+          ret=$rettmp;\
+          printf \"\\e[31malias.$a is not defined as alias\\n\\e[m\";\
+        fi;\
+      done;\
+      return $ret;\
+    };f"
+  gr            = graph
+  aa            = add -A
+  au            = add -u
+  aup           = add -u -p
+  cm            = commit
+  cmm           = commit -m
+  cmmr          = commit --amend -m
+  st            = status
+  sts           = status -s
+  stt           = status -uno
+  diffw         = diff --word-diff
+  difff         = diff --name-only
+  ps            = push --verbose --progress
+  pl            = pull --verbose --progress
+  cl            = clone --verbose --progress
+  co            = checkout
+  cob           = checkout -b
+  br            = branch
+  brm           = branch -m
+  brd           = branch -d
+  rb            = rebase
+  mg            = merge --no-ff
+  mgff          = merge --ff
+  cp            = cherry-pick
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = k5-mot
+	email = k5.mot.888@gmail.com

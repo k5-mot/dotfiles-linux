@@ -1,0 +1,129 @@
+#!/usr/bin/env zsh
+
+#{pane_current_command} #{pane_pid} #{pane_current_path} #{pane_active}
+PANE_CURRENT_COMMAND=$1
+PANE_PID=$2
+PANE_CURRENT_PATH=$3
+PANE_ACTIVE=$4
+
+## Separator symbols
+SEPARATOR_LEFT="\ue0b0"
+SEPARATOR_RIGHT="\ue0b2 "
+SUBSEPARATOR_LEFT="\ue0b1 "
+SUBSEPARATOR_RIGHT="\ue0b3 "
+
+## Git symbols
+GIT_SYMBOL="\uf7a1"
+#UNSTAGE="\uf067"
+UNSTAGE="±"
+#STAGE="\uf12a"
+STAGE="+"
+#COMMIT="\uf417"
+COMMIT="\uf27a"
+CHECK="\uf00c"
+#CHECK="✔"
+
+## Directory symbols
+DIR_SYMBOL="\uf413"
+
+## Setup info
+if [[ "$PANE_CURRENT_COMMAND" = "ssh" ]]; then
+  info=$({ pgrep -flaP $PANE_PID ; ps -o command -p $PANE_PID; } | xargs -I{} echo {} | awk '/ssh/' | sed -E 's/^[0-9]*[[:blank:]]*ssh //')
+  port=$(echo $info | grep -Eo '\-p ([0-9]+)' | sed 's/-p //')
+  if [ -z $port ]; then
+    local port=22
+  fi
+  info=$(echo $info | sed 's/\-p '"$port"'//g')
+  user=$(echo $info | awk '{print $NF}' | cut -f1 -d@)
+  host=$(echo $info | awk '{print $NF}' | cut -f2 -d@)
+
+  if [ $user = $host ]; then
+    user=$(whoami)
+    list=$(awk '
+      $1 == "Host" {
+        gsub("\\\\.", "\\\\.", $2);
+        gsub("\\\\*", ".*", $2);
+        host = $2;
+        next;
+      }
+      $1 == "User" {
+      $1 = "";
+        sub( /^[[:space:]]*/, "" );
+        printf "%s|%s\n", host, $0;
+      }' ~/.ssh/config
+    )
+    echo $list | while read line; do
+      host_user=${line#*|}
+      if [[ "$host" =~ $line ]]; then
+        user=$host_user
+        break
+      fi
+    done
+  fi
+  ssh_hostname="[SSH] $user@$host"
+  git_info="#[bg=default]${SEPARATOR_LEFT}"
+  directory="$DIR_SYMBOL"
+else
+  if git_status=$(cd $PANE_CURRENT_PATH && git status 2>/dev/null ); then
+    git_branch="$(echo $git_status | awk 'NR==1 {print $3}')"
+    case $git_status in
+      *Changes\ not\ staged* )
+        state="${UNSTAGE}" ;;
+      *Changes\ to\ be\ committed* )
+        state="${STAGE}" ;;
+      *"(use \"git push\" to publish your local commits"* )
+        state="${COMMIT}" ;;
+      * )
+        state="${CHECK}" ;;
+    esac
+    git_info=""
+    case $git_branch in
+      master | main )
+        git_info+="#[bg=colour148]${SEPARATOR_LEFT}"
+        git_info+="#[bg=colour148,fg=colour022] ${GIT_SYMBOL} ${git_branch} ${state} "
+        git_info+="#[bg=default,fg=colour148]${SEPARATOR_LEFT}" ;;
+      develop | dev* )
+        git_info+="#[bg=colour024]${SEPARATOR_LEFT}"
+        git_info+="#[bg=colour024,fg=colour117] ${GIT_SYMBOL} ${git_branch} ${state} "
+        git_info+="#[bg=default,fg=colour024]${SEPARATOR_LEFT}" ;;
+      *feature* )
+        git_info+="#[bg=colour208]${SEPARATOR_LEFT}"
+        git_info+="#[bg=colour208,fg=colour088] ${GIT_SYMBOL} ${git_branch} ${state} "
+        git_info+="#[bg=default,fg=colour208]${SEPARATOR_LEFT}" ;;
+      release )
+        git_info+="#[bg=colour055]${SEPARATOR_LEFT}"
+        git_info+="#[bg=colour055,fg=colour189] ${GIT_SYMBOL} ${git_branch} ${state} "
+        git_info+="#[bg=default,fg=colour055]${SEPARATOR_LEFT}" ;;
+      *hotfix* )
+        git_info+="#[bg=colour196]${SEPARATOR_LEFT}"
+        git_info+="#[bg=colour196,fg=colour250] ${GIT_SYMBOL} ${git_branch} ${state} "
+        git_info+="#[bg=default,fg=colour196]${SEPARATOR_LEFT}" ;;
+      * )
+        git_info+="#[bg=colour252]${SEPARATOR_LEFT}"
+        git_info+="#[bg=colour252,fg=colour241] ${GIT_SYMBOL} ${git_branch} ${state} "
+        git_info+="#[bg=default,fg=colour252]${SEPARATOR_LEFT}" ;;
+    esac
+  else
+    git_info="#[bg=default]${SEPARATOR_LEFT}"
+  fi
+  user=$(whoami)
+  host=$(hostname -s)
+  ssh_hostname="[TMUX] $user@$host"
+  directory="$DIR_SYMBOL $PANE_CURRENT_PATH"
+fi
+
+pane=""
+if [[ "$PANE_ACTIVE" = "1" ]]; then
+  pane+="#[fg=colour22,bg=colour148,bold] ${ssh_hostname} "
+  pane+="#[fg=colour148,bg=colour240]${SEPARATOR_LEFT}"
+  pane+="#[fg=colour231,bg=colour240,bold] ${directory} "
+  pane+="#[fg=colour240]${git_info})#[default]"
+else
+  pane+="#[fg=colour235,bg=colour241,bold] ${ssh_hostname} "
+  pane+="#[fg=colour241,bg=colour235]${SEPARATOR_LEFT}"
+  pane+="#[fg=colour240,bg=colour235,bold] $directory "
+  pane+="#[fg=colour235,bg=default]${SEPARATOR_LEFT}#[default]"
+fi
+echo $pane
+#echo "$pane :$1:$2:$3:$4:$5"
+

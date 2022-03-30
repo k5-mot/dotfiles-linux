@@ -1,0 +1,106 @@
+### Denite {{{
+# Asynchronous unite all interfaces
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = ['unite-outline', 'neomru.vim', 'neoyank.vim']
+on_cmd = 'Denite'
+hook_add = '''
+source ~/.config/nvim/plugins/denite.nvim.rc.vim
+'''
+hook_post_source = '''
+source ~/.config/nvim/plugins/denite.nvim_post.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+on_cmd = 'Denite'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_cmd = 'Denite'
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+on_cmd = 'Denite'
+### }}}
+
+#[[plugins]]
+#repo = 'neoclide/coc.nvim'
+#rev = 'release'
+#merged = '0'
+#on_event = 'InsertEnter'
+#hook_add = '''
+#source ~/.config/nvim/plugins/coc.rc.vim
+#'''
+#hook_done_update = '''
+#source ~/.config/nvim/plugins/coc.done.rc.vim
+#'''
+
+### Defx {{{
+## File explorer
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+depends = ['defx-icons', 'defx-git']
+on_cmd = 'Defx'
+hook_post_source = '''
+source ~/.config/nvim/plugins/defx.nvim.rc.vim
+'''
+
+[[plugins]]
+repo ='kristijanhusak/defx-icons'
+on_cmd = 'Defx'
+
+[[plugins]]
+repo ='kristijanhusak/defx-git'
+on_cmd = 'Defx'
+### }}}
+
+## Deol {{{
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+on_cmd = 'Deol'
+hook_add = '''
+source ~/.config/nvim/plugins/deol.rc.vim
+'''
+
+#[[plugins]]
+#repo = 'Shougo/vimproc.vim'
+#build = 'make'
+#
+#[[plugins]]
+#repo = 'Shougo/vimshell'
+#build = 'make'
+### }}}
+
+### Deoplete {{{
+#[[plugins]]
+#repo = 'Shougo/deoplete.nvim'
+#depends = ['context_filetype.vim','neosnippet']
+#on_event = 'InsertEnter'
+#if = 'has("python3")'
+#in_i = 1
+#hook_source = '''
+#source ~/.config/nvim/plugins/deoplete.rc.vim
+#'''
+
+#[[plugins]]
+#repo = 'Shougo/neosnippet'
+#on_event = 'InsertCharPre'
+#on_i = 1
+#on_ft = ['snippet']
+#depends = ['context_filetype.vim','neosnippet-snippets']
+#hook_source = '''
+#source ~/.config/nvim/plugins/neosnippet.rc.vim
+#'''
+
+#[[plugins]]
+#repo = 'Shougo/neosnippet-snippets'
+#
+#[[plugins]]
+#repo = 'Shougo/context_filetype.vim'
+###}}}
+
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+on_event = 'InsertEnter'

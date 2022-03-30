@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+case $1 in
+  "1" ) $HOME/.config/scripts/aa_hello_new_world.sh ;;
+  "2" ) $HOME/.config/scripts/aa_k5_mot_dot.sh ;;
+  "3" ) $HOME/.config/scripts/aa_k5_mot_square.sh ;;
+  * ) echo ""
+esac

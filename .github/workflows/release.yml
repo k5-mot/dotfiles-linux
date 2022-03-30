@@ -1,0 +1,53 @@
+name: 'Release'
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  ubuntu-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - id: info_action
+        uses: k5-mot/info-action@main
+
+      - id: package_action
+        uses: k5-mot/package-action@main
+        with:
+          RELEASE: 'release'
+          EXCLUSIONS: '.vscode build'
+
+      - id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - id: upload_release_targz
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./release/release.tar.gz
+          asset_name: ${{ steps.info_action.outputs.release }}.tar.gz
+          asset_content_type: application/gzip
+
+      - id: upload_release_zip
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./release/release.zip
+          asset_name: ${{ steps.info_action.outputs.release }}.zip
+          asset_content_type: application/zip
+

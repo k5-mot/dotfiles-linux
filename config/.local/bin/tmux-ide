@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+case $1 in
+  "1" ) tmux-ide-mode1 ;;
+  "2" ) tmux-ide-mode2 ;;
+  "3" ) tmux-ide-mode3 ;;
+  * ) tmux-ide-mode1 ;;
+esac

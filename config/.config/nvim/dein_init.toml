@@ -1,0 +1,202 @@
+### Package manager {{{
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'wsdjeg/dein-ui.vim'
+### }}}
+
+### colorscheme {{{
+[[plugins]]
+repo = 'croaker/mustang-vim'
+
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'dracula/vim'
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+
+[[plugins]]
+repo = 'jacoborus/tender.vim'
+
+[[plugins]]
+repo = 'junegunn/seoul256.vim'
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
+
+[[plugins]]
+repo = 'sainnhe/gruvbox-material'
+### }}}
+
+### Syntax {{{
+#[[plugins]]
+#repo ='prabirshrestha/vital.vim'
+#rev = 'popup'
+#
+#[[plugins]]
+#repo = 'prabirshrestha/callbag.vim'
+#
+#[[plugins]]
+#repo = 'prabirshrestha/async.vim'
+#
+#[[plugins]]
+#repo = 'prabirshrestha/asyncomplete.vim'
+#hook_add = '''
+#source ~/.config/nvim/plugins/asyncomplete.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'prabirshrestha/asyncomplete-lsp.vim'
+#
+##[[plugins]]
+##repo = 'prabirshrestha/asyncomplete-buffer.vim'
+#
+#
+#[[plugins]]
+#repo = 'prabirshrestha/vim-lsp'
+#depends = ['async.vim']
+#hook_add = '''
+#source ~/.config/nvim/plugins/vim-lsp.rc.vim
+#'''
+#hook_source = '''
+#source ~/.config/nvim/plugins/vim-lsp_post.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'mattn/vim-lsp-settings'
+#
+#[[plugins]]
+#repo = 'mattn/vim-lsp-icons'
+
+#[[plugins]]
+#repo = 'josa42/vim-lightline-coc'
+#hook_add = '''
+#"source ~/.config/nvim/plugins/vim-lightline-coc.rc.vim
+#'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/lightline.rc.vim
+'''
+
+#[[plugins]]
+#repo = 'neoclide/coc.nvim'
+#rev = 'release'
+#merged = '0'
+#hook_add = '''
+#source ~/.config/nvim/plugins/coc.rc.vim
+#'''
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'master'
+merged = '0'
+build = 'yarn install --frozen-lockfile'
+hook_add = '''
+source ~/.config/nvim/plugins/coc.rc.vim
+'''
+
+
+#[[plugins]]
+#repo = 'SirVer/ultisnips'
+#hook_add = '''
+#source ~/.config/nvim/plugins/ultisnips.rc.vim
+#'''
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+#[[plugins]]
+#repo = 'prabirshrestha/asyncomplete-ultisnips.vim'
+#hook_source = '''
+#source ~/.config/nvim/plugins/asyncomplete-ultisnips.rc.vim
+#'''
+
+#[[plugins]]
+#repo = 'thomasfaingnaert/vim-lsp-snippets'
+#
+#[[plugins]]
+#repo = 'thomasfaingnaert/vim-lsp-ultisnips'
+
+#[[plugins]]
+#repo = 'hrsh7th/vim-vsnip'
+#hook_add = '''
+#source ~/.config/nvim/plugins/vim-vsnip.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'hrsh7th/vim-vsnip-integ'
+#
+#[[plugins]]
+#repo = 'prabirshrestha/vsnip-snippets'
+
+#[[plugins]]
+#repo = 'halkn/lightline-lsp'
+
+#[[plugins]]
+#repo = 'autozimu/LanguageClient-neovim'
+#rev = 'next'
+#build = 'bash install.sh'
+#hook_add = '''
+#source ~/.config/nvim/plugins/LanguageClient-neovim.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'takiyu/lightline-languageclient.vim'
+
+#[[plugins]]
+#repo = 'w0rp/ale'
+#on_cmd = ['ALEComplete']
+#hook_add = '''
+#source ~/.config/nvim/plugins/ale.rc.vim
+#'''
+#
+#[[plugins]]
+#repo = 'maximbaz/lightline-ale'
+#depends = ['lightline.vim', 'ale']
+#hook_add = '''
+#source ~/.config/nvim/plugins/lightline-ale.rc.vim
+#'''
+### }}}
+
+### appearances {{{
+
+#[[plugins]]
+#repo = 'neoclide/coc.nvim'
+#rev = 'release'
+#merged = '0'
+#hook_add = '''
+#source ~/.config/nvim/plugins/coc.rc.vim
+#'''
+
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+hook_add = '''
+'''
+### }}}
+
+[[plugins]]
+repo = 'tmhedberg/matchit'
+hook_add = '''
+'''
+
+#[[plugins]]
+#repo = 'Shougo/neco-vim'
+#
+#[[plugins]]
+#repo = 'Shougo/neco-syntax'
+#
+#[[plugins]]
+#repo = 'ujihisa/neco-look'

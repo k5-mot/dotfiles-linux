@@ -1,0 +1,387 @@
+{
+  // Controls whether `editor.tabSize#` and `#editor.insertSpaces` will be automatically detected when a file is opened based on the file contents.
+  "editor.detectIndentation": false,
+
+  // A multiplier to be used on the `deltaX` and `deltaY` of mouse wheel scroll events.
+  //"editor.mouseWheelScrollSensitivity": 1,
+  "editor.mouseWheelScrollSensitivity": 0.7,
+
+  // Controls whether suggestions should automatically show up while typing.
+  "editor.quickSuggestions": {
+    "comments": false, // コメント内では無効
+    "strings": true,   // 文字列内では有効
+    "other": true      //  その他の場所で有効
+  },
+
+  // Controls whether the editor should render control characters.
+  //"editor.renderControlCharacters": false,
+  "editor.renderControlCharacters": true,
+
+  // Controls how the editor should render the current line highlight.
+  //  - none
+  //  - gutter
+  //  - line
+  //  - all: Highlights both the gutter and the current line.
+  "editor.renderLineHighlight": "all",
+
+  // Controls how suggestions are pre-selected when showing the suggest list.
+  //  - first: Always select the first suggestion.
+  //  - recentlyUsed: Select recent suggestions unless further typing selects one, e.g. `console.| -> console.log` because `log` has been completed recently.
+  //  - recentlyUsedByPrefix: Select suggestions based on previous prefixes that have completed those suggestions, e.g. `co -> console` and `con -> const`.
+  "editor.suggestSelection": "first",
+
+  // The number of spaces a tab is equal to. This setting is overridden based on the file contents when `editor.detectIndentation` is on.
+  "editor.tabSize": 2,
+
+  // Characters that will be used as word separators when doing word related navigations or operations.
+  "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
+
+  // Controls how lines should wrap.
+  //  - off: Lines will never wrap.
+  //  - on: Lines will wrap at the viewport width.
+  //  - wordWrapColumn: Lines will wrap at `editor.wordWrapColumn`.
+  //  - bounded: Lines will wrap at the minimum of viewport and `editor.wordWrapColumn`.
+  "editor.wordWrap": "off",
+
+  // Overrides colors from the currently selected color theme.
+  "workbench.colorCustomizations": {},
+
+  // Controls the sizing of editor tabs. This value is ignored when `workbench.editor.showTabs` is disabled.
+  //  - fit: Always keep tabs large enough to show the full editor label.
+  //  - shrink: Allow tabs to get smaller when the available space is not enough to show all tabs at once.
+  "workbench.editor.tabSizing": "fit",
+
+  // Controls which editor is shown at startup, if none are restored from the previous session.
+	//  - none: Start without an editor.
+	//  - welcomePage: Open the Welcome page (default).
+	//  - readme: Open the README when opening a folder that contains one, fallback to 'welcomePage' otherwise.
+	//  - newUntitledFile: Open a new untitled file (only applies when opening an empty window).
+	//  - welcomePageInEmptyWorkbench: Open the Welcome page when opening an empty workbench.
+	"workbench.startupEditor": "none",
+
+  // Control the visibility of the menu bar. A setting of 'toggle' means that the menu bar is hidden and a single press of the Alt key will show it. By default, the menu bar will be visible, unless the window is full screen.
+  //  - default: Menu is only hidden in full screen mode.
+  //  - visible: Menu is always visible even in full screen mode.
+  //  - toggle: Menu is hidden but can be displayed via Alt key.
+  //  - hidden: Menu is always hidden.
+  //  - compact: Menu is displayed as a compact button in the sidebar. This value is ignored when `window.titleBarStyle` is `native`.
+  //"window.menuBarVisibility": "default",
+  "window.menuBarVisibility": "toggle",
+
+  // Controls the window title based on the active editor. Variables are substituted based on the context:
+  // - `${activeEditorShort}`: the file name (e.g. myFile.txt).
+  // - `${activeEditorMedium}`: the path of the file relative to the workspace folder (e.g. myFolder/myFileFolder/myFile.txt).
+  // - `${activeEditorLong}`: the full path of the file (e.g. /Users/Development/myFolder/myFileFolder/myFile.txt).
+  // - `${activeFolderShort}`: the name of the folder the file is contained in (e.g. myFileFolder).
+  // - `${activeFolderMedium}`: the path of the folder the file is contained in, relative to the workspace folder (e.g. myFolder/myFileFolder).
+  // - `${activeFolderLong}`: the full path of the folder the file is contained in (e.g. /Users/Development/myFolder/myFileFolder).
+  // - `${folderName}`: name of the workspace folder the file is contained in (e.g. myFolder).
+  // - `${folderPath}`: file path of the workspace folder the file is contained in (e.g. /Users/Development/myFolder).
+  // - `${rootName}`: name of the opened workspace or folder (e.g. myFolder or myWorkspace).
+  // - `${rootPath}`: file path of the opened workspace or folder (e.g. /Users/Development/myWorkspace).
+  // - `${appName}`: e.g. VS Code.
+  // - `${remoteName}`: e.g. SSH
+  // - `${dirty}`: a dirty indicator if the active editor is dirty.
+  // - `${separator}`: a conditional separator (" - ") that only shows when surrounded by variables with values or static text.
+  "window.title": "${dirty}${activeEditorShort} / ${rootName}",
+
+  // Adjust the zoom level of the window. The original size is 0 and each increment above (e.g. 1) or below (e.g. -1) represents zooming 20% larger or smaller. You can also enter decimals to adjust the zoom level with a finer granularity.
+  "window.zoomLevel": 0,
+
+  // When enabled, the editor will attempt to guess the character set encoding when opening files. This setting can also be configured per language.
+  "files.autoGuessEncoding": true,
+
+  // The default end of line character.
+  //  - \n: LF
+  //  - \r\n: CRLF
+  //  - auto: Uses operating system specific end of line character.
+  "files.eol": "\n",
+
+  // Configure glob patterns for excluding files and folders. For example, the file Explorer decides which files and folders to show or hide based on this setting. Refer to the `search.exclude` setting to define search specific excludes. Read more about glob patterns [here](https://code.visualstudio.com/docs/editor/codebasics#_advanced-search-options).
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.o": true,
+    "**/*.obj": true,
+    "**/*.ilk": true,
+    "**/*.pdb": true,
+    "**/*.tlog": true,
+    "**/*.idb": true,
+    "**/*.dll": true
+  },
+
+  // When enabled, insert a final new line at the end of the file when saving it.
+  "files.insertFinalNewline": true,
+
+  // The path of the shell that the terminal uses on Windows (default: C:\Program Files\PowerShell\7\pwsh.exe). [Read more about configuring the shell](https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration).
+  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
+  "terminal.integrated.shell.linux": "/bin/zsh",
+
+  // Enable crash reports to be sent to a Microsoft online service.
+  // This option requires restart to take effect.
+  "telemetry.enableCrashReporter": false,
+
+  // Enable usage data and errors to be sent to a Microsoft online service. Read our privacy statement [here](https://go.microsoft.com/fwlink/?LinkId=786907).
+  "telemetry.enableTelemetry": false,
+
+  // Configure settings to be overridden for [bibtex] language.
+  "[bibtex]": {
+    // インデント幅を2にする
+    "editor.tabSize": 2
+  },
+
+  // Configure settings to be overridden for [latex] language.
+  "[latex]":  {
+    // スニペット補完中にも補完を使えるようにする
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // インデント幅を2にする
+    "editor.tabSize": 2
+  },
+
+  // Configure settings to be overridden for [tex] language.
+  "[tex]": {
+    // スニペット補完中にも補完を使えるようにする
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // インデント幅を2にする
+    "editor.tabSize": 2
+  },
+
+  // When enabled, Emmet abbreviations are expanded when pressing TAB.
+	"emmet.triggerExpansionOnTab": false,
+
+  // Ignores the legacy Git warning.
+  "git.ignoreLegacyWarning": true,
+
+  // 使用パッケージのコマンドや環境の補完を有効にする
+  //"latex-workshop.intellisense.package.enabled": true,
+  "latex-workshop.latex.pdfWatch.delay": 250,
+  // Files to clean.
+  // This property must be an array of strings. File globs such as *.removeme, something?.aux can be used.
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.synctex(busy)",
+    "*.synctex.gz(busy)",
+    "*.nav",
+    "*.dvi",
+    "*.synctex.gz"
+  ],
+
+  // The directory where the extension tries to find project files (e.g., PDF and SyncTeX files) are located.
+  // Both relative and absolute paths are supported. Relative path start from the root file location, so beware if it is located in sub-directory. The path must not contain a trailing slash.
+  // The LaTeX toolchain should output files to this path.
+  // For a list of supported placeholders, please visit https://github.com/James-Yu/LaTeX-Workshop/wiki/Compile#placeholders.
+  "latex-workshop.latex.outDir": "build",
+
+  // Define LaTeX compiling recipes.
+  // Each recipe in the list is an object containing its name and the names of tools to be used sequentially, which are defined in `latex-workshop.latex.tools`.
+  // By default, the first recipe is used to compile the project. For details, please visit https://github.com/James-Yu/LaTeX-Workshop/wiki/Compile#latex-recipe.
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": [
+        "latexmk"
+      ]
+    },
+    {
+      "name": "latexmk (latexmkrc)",
+      "tools": [
+        "latexmk_rconly"
+      ]
+    },
+    {
+      "name": "latexmk (lualatex)",
+      "tools": [
+        "lualatexmk"
+      ]
+    },
+    {
+      "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+      "tools": [
+        "pdflatex",
+        "bibtex",
+        "pdflatex",
+        "pdflatex"
+      ]
+    },
+    {
+      "name": "Compile Rnw files",
+      "tools": [
+        "rnw2tex",
+        "latexmk"
+      ]
+    },
+    {
+      "name": "Compile Jnw files",
+      "tools": [
+        "jnw2tex",
+        "latexmk"
+      ]
+    }
+  ],
+
+  // Define LaTeX compiling tools to be used in recipes.
+  // Each tool is labeled by its `name`. When invoked, `command` is spawned with arguments defined in `args` and environment variables defined in `env`. Typically no spaces should appear in each argument unless in paths.
+  // Placeholders `%DOC%`, `%DOC_W32%, %DOC_EXT%`, `%DOC_EXT_W32%`, `%DOCFILE%`, `%DOCFILE_EXT%`, `%DIR%`, `%DIR_W32%`, `%TMPDIR%` and `%OUTDIR%`, `%OUTDIR_W32%` are available. For more details, please visit https://github.com/James-Yu/LaTeX-Workshop/wiki/Compile#placeholders.
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-shell-escape",
+        "-f",
+        "-silent",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "lualatexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-lualatex",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "latexmk_rconly",
+      "command": "latexmk",
+      "args": [
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": [
+        "%DOCFILE%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "rnw2tex",
+      "command": "Rscript",
+      "args": [
+        "-e",
+        "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+      ],
+      "env": {}
+    },
+    {
+      "name": "jnw2tex",
+      "command": "julia",
+      "args": [
+        "-e",
+        "using Weave; weave(\"%DOC_EXT%\", doctype=\"tex\")"
+      ],
+      "env": {}
+    },
+    {
+      "name": "jnw2texmintex",
+      "command": "julia",
+      "args": [
+        "-e",
+        "using Weave; weave(\"%DOC_EXT%\", doctype=\"texminted\")"
+      ],
+      "env": {}
+    }
+  ],
+
+  // The default PDF viewer.
+  //  - none: Undetermined viewer. A viewer selector will pop up upon viewing PDF.
+  //  - browser: Open PDF with the default web browser.
+  //  - tab: Open PDF with the built-in tab viewer.
+  //  - external: [Experimental] Open PDF with the external viewer set in "View > Pdf > External: command".
+  "latex-workshop.view.pdf.viewer": "browser",
+  "latex-workshop.chktex.enabled": false,
+
+  // The full path of the clang-format executable. If not specified, and clang-format is available in the environment path, that is used.  If not found in the environment path, a copy of clang-format bundled with the extension will be used.
+  "C_Cpp.clang_format_path": "",
+
+  // Configures the formatting engine
+  //  - clangFormat: clang-format will be used to format code.
+  //  - vcFormat: The Visual C++ formatting engine will be used to format code.
+  //  - Default: clang-format will be used to format code.
+  //  - Disabled: Code formatting will be disabled.
+  "C_Cpp.formatting": "Default",
+
+  // Control whether Visual Studio IntelliCode will modify `editor.suggestSelection` if it is set to a value (`recentlyUsed`) that will result in IntelliCode suggested completion items not being visible.
+  //  - enabled: Allows IntelliCode to modify the editor.suggestSelection setting on your behalf.
+  //  - disabled: You've explicitly opted out of having this configuration controlled by IntelliCode.
+  //  - automaticallyOverrodeDefaultValue: (DO NOT SET THIS MANUALLY) IntelliCode will set this to record that configuration has been automatically modified to override a default value.
+  //  - choseToUpdateConfiguration: (DO NOT SET THIS MANUALLY) IntelliCode will set this to record that you've chosen to let IntelliCode change the configuration from a value that was explicitly set.
+  // "vsintellicode.modify.editor.suggestSelection": "enabled"
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+
+  "python.pythonPath": "C:\\Program Files\\Python39\\python.exe",  
+  //"files.eol": "\n",                          // 改行コードは「LF」  
+  "python.linting.enabled": true,             // 文法チェックを行う  
+  "python.linting.pylintEnabled": false,      // pylint は使わない  
+  "python.linting.pycodestyleEnabled": false,        // pep8 は使わない  
+  "python.linting.flake8Enabled": true,       // 文法チェックにflake8 を使う  
+  "python.linting.flake8Args": [              // flake8 の設定    
+    "--ignore=E111, E114, E402, E501"  
+  ],  
+  "python.formatting.provider": "autopep8",   // 自動整形に autopep8 を使う  
+  "python.formatting.autopep8Args": [         // autopep8 の設定    
+    "--indent-size=2",    "--ignore=E111, E114, E402, E501"  ],  
+  "[python]": {    
+    "editor.tabSize": 4,                      // インデントレベルは「2」    
+    "editor.formatOnSave": true,              // 保存時に自動整形を行う    
+    "editor.formatOnPaste": false,            // ペースト時に自動整形を行わない    
+    "editor.formatOnType": false,             // 入力後に自動整形を行わない
+  },  
+  "workbench.panel.defaultLocation": "right",
+  "python.showStartPage": false,
+  "jupyter.alwaysTrustNotebooks": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "update.mode": "none",
+  "window.customMenuBarAltFocus": false,
+  "workbench.colorTheme": "Default Dark+",
+  "extensions.ignoreRecommendations": true,
+  "editor.fontFamily": "'Ricty Diminished Discord','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'"
+
+}

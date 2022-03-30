@@ -1,0 +1,29 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* フォルダペインのフォントサイズ */
+
+#folderTree > treechildren::-moz-tree-cell-text {
+ font-size: 14px !important;
+}
+
+/* フォルダペインの行間 */
+#folderTree > treechildren::-moz-tree-row {
+    height: 32px !important;
+}
+
+/* スレッドペインのフォントサイズ */
+#threadTree > treechildren {
+  font-size: 14px !important;
+}
+
+/* メニューなどのフォントサイズ */
+menu, menulist, menuitem {
+    font-size: 13px !important;
+}
+
+#threadTree > treechildren::-moz-tree-row {
+  height: 32px !important;
+}
+
+
+

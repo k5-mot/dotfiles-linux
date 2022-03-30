@@ -1,0 +1,38 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+  { 
+    "key": "ctrl+shift+j", 
+    "command": "workbench.action.terminal.focusNext" 
+  },
+  { 
+    "key": "ctrl+shift+k", 
+    "command": "workbench.action.terminal.focusPrevious" 
+  },
+  { 
+    "key": "ctrl+shift+t", 
+    "command": "workbench.action.terminal.newInActiveWorkspace" 
+  },
+  { 
+    "key": "ctrl+shift+w", 
+    "command": "workbench.action.terminal.kill" 
+  },
+  { 
+    "key": "ctrl+shift+enter", 
+    "command": "workbench.action.terminal.focus" 
+  },
+  { 
+    "key": "ctrl+shift+enter", 
+    "command": "workbench.action.focusActiveEditorGroup", 
+    "when":"terminalFocus" 
+  },
+  { 
+    "key": "ctrl+space",          
+    "command": "-toggleSuggestionDetails"
+  },
+  { 
+    "key": "ctrl+space",            
+    "command": "-editor.action.triggerSuggest"
+  }
+
+  
+]

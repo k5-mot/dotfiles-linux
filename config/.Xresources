@@ -1,0 +1,72 @@
+##
+## ~/.Xresources
+##
+
+### Xterm {{{
+XTerm*utf8              : 1
+XTerm*locale            : true
+XTerm*selectToClipboard : true
+XTerm*faceName: Caskaydia Cove Regular Nerd Font Complete:style=regular:antialias=true
+XTerm*faceNameDoublesize: Caskaydia Cove Regular Nerd Font Complete:style=reguler:antialias=true
+xterm*ximFont: -misc-fixed-medium-r-normal--14-130-75-75-c-140-jisx0208.1983-0
+XTerm*faceSize          : 10.5
+XTerm*cjkWidth          : true
+XTerm*fontDoublesize    : true
+XTerm*saveLines         : 2000
+XTerm*geometry          : 100x30+300+100
+XTerm*scaleHeight       : 1.15
+
+XTerm*background: #292929
+XTerm*foreground: #EEEEEE
+XTerm*color0: #333333
+XTerm*color1: #A94952
+XTerm*color2: #83A949
+XTerm*color3: #A99F49
+XTerm*color4: #4983A9
+XTerm*color5: #A94983
+XTerm*color6: #49A99F
+XTerm*color7: #AAAAAA
+XTerm*color8: #666666
+XTerm*color9: #ED6975
+XTerm*color10: #B8ED69
+XTerm*color11: #EDE169
+XTerm*color12: #69B8ED
+XTerm*color13: #ED69B8
+XTerm*color14: #69EDE1
+XTerm*color15: #DDDDDD
+### }}}
+
+### Kterm {{{
+KTerm*utf8              : 1
+KTerm*locale            : true
+KTerm*selectToClipboard : true
+KTerm*faceName: Caskaydia Cove Regular Nerd Font Complete:style=regular:antialias=true
+KTerm*faceNameDoublesize: Caskaydia Cove Regular Nerd Font Complete:style=reguler:antialias=true
+Kterm*ximFont: -misc-fixed-medium-r-normal--14-130-75-75-c-140-jisx0208.1983-0
+KTerm*faceSize          : 10.5
+KTerm*cjkWidth          : true
+KTerm*fontDoublesize    : true
+KTerm*saveLines         : 2000
+KTerm*geometry          : 100x30+300+100
+KTerm*scaleHeight       : 1.15
+
+KTerm*background: #292929
+KTerm*foreground: #EEEEEE
+KTerm*color0: #333333
+KTerm*color1: #A94952
+KTerm*color2: #83A949
+KTerm*color3: #A99F49
+KTerm*color4: #4983A9
+KTerm*color5: #A94983
+KTerm*color6: #49A99F
+KTerm*color7: #AAAAAA
+KTerm*color8: #666666
+KTerm*color9: #ED6975
+KTerm*color10: #B8ED69
+KTerm*color11: #EDE169
+KTerm*color12: #69B8ED
+KTerm*color13: #ED69B8
+KTerm*color14: #69EDE1
+KTerm*color15: #DDDDDD
+### }}}
+

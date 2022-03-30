@@ -1,0 +1,93 @@
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+#[[plugins]]
+#repo = 'lervag/vimtex'
+#on_ft = ['tex']
+#hook_source = '''
+#let g:vimtex_view_general_viewer = 'displayline'
+#let g:vimtex_view_general_options = '-r @line @pdf @tex'
+#'''
+
+# vim 環境から適当に移植
+#[ftplugin]
+#_ = '''
+#'''
+#
+#vim = '''
+#setlocal shiftwidth=2 softtabstop=2
+#setlocal iskeyword+=:,#
+#
+#" For gf.
+#let &l:path = join(map(split(&runtimepath, ','), 'v:val."/autoload"'), ',')
+#setlocal suffixesadd=.vim
+#setlocal includeexpr=fnamemodify(substitute(v:fname,'#','/','g'),':h')
+#'''
+#
+#php = '''
+#" 文字列中のSQLをハイライト
+#let php_sql_query = 1
+#
+#" 文字列中のHTMLをハイライト
+#let php_htmlInStrings = 1
+#
+#" ショートタグを無効
+#let php_noShortTags = 1
+#
+#" switch内のcase/defaultでインデントさせる
+#let g:PHP_vintage_case_default_indent = 1
+#
+#" 自動コメントをやめる
+#let g:PHP_autoformatcomment = 0
+#
+#" PHPの折りたたみ設定
+#"let php_folding = 1
+#setlocal foldmethod=indent
+#setlocal foldlevel=2
+#setlocal foldnestmax=2
+#
+#" 単語からハイフンを除外
+#setlocal iskeyword-=-
+#'''
+#
+#python = '''
+#" Indent settings.
+#setlocal softtabstop=4
+#setlocal shiftwidth=4
+#setlocal textwidth=80
+#setlocal smarttab
+#setlocal expandtab
+#setlocal nosmartindent
+#'''
+#
+#ruby = '''
+#" set indent.
+#setlocal shiftwidth=2 softtabstop=2 tabstop=2
+#'''
+#
+#smarty = '''
+#" smartyでも%でタグジャンプできるように
+#let b:match_words = '<:>,<\@<=[ou]l\>[^>]*\%(>\|$\):<\@<=li\>:<\@<=/[ou]l>,<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>'
+#
+#" smartyのタグでもジャンプできるように追加
+#let b:match_words .= ',{if\>:{elseif\>:{else\>:{/if\>,{foreach\>:{foreachelse\>:{/foreach\>'
+#'''
+#
+#javascript = '''
+#setlocal shiftwidth=2 softtabstop=2 tabstop=2
+#'''
+#
+#c_cpp = '''
+#if has('win32') || has('win64')
+#    setlocal path+=C:/gcc/include/c++/4.5.0;C:/gcc/i386-pc-mingw32/include
+#else
+#    setlocal path+=/usr/local/include;/usr/include
+#endif
+#'''
+#
+#go = '''
+#setlocal noexpandtab
+#highlight default link goErr WarningMsg
+#match goErr /\<err\>/
+#'''

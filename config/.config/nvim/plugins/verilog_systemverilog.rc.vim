@@ -1,0 +1,1 @@
+runtime! ~/.vim/syntax/verilog_systemverilog.vim
