@@ -41,52 +41,55 @@ jobs:
         run: |
           for i in $(seq 1 10); do time zsh -i -c exit; done
 
-      - name: 'Benchmark Vim (bash)'
-        shell: bash
-        run: |
-          vim -c 'PlugInstall' -c 'qa!'
-          vim --cmd 'profile start profile_bash_vim.log' \
-            --cmd 'profile func *' \
-            --cmd 'profile file *' \
-            -c 'profdel func *' \
-            -c 'profdel file *' \
-            -c 'qa!'
+          #      - name: 'Benchmark Vim (bash)'
+          #        shell: bash
+          #        run: |
+          #          vim -c 'PlugInstall' -c 'qa!'
+          #          vim --cmd 'profile start profile_bash_vim.log' \
+          #            --cmd 'profile func *' \
+          #            --cmd 'profile file *' \
+          #            -c 'profdel func *' \
+          #            -c 'profdel file *' \
+          #            -c 'qa!'
+          #
+          #      - name: 'Benchmark Neovim (bash)'
+          #        shell: bash
+          #        run: |
+          #          nvim -c 'PlugInstall' -c 'qa!'
+          #          nvim --cmd 'profile start profile_bash_neovim.log' \
+          #            --cmd 'profile func *' \
+          #            --cmd 'profile file *' \
+          #            -c 'profdel func *' \
+          #            -c 'profdel file *' \
+          #            -c 'qa!'
+          #
+          #      - name: 'Benchmark Vim (zsh)'
+          #        shell: zsh {0}
+          #        run: |
+          #          vim --cmd 'profile start profile_zsh_vim.log' \
+          #            --cmd 'profile func *' \
+          #            --cmd 'profile file *' \
+          #            -c 'profdel func *' \
+          #            -c 'profdel file *' \
+          #            -c 'qa!'
+          #
+          #      - name: 'Benchmark Neovim (zsh)'
+          #        shell: zsh {0}
+          #        run: |
+          #          nvim --cmd 'profile start profile_zsh_neovim.log' \
+          #            --cmd 'profile func *' \
+          #            --cmd 'profile file *' \
+          #            -c 'profdel func *' \
+          #            -c 'profdel file *' \
+          #            -c 'qa!'
+          #
+          #      - name: 'Print benchmark of Vim, Neovim on Bash, Zsh'
+          #        shell: zsh {0}
+          #        run: |
+          #          cat profile_bash_vim.log
+          #          cat profile_bash_neovim.log
+          #          cat profile_zsh_vim.log
+          #          cat profile_zsh_neovim.log
 
-      - name: 'Benchmark Neovim (bash)'
-        shell: bash
-        run: |
-          nvim -c 'PlugInstall' -c 'qa!'
-          nvim --cmd 'profile start profile_bash_neovim.log' \
-            --cmd 'profile func *' \
-            --cmd 'profile file *' \
-            -c 'profdel func *' \
-            -c 'profdel file *' \
-            -c 'qa!'
 
-      - name: 'Benchmark Vim (zsh)'
-        shell: zsh {0}
-        run: |
-          vim --cmd 'profile start profile_zsh_vim.log' \
-            --cmd 'profile func *' \
-            --cmd 'profile file *' \
-            -c 'profdel func *' \
-            -c 'profdel file *' \
-            -c 'qa!'
 
-      - name: 'Benchmark Neovim (zsh)'
-        shell: zsh {0}
-        run: |
-          nvim --cmd 'profile start profile_zsh_neovim.log' \
-            --cmd 'profile func *' \
-            --cmd 'profile file *' \
-            -c 'profdel func *' \
-            -c 'profdel file *' \
-            -c 'qa!'
-
-      - name: 'Print benchmark of Vim, Neovim on Bash, Zsh'
-        shell: zsh {0}
-        run: |
-          cat profile_bash_vim.log
-          cat profile_bash_neovim.log
-          cat profile_zsh_vim.log
-          cat profile_zsh_neovim.log

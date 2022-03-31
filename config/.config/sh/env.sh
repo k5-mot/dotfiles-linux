@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 ### XDG {{{
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_STATE_HOME=$HOME/.local/state
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_RUNTIME_DIR=$HOME/.cache/xdg
-export DG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_RUNTIME_DIR="$HOME/.cache/xdg"
+export DG_DATA_HOME="$HOME/.local/share"
 ### }}}
 
 ## ### Locale {{{
@@ -52,9 +52,9 @@ export JSERVER="localhost"
 ## less
 export LESSCHARSET=utf-8
 export LESS="-iMR"
-export LESSHISTFILE=$XDG_CACHE_HOME/less/lesshst
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 ## GNUPLOT
-export GNUPLOT_HISTORY_FILE=$XDG_CACHE_HOME/gnuplot/gnuplot_history
+export GNUPLOT_HISTORY_FILE="$XDG_CACHE_HOME/gnuplot/history"
 
 ## Colorize man command.
 man() {
@@ -77,19 +77,20 @@ export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[1;32m")
 
 ## Neovim logger
-export NVIM_PYTHON_LOG_FILE=$HOME/.cache/nvim/python.log
+export NVIM_PYTHON_LOG_FILE="$HOME/.cache/nvim/python.log"
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
 ##
-export IPYTHONDIR=$XDG_CONFIG_HOME/ipython
-export JUPYTER_CONFIG_DIR=$XDG_CONFIG_HOME/jupyter
-export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
-export CUDA_CACHE_PATH=$XDG_CACHE_HOME/nv
-export ICEAUTHORITY=$XDG_CACHE_HOME/ICEauthority
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
-export PYTHONSTARTUP=$XDG_CONFIG_HOME/python/pythonrc.py
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java
+export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
+export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
 export RUSTUP_HOME="$XDG_CACHE_HOME/rustup"
 export CARGO_HOME="$XDG_CONFIG_HOME/cargo"
-export LOCAL_ROOT=$HOME/.local
+export BAT_THEME="OneHalfDark"
+export LOCAL_ROOT="$HOME/.local"
 

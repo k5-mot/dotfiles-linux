@@ -1,18 +1,11 @@
 #!/usr/bin/env zsh
 
-## If use tmux, not read .zshrc
-#if [[ -z $TMUX ]]; then
-#  tmux new-session
-#  exit
-#fi
-
 # zmodload zsh/zprof
 
 ## Create zsh cache directory.
 if [ ! -e $ZDOTCACHE ]; then
   mkdir -p $ZDOTCACHE
 fi
-
 
 ### Alias {{{
 # Set up aliases
@@ -60,12 +53,12 @@ function freload() {
 ### }}}
 
 ## History {{{
-## Define history file.
-export HISTFILE=$XDG_CONFIG_HOME/zsh/history
-## Define command size in history.
+## 履歴ファイルの保存先
+export HISTFILE="$XDG_CACHE_HOME/zsh/history"
+## メモリに保存される履歴件数
 export HISTSIZE=100
-## Define command size in history file.
-export SAVEHIST=1000
+## 履歴ファイルに保存される履歴件数
+export SAVEHIST=100000
 ## Delete old duplication of history.
 setopt hist_ignore_all_dups
 ## Delete duplication of previous command.
@@ -102,8 +95,7 @@ bindkey "^N" history-beginning-search-forward-end
 ## Color {{{
 ## Set SHELL
 if [[ -z "$SHELL" ]]; then
-  SHELL="$(command -v zsh)"
-  export SHELL
+  export SHELL="$(command -v zsh)"
 fi
 ## Use colors
 autoload -Uz colors
@@ -299,6 +291,12 @@ for i in $XDG_CONFIG_HOME/sh/rc.d/*.sh $XDG_CONFIG_HOME/sh/rc.d/*.zsh ; do
     fi
   fi
 done
+
+## Local Setting
+if [ -f ~/.zshrc_local ]; then
+  source ~/.zshrc_local
+fi
+
 ### }}}
 
 ## Compile
@@ -306,4 +304,6 @@ if [ $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]; then
   zcompile $ZDOTDIR/.zshrc
 fi
 
-# zprof
+# if (which zprof > /dev/null); then
+#   zprof | less
+# fi

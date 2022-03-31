@@ -11,9 +11,9 @@ umask 022
 if [ -e $HOME/.config/sh/env.sh ]; then
   source $HOME/.config/sh/env.sh
 fi
-# if [ -e $HOME/.config/sh/path.sh ]; then
-#   source $HOME/.config/sh/path.sh
-# fi
+if [ -e $HOME/.config/sh/path.sh ]; then
+  source $HOME/.config/sh/path.sh
+fi
 ### }}}
 
 ### Appendix {{{
@@ -36,32 +36,26 @@ fi
 
 ## automatically remove duplicates from these arrays
 typeset -U path PATH
+typeset -U ld_library_path LD_LIBRARY_PATH
+typeset -U library_path LIBRARY_PATH
+typeset -U cpath CPATH
+typeset -U c_include_path C_INCLUDE_PATH
+typeset -U cplus_include_path CPLUS_INCLUDE_PATH
 typeset -U cdpath CDPATH
 typeset -U fpath FPATH
 typeset -U manpath MANPATH
 typeset -U infopath INFOPATH
-typeset -T LD_LIBRARY_PATH ld_library_path
-typeset -U ld_library_path
-typeset -T LIBRARY_PATH library_path
-typeset -U library_path
-typeset -T CPATH cpath
-typeset -U cpath
-typeset -T C_INCLUDE_PATH c_include_path
-typeset -U c_include_path
-typeset -T CPLUS_INCLUDE_PATH cplus_include_path
-typeset -U cplus_include_path
-typeset -T PKG_CONFIG_PATH pkg_config_path
-typeset -U pkg_config_path
+typeset -U pkg_config_path PKG_CONFIG_PATH
 
 export PATH=$(echo $PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 export LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 export LIBRARY_PATH=$(echo $LIBRARY_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
-export PKG_CONFIG_PATH=$(echo $PKG_CONFIG_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 export CPATH=$(echo $CPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 export C_INCLUDE_PATH=$(echo $C_INCLUDE_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 export CPLUS_INCLUDE_PATH=$(echo $CPLUS_INCLUDE_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 export CDPATH=$(echo $CDPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
+export FPATH=$(echo $FPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 export MANPATH=$(echo $MANPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 export INFOPATH=$(echo $INFOPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
-export FPATH=$(echo $FPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
+export PKG_CONFIG_PATH=$(echo $PKG_CONFIG_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 

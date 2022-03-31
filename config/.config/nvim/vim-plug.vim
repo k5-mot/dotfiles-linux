@@ -27,6 +27,7 @@ call plug#begin(data_dir . '/plugged')
   Plug 'junegunn/seoul256.vim'
   Plug 'morhetz/gruvbox'
   Plug 'sainnhe/gruvbox-material'
+  Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
   " syntax highlight
   Plug 'sheerun/vim-polyglot'

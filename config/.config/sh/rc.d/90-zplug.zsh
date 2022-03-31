@@ -9,7 +9,7 @@ if [ $zsh_ok -a $git_ok ]; then
 
   ## Install
   export ZPLUG_HOME=$ZDOTCACHE/zplug
-  if [[ ! -e $ZPLUG_HOME ]];then
+  if [[ ! -e $ZPLUG_HOME ]]; then
     git clone https://github.com/zplug/zplug $ZPLUG_HOME
   fi
   ## Initialize

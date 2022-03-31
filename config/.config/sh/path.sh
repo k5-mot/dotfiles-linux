@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
+export LOCAL_ROOT="$HOME/.local"
+
 ##
 ## PATH
 ##
 [[ -d /opt/bin         ]] && export PATH=/opt/bin:$PATH
+[[ -d $LOCAL_ROOT/bin  ]] && export PATH=$LOCAL_ROOT/bin:$PATH
 [[ -d /snap/bin        ]] && export PATH=$PATH:/snap/bin
 [[ -d /usr/local/sbin  ]] && export PATH=$PATH:/usr/local/sbin
 [[ -d /usr/local/bin   ]] && export PATH=$PATH:/usr/local/bin
@@ -13,7 +16,6 @@
 [[ -d /bin             ]] && export PATH=$PATH:/bin
 [[ -d /usr/games       ]] && export PATH=$PATH:/usr/games
 [[ -d /usr/local/games ]] && export PATH=$PATH:/usr/local/games
-export PATH=$(echo $PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
 ##
 ## LD_LIBRARY_PATH
@@ -26,7 +28,6 @@ export PATH=$(echo $PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 [[ -d /usr/lib64       ]] && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64
 [[ -d /lib             ]] && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib
 [[ -d /lib64           ]] && export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib64
-export LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
 ##
 ## LIBRARY_PATH
@@ -39,7 +40,6 @@ export LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -e 's/::/:/g' | sed 's/^://
 [[ -d /usr/lib64       ]] && export LIBRARY_PATH=$LIBRARY_PATH:/usr/lib64
 [[ -d /lib             ]] && export LIBRARY_PATH=$LIBRARY_PATH:/lib
 [[ -d /lib64           ]] && export LIBRARY_PATH=$LIBRARY_PATH:/lib64
-export LIBRARY_PATH=$(echo $LIBRARY_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
 ##
 ## PKG_CONFIG_PATH
@@ -52,7 +52,6 @@ export LIBRARY_PATH=$(echo $LIBRARY_PATH | sed -e 's/::/:/g' | sed 's/^://g' | s
 [[ -d /usr/lib64/pkgconfig       ]] && export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/lib64/pkgconfig
 [[ -d /lib/pkgconfig             ]] && export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/lib/pkgconfig
 [[ -d /lib64/pkgconfig           ]] && export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/lib64/pkgconfig
-export PKG_CONFIG_PATH=$(echo $PKG_CONFIG_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
 ##
 ## CPATH
@@ -71,13 +70,11 @@ for dir1 in $dirs; do
     done
   fi
 done
-export CPATH=$(echo $CPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
 ##
 ## C_INCLUDE_PATH
 ##
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:$CPATH
-export C_INCLUDE_PATH=$(echo $C_INCLUDE_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
 ##
 ## CPLUS_INCLUDE_PATH
@@ -91,13 +88,11 @@ for dir1 in $dirs; do
     done
   fi
 done
-export CPLUS_INCLUDE_PATH=$(echo $CPLUS_INCLUDE_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
 ##
 ## CDPATH
 ##
 export CDPATH=$CDPATH:.
-export CDPATH=$(echo $CDPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
 ##
 ## MANPATH
@@ -105,7 +100,6 @@ export CDPATH=$(echo $CDPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g'
 [[ -d /opt/share/man       ]] && export MANPATH=/opt/share/man:$MANPATH
 [[ -d /usr/local/share/man ]] && export MANPATH=$MANPATH:/usr/local/share/man
 [[ -d /usr/share/man       ]] && export MANPATH=$MANPATH:/usr/share/man
-export MANPATH=$(echo $MANPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
 ##
 ## INFOPATH
@@ -113,10 +107,37 @@ export MANPATH=$(echo $MANPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//
 [[ -d /opt/share/info       ]] && export INFOPATH=/opt/share/info:$INFOPATH
 [[ -d /usr/local/share/info ]] && export INFOPATH=$INFOPATH:/usr/local/share/info
 [[ -d /usr/share/info       ]] && export INFOPATH=$INFOPATH:/usr/share/info
-export INFOPATH=$(echo $INFOPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
 ##
 ## FPATH
 ##
 export FPATH
+
+##
+##
+##
+typeset -U path PATH
+typeset -U ld_library_path LD_LIBRARY_PATH
+typeset -U library_path LIBRARY_PATH
+typeset -U cpath CPATH
+typeset -U c_include_path C_INCLUDE_PATH
+typeset -U cplus_include_path CPLUS_INCLUDE_PATH
+typeset -U cdpath CDPATH
+typeset -U fpath FPATH
+typeset -U manpath MANPATH
+typeset -U infopath INFOPATH
+typeset -U pkg_config_path PKG_CONFIG_PATH
+
+export PATH=$(echo $PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
+export LD_LIBRARY_PATH=$(echo $LD_LIBRARY_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
+export LIBRARY_PATH=$(echo $LIBRARY_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
+export CPATH=$(echo $CPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
+export C_INCLUDE_PATH=$(echo $C_INCLUDE_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
+export CPLUS_INCLUDE_PATH=$(echo $CPLUS_INCLUDE_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
+export CDPATH=$(echo $CDPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 export FPATH=$(echo $FPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
+export MANPATH=$(echo $MANPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
+export INFOPATH=$(echo $INFOPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
+export PKG_CONFIG_PATH=$(echo $PKG_CONFIG_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
+
+
