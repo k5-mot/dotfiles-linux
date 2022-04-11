@@ -80,10 +80,13 @@ if filereadable(expand('$HOME/.vimrc_local'))
   runtime! $HOME/.vimrc_local
 endif
 
+augroup Colorcheme
+  autocmd Colorscheme * highlight Comment        term=NONE cterm=NONE gui=NONE
+  autocmd Colorscheme * highlight SpecialComment term=NONE cterm=NONE gui=NONE
+  " highlight Comment term=nocombine cterm=nocombine gui=nocombine
+  " highlight SpecialComment term=nocombine cterm=nocombine gui=nocombine
+augroup END
+
 set background=dark
-colorscheme gruvbox-material
-highlight Comment        term=NONE cterm=NONE gui=NONE
-highlight SpecialComment term=NONE cterm=NONE gui=NONE
-" highlight Comment term=nocombine cterm=nocombine gui=nocombine
-" highlight SpecialComment term=nocombine cterm=nocombine gui=nocombine
+colorscheme onedark
 

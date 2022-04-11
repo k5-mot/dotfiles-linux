@@ -108,6 +108,32 @@ augroup LightlineAutocmd
   autocmd User lsp_diagnostics_updated call lightline#update()
 augroup END
 
+function! s:onColorSchemeChange()
+    "" " Try a scheme provided already
+    ""execute 'runtime autoload/lightline/colorscheme/'.a:scheme.'.vim'
+    ""if exists('g:lightline#colorscheme#{a:scheme}#palette')
+    ""    let g:lightline.colorscheme = a:scheme
+    ""else  " Try falling back to a known colour scheme
+    ""    let l:colors_name = get(s:colour_scheme_map, a:scheme, '')
+    ""    if empty(l:colors_name)
+    ""        return
+    ""    else
+    ""        let g:lightline.colorscheme = l:colors_name
+    ""    endif
+    ""endif
+    let g:lightline.colorscheme = g:colors_name
+    call lightline#disable()
+    call lightline#init()
+    call lightline#colorscheme()
+    call lightline#update()
+    call lightline#enable()
+endfunction
+
+augroup ABC
+  autocmd!
+  autocmd Colorscheme * call s:onColorSchemeChange()
+augroup END
+
 let g:lightline = {
   \   'enable': { 'tabline': 1 },
   \   'colorscheme': 'gruvbox_material',
