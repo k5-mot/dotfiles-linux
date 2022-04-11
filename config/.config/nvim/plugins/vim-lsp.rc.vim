@@ -47,8 +47,23 @@ let g:asyncomplete_auto_popup = 1
 "let g:asyncomplete_popup_delay = 200
 "let g:lsp_text_edit_enabled = 1
 
+let g:lsp_signs_error       = { 'text': "\uf00d" }
+let g:lsp_signs_warning     = { 'text': "\uf071" }
+let g:lsp_signs_information = { 'text': "\uf05a" }
+let g:lsp_signs_hint        = { 'text': "\uf129" }
 let g:lsp_diagnostics_signs_error       = { 'text': "\uf00d" }
 let g:lsp_diagnostics_signs_warning     = { 'text': "\uf071" }
 let g:lsp_diagnostics_signs_information = { 'text': "\uf05a" }
 let g:lsp_diagnostics_signs_hint        = { 'text': "\uf129" }
 
+if !has('nvim')
+  let g:lsp_diagnostics_float_cursor = 1
+endif
+let g:lsp_log_file = ''
+
+let g:lsp_settings = {
+  \ 'efm-langserver': {
+  \     'disabled': 0,
+  \     'allowlist': ['markdown'],
+  \   }
+  \ }

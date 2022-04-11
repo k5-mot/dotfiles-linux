@@ -15,8 +15,8 @@ mkdir -pv ${HOME}/.porg/$HOSTNAME/src/vscode
 cd        ${HOME}/.porg/$HOSTNAME/src/vscode
 
 ## Download
-# export URL="https://update.code.visualstudio.com/1.52.1/linux-x64/stable"
-export URL="https://update.code.visualstudio.com/1.57.1/linux-x64/stable"
+export URL="https://update.code.visualstudio.com/1.52.1/linux-x64/stable"
+# export URL="https://update.code.visualstudio.com/1.57.1/linux-x64/stable"
 # export URL="https://code.visualstudio.com/sha/download?build=stable&os=linux-x64"
 wget --no-check-certificate --trust-server-names ${URL}
 tar -xvf code-*.tar.gz
