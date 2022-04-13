@@ -83,6 +83,8 @@ call plug#begin(data_dir . '/plugged')
 	Plug 'sophacles/vim-processing'
 
   Plug 'jiangmiao/auto-pairs'
+  Plug 'godlygeek/tabular'
+  Plug 'preservim/vim-markdown'
 
   " for Vim
   if !has('nvim')
