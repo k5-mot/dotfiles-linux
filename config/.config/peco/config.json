@@ -1,7 +1,6 @@
 
 
 {
-    "Prompt": "🍣 ",
     "Keymap": {
         "C-l": "peco.ForwardChar",
         "C-h": "peco.BackwardChar",
@@ -11,8 +10,9 @@
     "Style": {
         "Basic": ["on_default", "default"],
         "SavedSelection": ["bold", "on_magenta", "white"],
-        "Selected": ["underline", "on_blue", "white"],
-        "Query": ["default"],
-        "Matched": ["reserve", "yellow"]
-	}
+        "Selected": ["underline", "on_cyan", "black"],
+        "Query": ["green", "bold"],
+        "Matched": ["on_yellow", "black"]
+	  },
+    "Use256Color": true
 }
