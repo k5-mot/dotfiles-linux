@@ -11,9 +11,9 @@ umask 022
 if [ -e $HOME/.config/sh/env.sh ]; then
   source $HOME/.config/sh/env.sh
 fi
-if [ -e $HOME/.config/sh/path.sh ]; then
-  source $HOME/.config/sh/path.sh
-fi
+# if [ -e $HOME/.config/sh/path.sh ]; then
+#   source $HOME/.config/sh/path.sh
+# fi
 ### }}}
 
 ### Appendix {{{

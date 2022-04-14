@@ -20,8 +20,11 @@ sudo dnf install -y git
 sudo dnf install -y make
 sudo dnf install -y cmake
 sudo dnf install -y gcc
+sudo dnf install -y gcc-c++
 sudo dnf install -y subversion
 sudo dnf install -y python39
 sudo dnf install -y vim
 sudo dnf install -y emacs
-sudo dnf install -y neovim
+sudo dnf install -y makecache
+sudo dnf install -y fuse-libs
+

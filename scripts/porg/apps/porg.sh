@@ -27,7 +27,7 @@ mkdir -pv ${HOME}/.porg/$HOSTNAME/src/porg
 cd        ${HOME}/.porg/$HOSTNAME/src/porg/
 
 ## Download
-wget --content-disposition https://sourceforge.net/projects/porg/files/latest/download --no-check-certificate
+wget --no-check-certificate --content-disposition "https://sourceforge.net/projects/porg/files/latest/download"
 tar -xzvf porg-*.tar.gz
 cd porg-*/
 
