@@ -15,11 +15,12 @@ mkdir -pv ${HOME}/.porg/$HOSTNAME/src/ghq
 cd        ${HOME}/.porg/$HOSTNAME/src/ghq
 
 ## Download
-git clone https://github.com/x-motemen/ghq.git
-cd        ghq/
+# git clone https://github.com/x-motemen/ghq.git
+# cd        ghq/
 
 ## Install
-porg -lp ghq "make install"
+# porg -lp ghq "make install"
+porg -lp ghq "go install github.com/x-motemen/ghq@latest"
 
 ## Check
 porg ghq
