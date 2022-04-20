@@ -16,6 +16,7 @@ rm -rf    ${HOME}/.porg/${HOSTNAME}/src/texlive
 export VERSION="2022"
 mkdir -pv ${HOME}/.porg/${HOSTNAME}/src/texlive/${VERSION}
 mkdir -pv ${HOME}/.porg/${HOSTNAME}/opt/texlive/${VERSION}
+cp -rfv   texlive.profile ${HOME}/.porg/${HOSTNAME}/src/texlive/${VERSION}
 cd        ${HOME}/.porg/${HOSTNAME}/src/texlive/${VERSION}
 
 ## Download
@@ -25,15 +26,14 @@ tar -zxvf install-tl-unx.tar.gz
 cd install-tl-*/
 
 ## Install
-cp -rf ~/dotfiles/scripts/porg/apps/texlive.profile .
-sed -i -e "4a TEXMFSYSVAR    ${HOME}/.porg/${HOSTNAME}/opt/texlive/${VERSION}/texmf-var"    texlive.profile
-sed -i -e "4a TEXMFSYSCONFIG ${HOME}/.porg/${HOSTNAME}/opt/texlive/${VERSION}/texmf-config" texlive.profile
-sed -i -e "4a TEXMFLOCAL     ${HOME}/.porg/${HOSTNAME}/opt/texlive/texmf-local"             texlive.profile
-sed -i -e "4a TEXMFHOME      ${HOME}/.cache/texlive/${VERSION}/texmf"                       texlive.profile
-sed -i -e "4a TEXMFVAR       ${HOME}/.cache/texlive/${VERSION}/texmf-var"                   texlive.profile
-sed -i -e "4a TEXMFCONFIG    ${HOME}/.cache/texlive/${VERSION}/texmf-config"                texlive.profile
-sed -i -e "4a TEXDIR         ${HOME}/.porg/${HOSTNAME}/opt/texlive/${VERSION}"              texlive.profile
-porg -lp  texlive-${VERSION} "./install-tl --profile=./texlive.profile"
+sed -i -e "4a TEXMFSYSVAR    ${HOME}/.porg/${HOSTNAME}/opt/texlive/${VERSION}/texmf-var"    ../texlive.profile
+sed -i -e "4a TEXMFSYSCONFIG ${HOME}/.porg/${HOSTNAME}/opt/texlive/${VERSION}/texmf-config" ../texlive.profile
+sed -i -e "4a TEXMFLOCAL     ${HOME}/.porg/${HOSTNAME}/opt/texlive/texmf-local"             ../texlive.profile
+sed -i -e "4a TEXMFHOME      ${HOME}/.cache/texlive/${VERSION}/texmf"                       ../texlive.profile
+sed -i -e "4a TEXMFVAR       ${HOME}/.cache/texlive/${VERSION}/texmf-var"                   ../texlive.profile
+sed -i -e "4a TEXMFCONFIG    ${HOME}/.cache/texlive/${VERSION}/texmf-config"                ../texlive.profile
+sed -i -e "4a TEXDIR         ${HOME}/.porg/${HOSTNAME}/opt/texlive/${VERSION}"              ../texlive.profile
+porg -lp  texlive-${VERSION} "./install-tl --profile=../texlive.profile"
 for file in $(find ${HOME}/.porg/${HOSTNAME}/opt/texlive/${VERSION}/bin/x86_64-linux/ -type f); do
   porg -lp+ texlive-${VERSION} "ln -sfv $file ${HOME}/.porg/${HOSTNAME}/usr/bin"
 done
