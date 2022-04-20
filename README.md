@@ -52,7 +52,7 @@ Good luck!!!
 
 ## License
 
-Copyright (c) 2021 k5-mot All Rights Reserved.
+Copyright (c) 2020-2022 k5-mot All Rights Reserved.
 
 k5-mot/dotfiles is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
 
