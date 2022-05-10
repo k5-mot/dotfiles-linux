@@ -16,7 +16,7 @@
 [pull]
   rebase        = true
 [alias]
-  changelog     = "!git log --decorate | awk -f $HOME/.genchangelog/genchangelog.awk"
+  changelog     = "!git log --decorate | awk -f $HOME/.local/bin/generate-changelog.awk"
   ## Print commit logs.
   graph         = log --oneline --decorate --graph --branches --tags --remotes --pretty=format:'%C(green)%h %C(blue)[%cd] %C(red)%d %C(reset)%s %C(cyan)'
   ## Discard changed files.
