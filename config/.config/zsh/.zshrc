@@ -281,6 +281,16 @@ if [ -f ~/.zshrc_local ]; then
   source ~/.zshrc_local
 fi
 
+
+export HOMEBREW_PREFIX=$HOME/.local/linuxbrew
+export PATH=$HOMEBREW_PREFIX/bin:$PATH
+if [ ! -d $HOMEBREW_PREFIX ]; then
+  git clone https://github.com/Homebrew/brew.git $HOMEBREW_PREFIX
+  brew install hello
+  brew doctor
+fi
+
+
 ### Appendix {{{
 for i in $XDG_CONFIG_HOME/sh/rc.d/*.sh $XDG_CONFIG_HOME/sh/rc.d/*.zsh ; do
   if [ -r "$i" ]; then
