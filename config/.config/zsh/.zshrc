@@ -282,67 +282,67 @@ if [ -f ~/.zshrc_local ]; then
 fi
 
 
-export HOMEBREW_PREFIX=$HOME/.local/linuxbrew
-export HOSTNAME=$(hostname -s)
-if [ ! -d $HOMEBREW_PREFIX ]; then
-
-  ## Initialize environment variables
-  export PATH=$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/bin:$PATH
-  unset LD_LIBRARY_PATH PKG_CONFIG_PATH
-
-  ## Install Homebrew
-  git clone https://github.com/Homebrew/brew.git $HOMEBREW_PREFIX
-  ln -sfv $(which gcc) `brew --prefix`/bin/gcc-$(gcc -dumpversion | cut -d. -f1,2)
-  ln -sfv $(which g++) `brew --prefix`/bin/g++-$(g++ -dumpversion | cut -d. -f1,2)
-  ln -sfv $(which gfortran) `brew --prefix`/bin/gfortran-$(gfortran -dumpversion | cut -d. -f1,2)
-  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
-
-  ## Install glibc
-  brew install glibc
-  brew cleanup binutils
-  brew unlink glibc
-  ln -sfv `brew --prefix`/lib `brew --prefix`/lib64
-
-  ## Install zlib
-  brew install https://raw.githubusercontent.com/Homebrew/homebrew-dupes/master/zlib.rb
-
-  ## Install binutils
-  brew install binutils
-
-  ## Install gcc
-  brew link glibc
-  brew install patchelf
-  ln -s /usr/lib64/libstdc++.so.6 /lib64/libgcc_s.so.1 `brew --prefix`/lib/
-  brew install gcc --with-glibc -v
-  rm -f ~/.linuxbrew/lib/{libstdc++.so.6,libgcc_s.so.1}
-  brew unlink gcc
-  brew link gcc
-  export HOMEBREW_CC=gcc
-
-  ## Install core libralies and utilities
-  brew install bzip2 curl expat
-  brew install git
-  brew install coreutils findutils gawk gnu-sed gnu-which grep libpng libxml2 libxslt make ncurses readline
-  brew update
-
-  brew install hello
-  # export HOMEBREW_DEVELOPER=1
-  # export HOMEBREW_CURL_PATH=$HOME/.porg/$HOSTNAME/usr/bin/curl
-  # export HOMEBREW_GIT_PATH=$HOME/.porg/$HOSTNAME/usr/bin/git
-  brew doctor
-else
-  export PATH=$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/bin:$PATH
-  # export LD_LIBRARY_PATH=$HOMEBREW_PREFIX/lib64:$HOMEBREW_PREFIX/lib:$LD_LIBRARY_PATH
-  # export MANPATH=$HOMEBREW_PREFIX/share/man:$MANPATH
-  # export INFOPATH=$HOMEBREW_PREFIX/share/info:$INFOPATH
-  # export XDG_DATA_DIRS=$HOMEBREW_PREFIX/share:$XDG_DATA_DIRS
-  # Optional
-  # export HOMEBREW_NO_ENV_FILTERING=1
-  export HOMEBREW_DEVELOPER=1
-  # export HOMEBREW_CURL_PATH=$HOME/.porg/$HOSTNAME/usr/bin/curl
-  # export HOMEBREW_GIT_PATH=$HOME/.porg/$HOSTNAME/usr/bin/git
-  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
-fi
+# export HOMEBREW_PREFIX=$HOME/.local/linuxbrew
+# export HOSTNAME=$(hostname -s)
+# if [ ! -d $HOMEBREW_PREFIX ]; then
+#
+#   ## Initialize environment variables
+#   export PATH=$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/bin:$PATH
+#   unset LD_LIBRARY_PATH PKG_CONFIG_PATH
+#
+#   ## Install Homebrew
+#   git clone https://github.com/Homebrew/brew.git $HOMEBREW_PREFIX
+#   ln -sfv $(which gcc) `brew --prefix`/bin/gcc-$(gcc -dumpversion | cut -d. -f1,2)
+#   ln -sfv $(which g++) `brew --prefix`/bin/g++-$(g++ -dumpversion | cut -d. -f1,2)
+#   ln -sfv $(which gfortran) `brew --prefix`/bin/gfortran-$(gfortran -dumpversion | cut -d. -f1,2)
+#   eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+#
+#   ## Install glibc
+#   brew install glibc
+#   brew cleanup binutils
+#   brew unlink glibc
+#   ln -sfv `brew --prefix`/lib `brew --prefix`/lib64
+#
+#   ## Install zlib
+#   brew install https://raw.githubusercontent.com/Homebrew/homebrew-dupes/master/zlib.rb
+#
+#   ## Install binutils
+#   brew install binutils
+#
+#   ## Install gcc
+#   brew link glibc
+#   brew install patchelf
+#   ln -s /usr/lib64/libstdc++.so.6 /lib64/libgcc_s.so.1 `brew --prefix`/lib/
+#   brew install gcc --with-glibc -v
+#   rm -f ~/.linuxbrew/lib/{libstdc++.so.6,libgcc_s.so.1}
+#   brew unlink gcc
+#   brew link gcc
+#   export HOMEBREW_CC=gcc
+#
+#   ## Install core libralies and utilities
+#   brew install bzip2 curl expat
+#   brew install git
+#   brew install coreutils findutils gawk gnu-sed gnu-which grep libpng libxml2 libxslt make ncurses readline
+#   brew update
+#
+#   brew install hello
+#   # export HOMEBREW_DEVELOPER=1
+#   # export HOMEBREW_CURL_PATH=$HOME/.porg/$HOSTNAME/usr/bin/curl
+#   # export HOMEBREW_GIT_PATH=$HOME/.porg/$HOSTNAME/usr/bin/git
+#   brew doctor
+# else
+#   export PATH=$HOMEBREW_PREFIX/sbin:$HOMEBREW_PREFIX/bin:$PATH
+#   # export LD_LIBRARY_PATH=$HOMEBREW_PREFIX/lib64:$HOMEBREW_PREFIX/lib:$LD_LIBRARY_PATH
+#   # export MANPATH=$HOMEBREW_PREFIX/share/man:$MANPATH
+#   # export INFOPATH=$HOMEBREW_PREFIX/share/info:$INFOPATH
+#   # export XDG_DATA_DIRS=$HOMEBREW_PREFIX/share:$XDG_DATA_DIRS
+#   # Optional
+#   # export HOMEBREW_NO_ENV_FILTERING=1
+#   export HOMEBREW_DEVELOPER=1
+#   # export HOMEBREW_CURL_PATH=$HOME/.porg/$HOSTNAME/usr/bin/curl
+#   # export HOMEBREW_GIT_PATH=$HOME/.porg/$HOSTNAME/usr/bin/git
+#   eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+# fi
 
 
 ### Appendix {{{
