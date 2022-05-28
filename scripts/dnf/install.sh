@@ -15,6 +15,8 @@ sudo dnf autoremove -y
 sudo dnf groupinstall -y "Minimal Install"
 sudo dnf groupinstall -y "Standard"
 sudo dnf groupinstall -y "Development Tools" --setopt=group_package_types=mandatory,default,optional
+# sudo dnf groupinstall "X Window System"
+# sudo dnf groupinstall "GNOME Desktop Environment"
 sudo dnf install -y gcc-gfortran libgfortran
 sudo dnf install -y perl-devel
 #sudo dnf install -y hostname
