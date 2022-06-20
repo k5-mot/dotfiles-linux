@@ -29,3 +29,12 @@ if [ -e $PORG_ROOT ]; then
     export PATH=$HOME/.local/share/npm/bin:$PATH
   fi
 fi
+
+function enable_porg() {
+
+}
+
+function disable_porg() {
+
+}
+

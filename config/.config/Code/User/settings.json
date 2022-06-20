@@ -380,8 +380,10 @@
   "explorer.confirmDelete": false,
   "update.mode": "none",
   "window.customMenuBarAltFocus": false,
-  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorTheme": "One Dark Pro",
   "extensions.ignoreRecommendations": true,
-  "editor.fontFamily": "'Ricty Diminished Discord','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'"
+  "editor.fontFamily": "'Ricty Diminished Discord','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "git.autofetch": true,
+  "latex-workshop.latex.autoBuild.run": "onSave"
 
 }

@@ -244,10 +244,14 @@ set showfulltag
 set wildoptions=tagfile
 
 " 文字コード関係
+" set fileencodings=utf-8,cp932,euc-jp,iso-20220-jp,default,latin,sjis
+" set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,ucs-2le,ucs-2,cp932
+" set fileencodings=utf-8,euc-jp,sjis,cp932,iso-2022-jp
+" set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencoding=utf-8
+set fileformat=unix
 set encoding=utf-8
-"set fileencoding=utf-8
-"set fileformat=unix
-set fileencodings=utf-8,cp932,euc-jp,iso-20220-jp,default,latin,sjis
+set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,default,latin
 set fileformats=unix,dos,mac
 
 " アンドゥファイルを生成する
