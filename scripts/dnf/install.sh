@@ -12,18 +12,34 @@ sudo dnf upgrade -y
 sudo dnf autoremove -y
 
 ## Install
+
+## Base
 sudo dnf groupinstall -y "Minimal Install"
 sudo dnf groupinstall -y "Standard"
 sudo dnf groupinstall -y "Development Tools" --setopt=group_package_types=mandatory,default,optional
+
+# Desktop Environment
 # sudo dnf groupinstall "X Window System"
 # sudo dnf groupinstall "GNOME Desktop Environment"
 # sudo dnf groupinstall "Japanese Support"
 # sudo dnf install -y fonts-japanese
+
+## Utils
+sudo dnf install -y epel-release
 sudo dnf install -y gcc-gfortran libgfortran
 sudo dnf install -y perl-devel
-#sudo dnf install -y hostname
-#sudo dnf install -y zsh
-#sudo dnf install -y tmux
+sudo dnf install -y zsh
+
+sudo dnf install -y snapd
+sudo systemctl enable snapd.socket
+sudo systemctl start snapd.socket
+sudo systemctl status snapd.socket
+sudo ln -s /var/lib/snapd/snap /snap
+sudo snap install snap-store
+
+sudo snap install -y newsboat
+sudo snap install -y neomutt
+
 #sudo dnf install -y curl
 #sudo dnf install -y wget
 #sudo dnf install -y git
