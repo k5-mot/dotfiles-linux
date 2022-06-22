@@ -21,6 +21,22 @@ if [ $zsh_ok -a $git_ok ]; then
   zplug "zsh-users/zsh-history-substring-search"
   zplug "zsh-users/zsh-completions"
   zplug "zsh-users/zsh-autosuggestions"
+  zplug "mollifier/anyframe"
+  zplug "mollifier/cd-gitroot"
+  zplug "stedolan/jq", \
+    from:gh-r, \
+    as:command, \
+    rename-to:jq
+  zplug "peco/peco", as:command, from:gh-r, rename-to:peco
+  zplug "b4b4r07/emoji-cli", \
+    on:"stedolan/jq"
+  zplug "b4b4r07/enhancd"
+  zplug "mrowa44/emojify", as:command
+  zplug "junegunn/fzf-bin", \
+    from:gh-r, \
+    as:command, \
+    rename-to:fzf, \
+    use:"*darwin*amd64*"
 
   # Install plugins
   if ! zplug check --verbose; then
@@ -29,9 +45,11 @@ if [ $zsh_ok -a $git_ok ]; then
       echo; zplug install
     fi
   fi
-  zplug load
+  zplug load --verbose
 
   # zsh-completions
   export FPATH=$FPATH:$ZPLUG_HOME/repos/zsh-users/zsh-completions/src
 fi
-
+bindkey '^xe' emoji::cli
+bindkey '^x^e' emoji::cli
+# export EMOJI_CLI_KEYBIND="^x^e"

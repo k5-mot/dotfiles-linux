@@ -245,7 +245,6 @@ zstyle ':vcs_info:*' formats "%F{green}$(echo "\uf7a1 ")%c%u %b%f"
 zstyle ':vcs_info:*' actionformats "%F{cyan}$(echo "\uf7a1 ") %b|%a%f"
 
 
-
 export PROMPT="%F{green}%n%f%F{magenta}@%f%F{blue}%m%f%F{magenta}:%f%F{cyan}%~%f
 %F{green}$%f "
 

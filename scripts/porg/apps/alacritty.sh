@@ -20,6 +20,7 @@ cd alacritty/
 ## Install
 rustup override set stable
 rustup update stable
+# cargo build --release
 cargo build --release
 infocmp alacritty
 porg -lp alacritty "ln -s ${HOME}/.porg/$HOSTNAME/src/alacritty/alacritty/target/release/alacritty ${HOME}/.porg/$HOSTNAME/usr/bin"
