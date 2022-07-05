@@ -16,6 +16,10 @@ fi
 # fi
 ### }}}
 
+export SPACK_ROOT=$HOME/.local/src/spack/spack
+export SPACK_USER_CONFIG_PATH=$HOME/.config/spack
+. $SPACK_ROOT/share/spack/setup-env.sh
+
 ### Appendix {{{
 for i in $XDG_CONFIG_HOME/sh/profile.d/*.sh $XDG_CONFIG_HOME/sh/profile.d/*.zsh ; do
   if [ -r "$i" ]; then

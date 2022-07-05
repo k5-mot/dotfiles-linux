@@ -32,20 +32,23 @@ if [ $zsh_ok -a $git_ok ]; then
     on:"stedolan/jq"
   zplug "b4b4r07/enhancd"
   zplug "mrowa44/emojify", as:command
+  zplug "bilelmoussaoui/flatpak-zsh-completion", defer:2
   zplug "junegunn/fzf-bin", \
     from:gh-r, \
     as:command, \
     rename-to:fzf, \
     use:"*darwin*amd64*"
+  zplug "chrissicool/zsh-256color"
 
   # Install plugins
   if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-      echo; zplug install
-    fi
+    zplug install
+    # printf "Install? [y/N]: "
+    # if read -q; then
+    #   echo; zplug install
+    # fi
   fi
-  zplug load --verbose
+  zplug load
 
   # zsh-completions
   export FPATH=$FPATH:$ZPLUG_HOME/repos/zsh-users/zsh-completions/src
