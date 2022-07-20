@@ -16,10 +16,24 @@ fi
 # fi
 ### }}}
 
-export SPACK_ROOT=$HOME/.local/src/spack/spack
-export SPACK_USER_CONFIG_PATH=$HOME/.config/spack
-. $SPACK_ROOT/share/spack/setup-env.sh
+if [ -d $HOME/.local/spack ]; then
+  export SPACK_ROOT=$HOME/.local/spack
+  . $SPACK_ROOT/share/spack/setup-env.sh
+fi
+#export GUIX_DAEMON_SOCKET=guix://at111
+#export GUIX_PROFILE=$HOME/.local/guix
+#source $GUIX_PROFILE/etc/profile
+# export PATH=$HOME/nix-boot/bin:$PATH
+# export PKG_CONFIG_PATH=$HOME/nix-boot/lib/pkgconfig:$PKG_CONFIG_PATH
+# export LDFLAGS="-L$HOME/nix-boot/lib $LDFLAGS"
+# export CPPFLAGS="-I$HOME/nix-boot/include $CPPFLAGS"
+# export PERL5OPT="-I$HOME/nix-boot/lib/perl -I$HOME/nix-boot/lib64/perl5 -I$HOME/nix-boot/lib/perl5 -I$HOME/nix-boot/lib/perl5/site_perl"
+# export NIX_ROOT=$HOME/.local/nix
+# export NIX_STORE_DIR=$NIX_ROOT/store
+# export NIX_STATE_DIR=$NIX_ROOT/var/nix
+# export NIX_DB_DIR=$NIX_ROOT/var/nix/db
 
+#
 ### Appendix {{{
 for i in $XDG_CONFIG_HOME/sh/profile.d/*.sh $XDG_CONFIG_HOME/sh/profile.d/*.zsh ; do
   if [ -r "$i" ]; then

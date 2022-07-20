@@ -38,3 +38,5 @@ source $ZDOTDIR/.zshenv
 ## Case Logout
 ## $ZDOTDIR/.zlogout
 ## /etc/zlogout
+
+if [ -e /home/users/kmoto/.nix-profile/etc/profile.d/nix.sh ]; then . /home/users/kmoto/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

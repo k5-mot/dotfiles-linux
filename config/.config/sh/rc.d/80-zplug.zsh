@@ -29,15 +29,15 @@ if [ $zsh_ok -a $git_ok ]; then
     rename-to:jq
   zplug "peco/peco", as:command, from:gh-r, rename-to:peco
   zplug "b4b4r07/emoji-cli", \
-    on:"stedolan/jq"
+   on:"stedolan/jq"
   zplug "b4b4r07/enhancd"
   zplug "mrowa44/emojify", as:command
   zplug "bilelmoussaoui/flatpak-zsh-completion", defer:2
-  zplug "junegunn/fzf-bin", \
-    from:gh-r, \
-    as:command, \
-    rename-to:fzf, \
-    use:"*darwin*amd64*"
+  # zplug "junegunn/fzf-bin", \
+  #   from:gh-r, \
+  #   as:command, \
+  #   rename-to:fzf, \
+  #   use:"*darwin*amd64*"
   zplug "chrissicool/zsh-256color"
 
   # Install plugins

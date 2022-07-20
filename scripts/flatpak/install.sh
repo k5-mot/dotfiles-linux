@@ -11,7 +11,7 @@
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 ## Update
-flatpak update --user
+flatpak update --user --assumeyes
 
 ## Install
 flatpak install --user --assumeyes flathub com.github.tchx84.Flatseal
@@ -34,7 +34,7 @@ flatpak install --user --assumeyes flathub org.gimp.GIMP
 flatpak install --user --assumeyes flathub org.inkscape.Inkscape
 flatpak install --user --assumeyes flathub org.octave.Octave
 flatpak install --user --assumeyes flathub com.github.PintaProject.Pinta
-flatpak install --user --assumeyes flathub org.kde.Krita
+flatpak install --user --assumeyes flathub org.kde.krita
 flatpak install --user --assumeyes flathub org.audacityteam.Audacity
 flatpak install --user --assumeyes flathub org.kde.kdenlive
 flatpak install --user --assumeyes flathub org.libreoffice.LibreOffice
@@ -50,6 +50,7 @@ flatpak install --user --assumeyes flathub org.gnome.Epiphany
 flatpak install --user --assumeyes flathub com.github.micahflee.torbrowser-launcher
 flatpak install --user --assumeyes flathub dev.vieb.Vieb
 flatpak install --user --assumeyes flathub org.mozilla.Thunderbird
+flatpak install --user --assumeyes flathub org.gnome.Geary
 flatpak install --user --assumeyes flathub com.slack.Slack
 flatpak install --user --assumeyes flathub com.discordapp.Discord
 flatpak install --user --assumeyes flathub us.zoom.Zoom
@@ -60,3 +61,15 @@ flatpak install --user --assumeyes flathub com.mojang.Minecraft
 flatpak install --user --assumeyes flathub md.obsidian.Obsidian
 flatpak install --user --assumeyes flathub com.github.k4zmu2a.spacecadetpinball
 flatpak install --user --assumeyes flathub org.kde.kmines
+flatpak install --user --assumeyes flathub org.processing.processingide
+flatpak install --user --assumeyes flathub org.gabmus.hydrapaper
+flatpak install --user --assumeyes flathub com.valvesoftware.Steam
+flatpak install --user --assumeyes flathub org.libreoffice.LibreOffice
+flatpak install --user --assumeyes flathub io.gitlab.librewolf-community
+# flatpak install --user --assumeyes flathub com.github.corna.Vivado
+# flatpak install --user --assumeyes flathub com.google.AndroidStudio
+# flatpak install --user --assumeyes flathub com.sublimetext.three
+# flatpak install --user --assumeyes flathub io.atom.Atom
+# flatpak install --user --assumeyes flathub io.brackets.Brackets
+# flatpak install --user --assumeyes flathub io.qt.QtCreator
+
