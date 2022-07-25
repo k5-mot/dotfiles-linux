@@ -30,11 +30,11 @@ if [ -e $PORG_ROOT ]; then
   fi
 fi
 
-function enable_porg() {
-
-}
-
-function disable_porg() {
-
-}
+# function enable_porg() {
+#
+# }
+#
+# function disable_porg() {
+#
+# }
 
