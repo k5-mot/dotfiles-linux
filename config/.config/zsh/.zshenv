@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# prof
+# zmodload zsh/zprof && zprof
+
 ## Use hard limits, except for a smaller stack and no core dumps
 unlimit
 limit stack 8192

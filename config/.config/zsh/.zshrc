@@ -264,7 +264,7 @@ unsetopt bgnice autoparamslash
 # Autoload zsh modules when they are referenced
 zmodload -a zsh/stat stat
 zmodload -a zsh/zpty zpty
-zmodload -a zsh/zprof zprof
+# zmodload -a zsh/zprof zprof
 zmodload -ap zsh/mapfile mapfile
 # set up tetris
 autoload -Uz tetris
@@ -370,4 +370,3 @@ fi
 # if (which zprof > /dev/null); then
 #   zprof | less
 # fi
-
