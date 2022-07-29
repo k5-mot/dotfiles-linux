@@ -355,6 +355,39 @@ for i in $XDG_CONFIG_HOME/sh/rc.d/*.sh $XDG_CONFIG_HOME/sh/rc.d/*.zsh ; do
   fi
 done
 
+if [ -d $HOME/.local/spack ]; then
+  if ! command -v spack &>/dev/null; then
+    export SPACK_ROOT=$HOME/.local/spack
+    . $SPACK_ROOT/share/spack/setup-env.sh
+    function tmux() {
+      spack load tmux
+      tmux "$@"
+    }
+    function vim() {
+      spack load vim
+      vim "$@"
+    }
+    function python() {
+      spack load python
+      python "$@"
+    }
+    function rust() {
+      spack load rust
+      rust "$@"
+    }
+    function node() {
+      spack load node-js
+      node "$@"
+    }
+    function init-gl() {
+      spack load freeglut
+      spack load glew
+      spack load glfw
+      spack load glm
+    }
+  fi
+fi
+
 ## Local Setting
 if [ -f ~/.zshrc_local ]; then
   source ~/.zshrc_local

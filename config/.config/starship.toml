@@ -1,211 +1,431 @@
-add_newline = false
-scan_timeout = 30
-command_timeout = 700
-format = "$all"
-# format = """
-# $directory\
-# $git_branch\
-# $git_commit\
-# $git_state\
-# $git_status\
-# $line_break\
-# $character
-# """
 
-[character]
-success_symbol = "[\uf054](bold green)"
-error_symbol = "[\uf054](bold red)"
-vicmd_symbol = "[\uf054](bold yellow)"
+format = """\
+[\uE0B6](fg:#E06C75 bg:none)[$username](bg:#E06C75)\
+[\uE0B4](fg:#E06C75 bg:#98C379)$directory\
+[\uE0B4](fg:#98C379 bg:#E5C07B)$git_branch\
+[\uE0B5](fg:#282C34 bg:#E5C07B)$git_status\
+[\uE0B4](fg:#E5C07B bg:#61AFEF)$spack\
+[\uE0B4](fg:#61AFEF bg:none)\
+$line_break\
+$jobs$character"""
+# [\uE0B4](fg:#3A95C7 bg:#C678DD)$time\
+
+add_newline = false
 
 [username]
-style_user = "green"
-style_root = "red"
-format = "[\uf007 $user]($style)[@](purple)"
-disabled = false
+style_user = "fg:#282C34 bg:#E06C75"
+style_root = "fg:#282C34 bg:#E06C75"
+format = "[\uf007 $user]($style)"
 show_always = true
-
-[hostname]
-ssh_only = false
-style = "blue"
-format =  "[$hostname]($style) "
-trim_at = "."
 disabled = false
 
 [directory]
-truncation_length = 100
-truncate_to_repo = false
-format = "[\uf413 $symbol$path ]($style)"
-style = "bright-cyan"
-
-#[aws]
-#format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
-#
-#[cmake]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[cmd_duration]
-#format = '\[[⏱ $duration ]($style)\]'
-#
-#[cobol]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[conda]
-#format = '\[[$symbol$environment]($style)\]'
-#
-#[crystal]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[dart]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[deno]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[docker_context]
-#format = '\[[$symbol$context]($style)\]'
-#
-#[dotnet]
-#format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
-#
-#[elixir]
-#format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
-#
-#[elm]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[erlang]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[gcloud]
-#format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
-#
-[git_commit]
-disabled = true
-
-[git_state]
-disabled = true
-
-[git_metrics]
-added_style = "blue"
-deleted_style = "red"
-format = '[+$added]($added_style)/[-$deleted]($deleted_style)\] '
-#disabled = false
+truncation_length = 3
+truncate_to_repo = true
+format = "[ \uf413  $path]($style)"
+style = "fg:#282C34 bg:#98C379"
+disabled = false
+read_only = "\uf023"
+# read_only_style = ""
+truncation_symbol = "…/"
+# repo_root_style = ""
+# repo_root_format = ""
+# home_symbol = ""
+# use_os_oath_sep = ""
+[directory.substitutions]
+"Documents" = "\uf718 "
+"Downloads" = "\uf019 "
+"Music"     = "\ufc58 "
+"Pictures"  = "\uf03e "
+"Videos"    = "\ufa66 "
+"Projects"  = "\ue601 "
+"Share"     = "\uf995 "
+"GitHub"    = "\uf7a3 "
+"dotfiles"  = "\ue615 "
 
 [git_branch]
-symbol = "\uf7a1 "
-format = '[$symbol$branch ]($style)'
-style = "bright-green"
+# always_show_remote = false
+format = "[ $symbol $branch ]($style)"
+symbol = "\ue702"
+style = "fg:#282C34 bg:#E5C07B"
+# truncation_length = 2^63 - 1
+# truncation_symbol = "…"
+# only_attached = false
+# ignore_branches = []
+# disabled = false
 
 [git_status]
-format = '([- $all_status$ahead_behind]($style))'
-style = "bright-red"
-conflicted = "[\ue728 ](red)"
-ahead      = "[\uf062 ${count} ](green)"
-behind     = "[\uf063 ${count} ](green)"
-diverged   = "${ahead_count} ${behind_count}"
-untracked  = "[\uf128 ${count} ](red)"
-stashed    = "[\uf44e ](blue)"
-modified   = "[\uf044 ${count} ](yellow)"
-staged     = "[\uf067 ${count} ](blue)"
-renamed    = "[\uf954 ${count} ](yellow)"
-deleted    = "[\uf655 ${count} ](red)"
+format = "[ $all_status$ahead_behind]($style)"
+style = "fg:#282C34 bg:#E5C07B"
+conflicted = "\uf071 ${count}"
+# ahead = "🏎💨"
+# behind = "😰"
+# diverged = "😵"
+up_to_date = ""#"\uf00c "# "✓"
+untracked  = "\ufbae ${count} "#"🤷"
+stashed    = "\uf487 ${count} "#"📦"
+modified   = "\uf459 ${count} "#"📝"
+staged     = "\uf457 ${count} "#" [++($count)](green)"
+renamed    = "\uf954 ${count} "#"👅"
+deleted    = "\uf6bf ${count} "#"🗑":"
+ahead      = "\uf093 ${count}"#"⇡${count}"
+behind     = "\uf019 ${count}"#"⇣${count}"
+diverged   = " \ue0b5 ${ahead_count} ${behind_count}"#"⇕⇡${ahead_count}⇣${behind_count}"
+
+[cmd_duration]
+min_time = 500
+format = "time [$duration](bold yellow)"
+
+[time]
+format = "[ $time ]($style)"
+# use_12hr = false
+time_format = "%T"
+style = "fg:#282C34 bg:#C678DD"
+# utc_time_offset = "local"
+disabled = true
+# time_range = "-"
+
+[spack]
+# truncation_length = 1
+symbol = "\uf28a "
+style = "fg:#282C34 bg:#61AFEF"
+format = "[$symbol$environment]($style)"
+disabled = false
+
+# format = """
+# [](#9A348E)\
+# $username\
+# [](bg:#DA627D fg:#9A348E)\
+# $directory\
+# [](fg:#DA627D bg:#FCA17D)\
+# $git_branch\
+# $git_status\
+# [](fg:#FCA17D bg:#86BBD8)\
+# $c\
+# $elixir\
+# $elm\
+# $golang\
+# $haskell\
+# $java\
+# $julia\
+# $nodejs\
+# $nim\
+# $rust\
+# [](fg:#86BBD8 bg:#06969A)\
+# $docker_context\
+# [](fg:#06969A bg:#33658A)\
+# $time\
+# [ ](fg:#33658A)\
+# """
+
+# # Disable the blank line at the start of the prompt
+# # add_newline = false
 #
-#[golang]
-#format = '\[[$symbol($version)]($style)\]'
+# # You can also replace your username with a neat symbol like  to save some space
+# [username]
+# show_always = true
+# style_user = "bg:#9A348E"
+# style_root = "bg:#9A348E"
+# format = '[$user ]($style)'
 #
-#[helm]
-#format = '\[[$symbol($version)]($style)\]'
+# [directory]
+# style = "bg:#DA627D"
+# format = "[ $path ]($style)"
+# truncation_length = 3
+# truncation_symbol = "…/"
 #
-#[hg_branch]
-#format = '\[[$symbol$branch]($style)\]'
+# # Here is how you can shorten some long paths by text replacement
+# # similar to mapped_locations in Oh My Posh:
+# [directory.substitutions]
+# "Documents" = " "
+# "Downloads" = " "
+# "Music" = " "
+# "Pictures" = " "
+# # Keep in mind that the order matters. For example:
+# # "Important Documents" = "  "
+# # will not be replaced, because "Documents" was already substituted before.
+# # So either put "Important Documents" before "Documents" or use the substituted version:
+# # "Important  " = "  "
 #
-#[java]
-#format = '\[[$symbol($version)]($style)\]'
+# [c]
+# symbol = " "
+# style = "bg:#86BBD8"
+# format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 #
-#[julia]
-#format = '\[[$symbol($version)]($style)\]'
+# [docker_context]
+# symbol = " "
+# style = "bg:#06969A"
+# format = '[[ $symbol $context ](bg:#06969A)]($style) $path'
 #
-#[kotlin]
-#format = '\[[$symbol($version)]($style)\]'
+# [elixir]
+# symbol = " "
+# style = "bg:#86BBD8"
+# format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 #
-#[kubernetes]
-#format = '\[[$symbol$context( \($namespace\))]($style)\]'
+# [elm]
+# symbol = " "
+# style = "bg:#86BBD8"
+# format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 #
-#[lua]
-#format = '\[[$symbol($version)]($style)\]'
+# [git_branch]
+# symbol = ""
+# style = "bg:#FCA17D"
+# format = '[[ $symbol $branch ](bg:#FCA17D)]($style)'
 #
-#[memory_usage]
-#format = '\[$symbol[$ram( | $swap)]($style)\]'
+# [git_status]
+# style = "bg:#FCA17D"
+# format = '[[($all_status$ahead_behind )](bg:#FCA17D)]($style)'
 #
-#[nim]
-#format = '\[[$symbol($version)]($style)\]'
+# [golang]
+# symbol = " "
+# style = "bg:#86BBD8"
+# format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 #
-#[nix_shell]
-#format = '\[[$symbol$state( \($name\))]($style)\]'
+# [haskell]
+# symbol = " "
+# style = "bg:#86BBD8"
+# format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 #
-#[nodejs]
-#format = '\[[$symbol($version)]($style)\]'
+# [java]
+# symbol = " "
+# style = "bg:#86BBD8"
+# format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 #
-#[ocaml]
-#format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
+# [julia]
+# symbol = " "
+# style = "bg:#86BBD8"
+# format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 #
-#[openstack]
-#format = '\[[$symbol$cloud(\($project\))]($style)\]'
+# [nodejs]
+# symbol = ""
+# style = "bg:#86BBD8"
+# format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 #
-#[package]
-#format = '\[[$symbol$version]($style)\]'
+# [nim]
+# symbol = " "
+# style = "bg:#86BBD8"
+# format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 #
-#[perl]
-#format = '\[[$symbol($version)]($style)\]'
+# [rust]
+# symbol = ""
+# style = "bg:#86BBD8"
+# format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 #
-#[php]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[pulumi]
-#format = '\[[$symbol$stack]($style)\]'
-#
-#[purescript]
-#format = '\[[$symbol($version)]($style)\]'
-#
-[python]
-format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\)) ]($style)'
-symbol = "\ue235 "
-#
-#[red]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[ruby]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[rust]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[scala]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[sudo]
-#format = '\[[as $symbol]\]'
-#
-#[swift]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[terraform]
-#format = '\[[$symbol$workspace]($style)\]'
-#
-#[time]
-#format = '\[[$time]($style)\]'
-#
-#[username]
-#format = '\[[$user]($style)\]'
-#
-#[vagrant]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[vlang]
-#format = '\[[$symbol($version)]($style)\]'
-#
-#[zig]
-#format = '\[[$symbol($version)]($style)\]'
+# [time]
+# disabled = false
+# time_format = "%R" # Hour:Minute Format
+# style = "bg:#33658A"
+# format = '[[ ♥ $time ](bg:#33658A)]($style)'
 
 
-
+# add_newline = false
+# scan_timeout = 30
+# command_timeout = 700
+# format = "$all"
+# # format = """
+# # $directory\
+# # $git_branch\
+# # $git_commit\
+# # $git_state\
+# # $git_status\
+# # $line_break\
+# # $character
+# # """
+#
+# [character]
+# success_symbol = "[\uf054](bold green)"
+# error_symbol = "[\uf054](bold red)"
+# vicmd_symbol = "[\uf054](bold yellow)"
+#
+# [username]
+# style_user = "green"
+# style_root = "red"
+# format = "[\uf007 $user]($style)[@](purple)"
+# disabled = false
+# show_always = true
+#
+# [hostname]
+# ssh_only = false
+# style = "blue"
+# format =  "[$hostname]($style) "
+# trim_at = "."
+# disabled = false
+#
+# [directory]
+# truncation_length = 100
+# truncate_to_repo = false
+# format = "[\uf413 $symbol$path ]($style)"
+# style = "bright-cyan"
+#
+# #[aws]
+# #format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+# #
+# #[cmake]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[cmd_duration]
+# #format = '\[[⏱ $duration ]($style)\]'
+# #
+# #[cobol]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[conda]
+# #format = '\[[$symbol$environment]($style)\]'
+# #
+# #[crystal]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[dart]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[deno]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[docker_context]
+# #format = '\[[$symbol$context]($style)\]'
+# #
+# #[dotnet]
+# #format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
+# #
+# #[elixir]
+# #format = '\[[$symbol($version \(OTP $otp_version\))]($style)\]'
+# #
+# #[elm]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[erlang]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[gcloud]
+# #format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
+# #
+# [git_commit]
+# disabled = true
+#
+# [git_state]
+# disabled = true
+#
+# [git_metrics]
+# added_style = "blue"
+# deleted_style = "red"
+# format = '[+$added]($added_style)/[-$deleted]($deleted_style)\] '
+# #disabled = false
+#
+# [git_branch]
+# symbol = "\uf7a1 "
+# format = '[$symbol$branch ]($style)'
+# style = "bright-green"
+#
+# [git_status]
+# format = '([- $all_status$ahead_behind]($style))'
+# style = "bright-red"
+# conflicted = "[\ue728 ](red)"
+# ahead      = "[\uf062 ${count} ](green)"
+# behind     = "[\uf063 ${count} ](green)"
+# diverged   = "${ahead_count} ${behind_count}"
+# untracked  = "[\uf128 ${count} ](red)"
+# stashed    = "[\uf44e ](blue)"
+# modified   = "[\uf044 ${count} ](yellow)"
+# staged     = "[\uf067 ${count} ](blue)"
+# renamed    = "[\uf954 ${count} ](yellow)"
+# deleted    = "[\uf655 ${count} ](red)"
+# #
+# #[golang]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[helm]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[hg_branch]
+# #format = '\[[$symbol$branch]($style)\]'
+# #
+# #[java]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[julia]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[kotlin]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[kubernetes]
+# #format = '\[[$symbol$context( \($namespace\))]($style)\]'
+# #
+# #[lua]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[memory_usage]
+# #format = '\[$symbol[$ram( | $swap)]($style)\]'
+# #
+# #[nim]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[nix_shell]
+# #format = '\[[$symbol$state( \($name\))]($style)\]'
+# #
+# #[nodejs]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[ocaml]
+# #format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
+# #
+# #[openstack]
+# #format = '\[[$symbol$cloud(\($project\))]($style)\]'
+# #
+# #[package]
+# #format = '\[[$symbol$version]($style)\]'
+# #
+# #[perl]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[php]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[pulumi]
+# #format = '\[[$symbol$stack]($style)\]'
+# #
+# #[purescript]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# [python]
+# format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\)) ]($style)'
+# symbol = "\ue235 "
+# #
+# #[red]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[ruby]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[rust]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[scala]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[sudo]
+# #format = '\[[as $symbol]\]'
+# #
+# #[swift]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[terraform]
+# #format = '\[[$symbol$workspace]($style)\]'
+# #
+# #[time]
+# #format = '\[[$time]($style)\]'
+# #
+# #[username]
+# #format = '\[[$user]($style)\]'
+# #
+# #[vagrant]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[vlang]
+# #format = '\[[$symbol($version)]($style)\]'
+# #
+# #[zig]
+# #format = '\[[$symbol($version)]($style)\]'
+#
+#
+#

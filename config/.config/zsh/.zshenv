@@ -19,10 +19,6 @@ fi
 # fi
 ### }}}
 
-if [ -d $HOME/.local/spack ]; then
-  export SPACK_ROOT=$HOME/.local/spack
-  . $SPACK_ROOT/share/spack/setup-env.sh
-fi
 #export GUIX_DAEMON_SOCKET=guix://at111
 #export GUIX_PROFILE=$HOME/.local/guix
 #source $GUIX_PROFILE/etc/profile

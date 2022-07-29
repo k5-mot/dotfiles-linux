@@ -76,7 +76,7 @@ spack install zsh      %gcc@8.5.0
 spack install fish     %gcc@8.5.0
 spack install tmux     %gcc@8.5.0
 spack install vim      %gcc@8.5.0
-spack install neovim   %gcc@8.5.0
+# spack install neovim   %gcc@8.5.0
 spack install python   %gcc@8.5.0
 spack install ruby     %gcc@8.5.0
 spack install rust     %gcc@8.5.0
@@ -88,8 +88,9 @@ spack install glm      %gcc@8.5.0
 
 spack load    tmux
 spack load    vim
-spack load    neovim
+# spack load    neovim
 spack load    python
+spack load    py-pip
 spack load    rust
 spack load    node-js
 spack load    freeglut
