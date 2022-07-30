@@ -87,7 +87,7 @@ style  = "fg:black bg:blue"
 # disabled = false
 
 [git_status]
-format     = "[ (\ue0b5 $all_status)$ahead_behind]($style)"
+format     = "[ (\ue0b5 $all_status)(\ue0b5 $ahead_behind)]($style)"
 style      = "fg:black bg:blue"
 conflicted = "\uf071 ${count}"
 # ahead = "🏎💨"
@@ -100,9 +100,9 @@ modified   = "\uf459 ${count} "#"📝"
 staged     = "\uf457 ${count} "#" [++($count)](green)"
 renamed    = "\uf954${count} "#"👅"
 deleted    = "\uf6bf ${count} "#"🗑":"
-ahead      = "\ue0b5 \uf093 ${count} "#"⇡${count}"
-behind     = "\ue0b5 \uf019 ${count} "#"⇣${count}"
-diverged   = "\ue0b5 \uf093 ${ahead_count} \uf019 ${behind_count} "#"⇕⇡${ahead_count}⇣${behind_count}"
+ahead      = "\uf093 ${count} "#"⇡${count}"
+behind     = "\uf019 ${count} "#"⇣${count}"
+diverged   = "\uf093 ${ahead_count} \uf019 ${behind_count} "#"⇕⇡${ahead_count}⇣${behind_count}"
 
 [cmd_duration]
 min_time = 100
