@@ -1,12 +1,13 @@
 
 format = """\
 [\uE0B6](fg:red     bg:none  )$username\
-[\uE0B4](fg:red     bg:green )$hostname\
+[\uE0B4](fg:red     bg:green )$hostname$localip\
 [\uE0B4](fg:green   bg:yellow)$directory\
 [\uE0B4](fg:yellow  bg:blue  )$git_branch$git_status\
 [\uE0B4](fg:blue    bg:purple)\
-$nodejs\
+$c$nodejs$rust$python$package\
 [\uE0B4](fg:purple  bg:cyan  )\
+$cmd_duration\
 [\uE0B4](fg:cyan    bg:none)\
 $line_break\
 $jobs$character"""
@@ -36,14 +37,20 @@ disabled    = false
 ssh_only   = false
 ssh_symbol = "\uf953"
 trim_at    = "."
-format     = "[ $ssh_symbol$hostname ]($style)"
+format     = "[ \uf108 $hostname ]($style)"
 style      = "fg:black bg:green"
 disabled   = false
+
+[localip]
+ssh_only = true
+format   = "[\ue0b5 \uf953$localipv4 ]($style)"
+style    = "fg:black bg:green"
+disabled = false
 
 [directory]
 truncation_length = 3
 truncate_to_repo  = true
-format            = "[ \uf413  $path]($style)"
+format            = "[ \uf413 $path ]($style)"
 style             = "fg:black bg:yellow"
 disabled          = false
 read_only         = "\uf023"
@@ -80,53 +87,99 @@ style  = "fg:black bg:blue"
 # disabled = false
 
 [git_status]
-format     = "[ $all_status$ahead_behind]($style)"
+format     = "[ (\ue0b5 $all_status)$ahead_behind]($style)"
 style      = "fg:black bg:blue"
 conflicted = "\uf071 ${count}"
 # ahead = "🏎💨"
 # behind = "😰"
 # diverged = "😵"
 up_to_date = ""# "\uf00c"# "✓"
-untracked  = "\ue0b5 \ufbae ${count} "#"🤷"
-stashed    = "\ue0b5 \uf487 ${count} "#"📦"
-modified   = "\ue0b5 \uf459 ${count} "#"📝"
-staged     = "\ue0b5 \uf457 ${count} "#" [++($count)](green)"
-renamed    = "\ue0b5 \uf954 ${count} "#"👅"
-deleted    = "\ue0b5 \uf6bf ${count} "#"🗑":"
+untracked  = "\ufbae ${count} "#"🤷"
+stashed    = "\uf487 ${count} "#"📦"
+modified   = "\uf459 ${count} "#"📝"
+staged     = "\uf457 ${count} "#" [++($count)](green)"
+renamed    = "\uf954${count} "#"👅"
+deleted    = "\uf6bf ${count} "#"🗑":"
 ahead      = "\ue0b5 \uf093 ${count} "#"⇡${count}"
 behind     = "\ue0b5 \uf019 ${count} "#"⇣${count}"
 diverged   = "\ue0b5 \uf093 ${ahead_count} \uf019 ${behind_count} "#"⇕⇡${ahead_count}⇣${behind_count}"
 
 [cmd_duration]
-min_time = 500
-format   = "time [$duration](bold yellow)"
+min_time = 100
+format   = "[ \uf017 ]($style)[$duration](fg:black bg:cyan)"
+style    = "fg:black bg:cyan"
 
 [time]
 format      = "[ $time ]($style)"
 # use_12hr = false
 time_format = "%T"
-style       = "fg:#282C34 bg:#C678DD"
+style       = "fg:black bg:cyan"
 # utc_time_offset = "local"
-disabled    = true
+disabled    = false
 # time_range = "-"
 
 [nodejs]
-format   = "[ $symbol$version]($style)"
+format   = "[ $symbol($version)]($style)"
 # version_format = ""
 symbol   = "\uf898 "
 # detect_extensions = []
 # detect_files = []
 # detect_folders = []
-style    = "fg:#282C34 bg:#61AFEF"
+style    = "fg:black bg:purple"
 disabled = false
 # not_capable_style = "bold red"
 
-[spack]
-# truncation_length = 1
-symbol   = "\uf28a "
-style    = "fg:#282C34 bg:#61AFEF"
-format   = "[$symbol$environment]($style)"
-disabled = false
+[c]
+format            = "[ $symbol($name(-$version))]($style)"
+# version_format    = ""
+symbol            = "\ue61e "
+detect_extensions = [ "c", "h", "cc", "hh", "hpp", "cpp", "cxx" ]
+# detect_files      = []
+# detect_folders    = []
+commands          = [ [ "cc", "--version" ], [ "gcc", "--version" ], [ "clang", "--version" ] ]
+style             = "fg:black bg:purple"
+disabled          = false
+
+[rust]
+format            = "[ $symbol($version) ]($style)"
+# version_format    = "v${raw}"
+symbol            = "\ue7a8 "
+# detect_extensions = ["rs"]
+# detect_files      = ["Cargo.toml"]
+# detect_folders    = []
+style             = "fg:black bg:purple"
+disabled          = false
+
+[python]
+format         = "[ ${symbol}${pyenv_prefix}(${version} )(($virtualenv) )]($style)"
+# version_format = ""
+symbol         = "\ue235 "
+style          = "fg:black bg:purple"
+# pyenv_version_name = ""
+# pyenv_prefix       = ""
+# python_binary      = "[]"
+# detect_extensions	 = "[]"
+# detect_files       = "[]"
+# detect_folders     = "[]"
+disabled           = false
+
+[package]
+format          = "[$symbol$version]($style)"
+symbol          = "\uf487 "#"📦 "
+# version_format  = "v${raw}"
+style           = "fg:black bg:purple"
+# display_private = false
+disabled        = false
+
+
+
+
+# [spack]
+# # truncation_length = 1
+# symbol   = "\uf28a "
+# style    = "fg:#282C34 bg:#61AFEF"
+# format   = "[$symbol$environment]($style)"
+# disabled = false
 
 # format = """
 # [](#9A348E)\
