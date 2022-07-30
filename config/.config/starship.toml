@@ -70,7 +70,7 @@ truncation_symbol = "…/"
 
 [git_branch]
 # always_show_remote = false
-format = "[ $symbol $branch ]($style)"
+format = "[ $symbol $branch]($style)"
 symbol = "\ue702"
 style  = "fg:black bg:blue"
 # truncation_length = 2^63 - 1
