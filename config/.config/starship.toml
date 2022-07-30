@@ -14,7 +14,7 @@ $jobs$character"""
 # [\uE0B4](fg:#E5C07B bg:#61AFEF)$spack\
 # [\uE0B4](fg:#3A95C7 bg:#C678DD)$time\
 
-add_newline = false
+add_newline = true
 
 [character]
 # format = ""
