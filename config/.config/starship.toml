@@ -93,9 +93,9 @@ modified   = "\ue0b5 \uf459 ${count} "#"📝"
 staged     = "\ue0b5 \uf457 ${count} "#" [++($count)](green)"
 renamed    = "\ue0b5 \uf954 ${count} "#"👅"
 deleted    = "\ue0b5 \uf6bf ${count} "#"🗑":"
-ahead      = " \ue0b5 \uf093 ${count} "#"⇡${count}"
-behind     = " \ue0b5 \uf019 ${count} "#"⇣${count}"
-diverged   = " \ue0b5 \uf093 ${ahead_count} \uf019 ${behind_count} "#"⇕⇡${ahead_count}⇣${behind_count}"
+ahead      = "\ue0b5 \uf093 ${count} "#"⇡${count}"
+behind     = "\ue0b5 \uf019 ${count} "#"⇣${count}"
+diverged   = "\ue0b5 \uf093 ${ahead_count} \uf019 ${behind_count} "#"⇕⇡${ahead_count}⇣${behind_count}"
 
 [cmd_duration]
 min_time = 500
