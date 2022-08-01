@@ -1,10 +1,10 @@
 
 format = """\
 [\uE0B6](fg:red     bg:none  )$username\
-[\uE0B4](fg:red     bg:green )$hostname$localip\
-[\uE0B4](fg:green   bg:yellow)$directory\
-[\uE0B4](fg:yellow  bg:blue  )$git_branch$git_status\
-[\uE0B4](fg:blue    bg:purple)\
+[\uE0B4](fg:bright-red     bg:green )$hostname$localip\
+[\uE0B4](fg:bright-green   bg:yellow)$directory\
+[\uE0B4](fg:bright-yellow  bg:blue  )$git_branch$git_status\
+[\uE0B4](fg:bright-blue    bg:purple)\
 $c$nodejs$rust$python$package\
 [\uE0B4](fg:purple  bg:cyan  )\
 $cmd_duration\
@@ -14,7 +14,9 @@ $jobs$character"""
 # [\uE0B4](fg:#E5C07B bg:#61AFEF)$spack\
 # [\uE0B4](fg:#3A95C7 bg:#C678DD)$time\
 
-add_newline = true
+scan_timeout    = 30
+command_timeout = 500
+add_newline     = true
 
 [character]
 # format = ""

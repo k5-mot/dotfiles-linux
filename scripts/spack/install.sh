@@ -85,18 +85,19 @@ spack install freeglut %gcc@8.5.0
 spack install glew     %gcc@8.5.0
 spack install glfw     %gcc@8.5.0
 spack install glm      %gcc@8.5.0
+spack install gh       %gcc@8.5.0
 
 spack load    tmux
 spack load    vim
 # spack load    neovim
 spack load    python
-# spack load    py-pip
 spack load    rust
 spack load    node-js
 spack load    freeglut
 spack load    glew
 spack load    glfw
 spack load    glm
+spack load    gh
 
 spack find python
 if [ $? ]; then

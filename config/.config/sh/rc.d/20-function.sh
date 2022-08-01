@@ -19,6 +19,8 @@ fi
 alias x=exit
 alias osinfo='cat /etc/*-release'
 alias cd='cd -P'
+alias lt='exa --tree --icons'
+
 
 
 ## Functions
@@ -36,13 +38,19 @@ benchmark_bash() {
 }
 
 benchmark_vim() {
-  vim --cmd "profile start $XDG_CACHE_HOME/vim/profile.log" --cmd 'profile func *' --cmd 'profile file *' -c 'profdel func *' -c 'profdel file *' -c 'qa!'
-  cat "$XDG_CACHE_HOME/vim/profile.log"
+  # vim --cmd "profile start $XDG_CACHE_HOME/vim/profile.log" --cmd 'profile func *' --cmd 'profile file *' -c 'profdel func *' -c 'profdel file *' -c 'qa!'
+  for i in $(seq 1 10); do
+    time ( vim --startuptime $XDG_CACHE_HOME/vim/profile.log -c "qa!" )
+  done
+  # cat "$XDG_CACHE_HOME/vim/profile.log"
 }
 
 benchmark_nvim() {
-  nvim --cmd "profile start $XDG_CACHE_HOME/nvim/profile.log" --cmd 'profile func *' --cmd 'profile file *' -c 'profdel func *' -c 'profdel file *' -c 'qa!'
-  cat "$XDG_CACHE_HOME/nvim/profile.log"
+  # nvim --cmd "profile start $XDG_CACHE_HOME/nvim/profile.log" --cmd 'profile func *' --cmd 'profile file *' -c 'profdel func *' -c 'profdel file *' -c 'qa!'
+  for i in $(seq 1 10000); do
+    time ( nvim --startuptime $XDG_CACHE_HOME/nvim/profile.log -c "qa!" )
+  done
+  # cat "$XDG_CACHE_HOME/nvim/profile.log"
 }
 
 path_append() {

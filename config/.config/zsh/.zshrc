@@ -355,38 +355,29 @@ for i in $XDG_CONFIG_HOME/sh/rc.d/*.sh $XDG_CONFIG_HOME/sh/rc.d/*.zsh ; do
   fi
 done
 
-if [ -d $HOME/.local/spack ]; then
-  if ! command -v spack &>/dev/null; then
+
+function init-spack() {
+  if [ -d $HOME/.local/spack ]; then
+    # if ! command -v spack &>/dev/null; then
+    # fi
+    echo "Initializing \e[36mSpack\e[m ..."
     export SPACK_ROOT=$HOME/.local/spack
     . $SPACK_ROOT/share/spack/setup-env.sh
-    function tmux() {
-      spack load tmux
-      tmux "$@"
-    }
-    function vim() {
-      spack load vim
-      vim "$@"
-    }
-    function python() {
-      spack load python
-      python "$@"
-    }
-    function rust() {
-      spack load rust
-      rust "$@"
-    }
-    function node() {
-      spack load node-js
-      node "$@"
-    }
-    function init-gl() {
-      spack load freeglut
-      spack load glew
-      spack load glfw
-      spack load glm
-    }
+
+    echo "Loading packages of \e[36mSpack\e[m ..."
+    echo "    Loading tmux    " && spack load tmux
+    echo "    Loading vim     " && spack load vim
+    echo "    Loading python  " && spack load python
+    echo "    Loading rust    " && spack load rust
+    echo "    Loading node-js " && spack load node-js
+    echo "    Loading freeglut" && spack load freeglut
+    echo "    Loading glew    " && spack load glew
+    echo "    Loading glfw    " && spack load glfw
+    echo "    Loading glm     " && spack load glm
+    echo "    Loading gh      " && spack load gh
+    echo -e "Initialized \e[36mSpack\e[m ..."
   fi
-fi
+}
 
 ## Local Setting
 if [ -f ~/.zshrc_local ]; then
