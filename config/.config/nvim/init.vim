@@ -88,5 +88,5 @@ augroup Colorcheme
 augroup END
 
 set background=dark
-colorscheme onedark
+colorscheme onehalfdark
 

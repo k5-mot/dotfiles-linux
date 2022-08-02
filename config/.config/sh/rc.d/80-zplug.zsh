@@ -30,7 +30,7 @@ if [ $zsh_ok -a $git_ok ]; then
   zplug "peco/peco", as:command, from:gh-r, rename-to:peco
   zplug "b4b4r07/emoji-cli", \
    on:"stedolan/jq"
-  zplug "b4b4r07/enhancd"
+#   zplug "b4b4r07/enhancd"
   zplug "mrowa44/emojify", as:command
   zplug "bilelmoussaoui/flatpak-zsh-completion", defer:2
   # zplug "junegunn/fzf-bin", \

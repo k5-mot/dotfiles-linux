@@ -18,7 +18,7 @@ else
 fi
 alias x=exit
 alias osinfo='cat /etc/*-release'
-alias cd='cd -P'
+# alias cd='cd -P'
 alias lt='exa --tree --icons'
 
 

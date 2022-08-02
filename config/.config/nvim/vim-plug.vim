@@ -23,6 +23,7 @@ call plug#begin(data_dir . '/plugged')
   Plug 'arcticicestudio/nord-vim'
   Plug 'cocopon/iceberg.vim'
   Plug 'joshdick/onedark.vim'
+  Plug 'sonph/onehalf'
   Plug 'jacoborus/tender.vim'
   Plug 'junegunn/seoul256.vim'
   Plug 'morhetz/gruvbox'
