@@ -1,14 +1,14 @@
 
 format = """\
-[\uE0B6](fg:red     bg:none  )$username\
-[\uE0B4](fg:bright-red     bg:green )$hostname$localip\
-[\uE0B4](fg:bright-green   bg:yellow)$directory\
-[\uE0B4](fg:bright-yellow  bg:blue  )$git_branch$git_status\
-[\uE0B4](fg:bright-blue    bg:purple)\
+[\uE0B6](fg:#E45649     bg:none  )$username\
+[\uE0B4](fg:#E45649     bg:#50A14F )$hostname$localip\
+[\uE0B4](fg:#50A14F   bg:#C18401)$directory\
+[\uE0B4](fg:#C18401  bg:#0184BC  )$git_branch$git_status\
+[\uE0B4](fg:#0184BC    bg:#A626A4)\
 $c$nodejs$rust$python$package\
-[\uE0B4](fg:purple  bg:cyan  )\
+[\uE0B4](fg:#A626A4  bg:#0997B3  )\
 $cmd_duration\
-[\uE0B4](fg:cyan    bg:none)\
+[\uE0B4](fg:#0997B3    bg:none)\
 $line_break\
 $jobs$character"""
 # [\uE0B4](fg:#E5C07B bg:#61AFEF)$spack\
@@ -20,17 +20,17 @@ add_newline     = true
 
 [character]
 # format = ""
-success_symbol            = "[\uf054](bold green)"
+success_symbol            = "[\uf054](bold #50A14F)"
 error_symbol              = "[\uf054](bold red)"
-vicmd_symbol              = "[\uf054](bold yellow)"
-# vimcmd_replace_one_symbol = "[\uf054](bold yellow)"
-# vimcmd_replace_symbol     = "[\uf054](bold yellow)"
-# vimcmd_visual_symbol      = "[\uf054](bold yellow)"
+vicmd_symbol              = "[\uf054](bold #C18401)"
+# vimcmd_replace_one_symbol = "[\uf054](bold #C18401)"
+# vimcmd_replace_symbol     = "[\uf054](bold #C18401)"
+# vimcmd_visual_symbol      = "[\uf054](bold #C18401)"
 # disabled                  = false
 
 [username]
-style_user  = "fg:black bg:red"
-style_root  = "fg:black bg:red"
+style_user  = "fg:#fafafa bg:#E45649"
+style_root  = "fg:#fafafa bg:#E45649"
 format      = "[\uf007 $user]($style)"
 show_always = true
 disabled    = false
@@ -40,20 +40,20 @@ ssh_only   = false
 ssh_symbol = "\uf953"
 trim_at    = "."
 format     = "[ \uf6c3 $hostname ]($style)"
-style      = "fg:black bg:green"
+style      = "fg:#fafafa bg:#50A14F"
 disabled   = false
 
 [localip]
 ssh_only = true
 format   = "[\ue0b5 \uf953$localipv4 ]($style)"
-style    = "fg:black bg:green"
+style    = "fg:#fafafa bg:#50A14F"
 disabled = false
 
 [directory]
 truncation_length = 3
 truncate_to_repo  = true
 format            = "[ \uf413 $path ]($style)"
-style             = "fg:black bg:yellow"
+style             = "fg:#fafafa bg:#C18401"
 disabled          = false
 read_only         = "\uf023"
 # read_only_style = ""
@@ -81,7 +81,7 @@ truncation_symbol = "…/"
 # always_show_remote = false
 format = "[ $symbol $branch]($style)"
 symbol = "\ue702"
-style  = "fg:black bg:blue"
+style  = "fg:#fafafa bg:#0184BC"
 # truncation_length = 2^63 - 1
 # truncation_symbol = "…"
 # only_attached = false
@@ -90,13 +90,13 @@ style  = "fg:black bg:blue"
 
 [git_status]
 format     = "[ (\ue0b5 $all_status)(\ue0b5 $ahead_behind)]($style)"
-style      = "fg:black bg:blue"
+style      = "fg:#fafafa bg:#0184BC"
 conflicted = "\uf071 ${count}"
 up_to_date = ""# "\uf00c"# "✓"
 untracked  = "\ufbae ${count} "#"🤷"
 stashed    = "\uf487 ${count} "#"📦"
 modified   = "\uf459 ${count} "#"📝"
-staged     = "\uf457 ${count} "#" [++($count)](green)"
+staged     = "\uf457 ${count} "#" [++($count)](#50A14F)"
 renamed    = "\uf45a ${count} "#"👅"
 deleted    = "\uf6bf ${count} "#"🗑":"
 ahead      = "\uf093 ${count} "#"⇡${count}"
@@ -105,8 +105,8 @@ diverged   = "\uf093 ${ahead_count} \uf019 ${behind_count} "#"⇕⇡${ahead_coun
 
 [cmd_duration]
 min_time = 100
-format   = "[ \uf017 ]($style)[$duration](fg:black bg:cyan)"
-style    = "fg:black bg:cyan"
+format   = "[ \uf017 ]($style)[$duration](fg:#fafafa bg:#0997B3)"
+style    = "fg:#fafafa bg:#0997B3"
 
 [nodejs]
 format   = "[ $symbol($version)]($style)"
@@ -115,9 +115,9 @@ symbol   = "\uf898 "
 # detect_extensions = []
 # detect_files = []
 # detect_folders = []
-style    = "fg:black bg:purple"
+style    = "fg:#fafafa bg:#A626A4"
 disabled = false
-# not_capable_style = "bold red"
+# not_capable_style = "bold #E45649"
 
 [c]
 format            = "[ $symbol($name(-$version))]($style)"
@@ -127,7 +127,7 @@ detect_extensions = [ "c", "h", "cc", "hh", "hpp", "cpp", "cxx" ]
 # detect_files      = []
 # detect_folders    = []
 commands          = [ [ "cc", "--version" ], [ "gcc", "--version" ], [ "clang", "--version" ] ]
-style             = "fg:black bg:purple"
+style             = "fg:#fafafa bg:#A626A4"
 disabled          = false
 
 [rust]
@@ -137,14 +137,14 @@ symbol            = "\ue7a8 "
 # detect_extensions = ["rs"]
 # detect_files      = ["Cargo.toml"]
 # detect_folders    = []
-style             = "fg:black bg:purple"
+style             = "fg:#fafafa bg:#A626A4"
 disabled          = false
 
 [python]
 format         = "[ ${symbol}${pyenv_prefix}(${version} )(($virtualenv) )]($style)"
 # version_format = ""
 symbol         = "\ue235 "
-style          = "fg:black bg:purple"
+style          = "fg:#fafafa bg:#A626A4"
 # pyenv_version_name = ""
 # pyenv_prefix       = ""
 # python_binary      = "[]"
@@ -157,7 +157,7 @@ disabled           = false
 format          = "[$symbol$version]($style)"
 symbol          = "\uf487 "#"📦 "
 # version_format  = "v${raw}"
-style           = "fg:black bg:purple"
+style           = "fg:#fafafa bg:#A626A4"
 # display_private = false
 disabled        = false
 

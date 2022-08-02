@@ -8,7 +8,12 @@
 
 
 ## Setup
-flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --user --if-not-exists flathub      https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --user --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+flatpak remote-add --user --if-not-exists elementary   https://flatpak.elementary.io/repo.flatpakrepo
+flatpak remote-add --user --if-not-exists kdeapps      https://distribute.kde.org/kdeapps.flatpakrepo
+flatpak remotes
+
 
 ## Update
 flatpak update --user --assumeyes
