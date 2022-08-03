@@ -74,6 +74,8 @@ sed -i -e "2i\
 
 spack install zsh      %gcc@8.5.0
 spack install fish     %gcc@8.5.0
+spack install git      %gcc@8.5.0
+spack install curl     %gcc@8.5.0
 spack install tmux     %gcc@8.5.0
 spack install vim      %gcc@8.5.0
 # spack install neovim   %gcc@8.5.0
@@ -87,6 +89,8 @@ spack install glfw     %gcc@8.5.0
 spack install glm      %gcc@8.5.0
 spack install gh       %gcc@8.5.0
 
+spack load    git
+spack load    curl
 spack load    tmux
 spack load    vim
 # spack load    neovim

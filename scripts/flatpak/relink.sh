@@ -19,5 +19,3 @@ for applink in $(ls $SRCDIR/*); do
   ln -sfv $apppath $FLATPAK_BINDIR/$appname
 done
 
-
-

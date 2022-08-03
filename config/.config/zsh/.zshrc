@@ -358,24 +358,53 @@ done
 
 function init-spack() {
   if [ -d $HOME/.local/spack ]; then
-    # if ! command -v spack &>/dev/null; then
-    # fi
-    echo "Initializing \e[36mSpack\e[m ..."
-    export SPACK_ROOT=$HOME/.local/spack
-    . $SPACK_ROOT/share/spack/setup-env.sh
 
-    echo "Loading packages of \e[36mSpack\e[m ..."
-    echo "    Loading tmux    " && spack load tmux
-    echo "    Loading vim     " && spack load vim
-    echo "    Loading python  " && spack load python
-    echo "    Loading rust    " && spack load rust
-    echo "    Loading node-js " && spack load node-js
-    echo "    Loading freeglut" && spack load freeglut
-    echo "    Loading glew    " && spack load glew
-    echo "    Loading glfw    " && spack load glfw
-    echo "    Loading glm     " && spack load glm
-    echo "    Loading gh      " && spack load gh
-    echo -e "Initialized \e[36mSpack\e[m ..."
+      export SPACK_ROOT=$HOME/.local/spack
+      . $SPACK_ROOT/share/spack/setup-env.sh
+    if command -v spack &>/dev/null; then
+      echo "Initializing \e[36mSpack\e[m ..."
+
+      echo "Loading packages of \e[36mSpack\e[m ..."
+      echo "    Loading git       " && spack load   git      %gcc@8.5.0
+      echo "    Loading curl      " && spack load   curl     %gcc@8.5.0
+      echo "    Loading tmux      " && spack load   tmux     %gcc@8.5.0
+      echo "    Loading vim       " && spack load   vim      %gcc@8.5.0
+      echo "    Loading python    " && spack load   python   %gcc@8.5.0
+      echo "    Loading rust      " && spack load   rust     %gcc@8.5.0
+      echo "    Loading node-js   " && spack load   node-js  %gcc@8.5.0
+      echo "    Loading freeglut  " && spack load   freeglut %gcc@8.5.0
+      echo "    Loading glew      " && spack load   glew     %gcc@8.5.0
+      echo "    Loading glfw      " && spack load   glfw     %gcc@8.5.0
+      echo "    Loading glm       " && spack load   glm      %gcc@8.5.0
+      echo "    Loading gh        " && spack load   gh       %gcc@8.5.0
+      echo -e "Initialized \e[36mSpack\e[m ..."
+    fi
+  fi
+}
+function deinit-spack() {
+  if [ -d $HOME/.local/spack ]; then
+    if command -v spack &>/dev/null; then
+      # echo "Initializing \e[36mSpack\e[m ..."
+      # export SPACK_ROOT=$HOME/.local/spack
+      # . $SPACK_ROOT/share/spack/setup-env.sh
+
+      spack find --load
+      echo "Unloading packages of \e[36mSpack\e[m ..."
+      echo "    Unloading git     " && spack unload git      %gcc@8.5.0
+      echo "    Unloading curl    " && spack unload curl     %gcc@8.5.0
+      echo "    Unloading tmux    " && spack unload tmux     %gcc@8.5.0
+      echo "    Unloading vim     " && spack unload vim      %gcc@8.5.0
+      echo "    Unloading python  " && spack unload python   %gcc@8.5.0
+      echo "    Unloading rust    " && spack unload rust     %gcc@8.5.0
+      echo "    Unloading node-js " && spack unload node-js  %gcc@8.5.0
+      echo "    Unloading freeglut" && spack unload freeglut %gcc@8.5.0
+      echo "    Unloading glew    " && spack unload glew     %gcc@8.5.0
+      echo "    Unloading glfw    " && spack unload glfw     %gcc@8.5.0
+      echo "    Unloading glm     " && spack unload glm      %gcc@8.5.0
+      echo "    Unloading gh      " && spack unload gh       %gcc@8.5.0
+      spack find --load
+      # echo -e "Initialized \e[36mSpack\e[m ..."
+    fi
   fi
 }
 

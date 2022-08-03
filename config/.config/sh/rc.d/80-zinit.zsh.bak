@@ -19,24 +19,57 @@ if [ $zsh_ok ]; then
     source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
     autoload -Uz _zinit
     (( ${+_comps} )) && _comps[zinit]=_zinit
-    # autoload -U promptinit
-    # promptinit
-
-    # Load a few important annexes, without Turbo
-    # (this is currently required for annexes)
-    zinit light-mode for \
-        zdharma-continuum/zinit-annex-as-monitor \
-        zdharma-continuum/zinit-annex-bin-gem-node \
-        zdharma-continuum/zinit-annex-patch-dl \
-        zdharma-continuum/zinit-annex-rust
-
     ### End of Zinit's installer chunk
 
-    zinit light zsh-users/zsh-syntax-highlighting
-    zinit light zsh-users/zsh-autosuggestions
+    # # Load a few important annexes, without Turbo
+    # # (this is currently required for annexes)
+    # zinit light-mode for \
+    #     zinit-zsh/z-a-rust \
+    #     zinit-zsh/z-a-as-monitor \
+    #     zinit-zsh/z-a-patch-dl \
+    #     zinit-zsh/z-a-bin-gem-node
+
+    zinit ice wait lucid
     zinit light zsh-users/zsh-completions
-    zinit light zsh-users/zsh-history-substring-search
-    zinit light zdharma/history-search-multi-word
+    zinit ice wait lucid
+    zinit light zsh-users/zsh-autosuggestions
+    zinit ice wait lucid
+    zinit light zsh-users/zsh-syntax-highlighting
+    zinit ice wait lucid
+    zinit light chrissicool/zsh-256color
+    # zinit ice depth=1
+    # zinit light romkatv/powerlevel10k
+    # Load a few important annexes, without Turbo
+    # (this is currently required for annexes)
+    # zinit light-mode for \
+    #     zdharma-continuum/zinit-annex-as-monitor \
+    #     zdharma-continuum/zinit-annex-bin-gem-node \
+    #     zdharma-continuum/zinit-annex-patch-dl \
+    #     zdharma-continuum/zinit-annex-rust
+
+    # zinit light zsh-users/zsh-syntax-highlighting
+    # zinit light zsh-users/zsh-autosuggestions
+    # zinit light zsh-users/zsh-completions
+    # zinit light zsh-users/zsh-history-substring-search
+    # zinit light zdharma/history-search-multi-word
+    # Plugin history-search-multi-word loaded with investigating.
+    # zinit load zdharma-continuum/history-search-multi-word
+    # Two regular plugins loaded without investigating.
+    # zinit light zsh-users/zsh-autosuggestions
+    # zinit light zdharma-continuum/fast-syntax-highlighting
+    # zinit load zsh-users/zsh-syntax-highlighting
+    # zinit load zsh-users/zsh-history-substring-search
+    # zinit load zsh-users/zsh-completions
+    # zinit load zsh-users/zsh-autosuggestions
+    # zinit load mollifier/anyframe
+    # zinit load mollifier/cd-gitroot
+    # zinit load stedolan/jq
+    # zinit load peco/peco
+    # zinit load b4b4r07/emoji-cli
+    # zinit load mrowa44/emojify
+    # zinit load bilelmoussaoui/flatpak-zsh-completion
+    # zinit load chrissicool/zsh-256color
+    # zinit self-update
 
 fi
 
