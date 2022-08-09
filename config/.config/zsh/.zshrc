@@ -355,12 +355,17 @@ for i in $XDG_CONFIG_HOME/sh/rc.d/*.sh $XDG_CONFIG_HOME/sh/rc.d/*.zsh ; do
   fi
 done
 
+if [ -d $HOME/.local/flatpak ]; then
+  export PATH=$PATH:$HOME/.local/flatpak/bin
+fi
+if [ -d $HOME/.config/cargo ]; then
+  export PATH=$PATH:$HOME/.config/cargo/bin
+fi
 
 function init-spack() {
   if [ -d $HOME/.local/spack ]; then
-
-      export SPACK_ROOT=$HOME/.local/spack
-      . $SPACK_ROOT/share/spack/setup-env.sh
+    export SPACK_ROOT=$HOME/.local/spack
+    . $SPACK_ROOT/share/spack/setup-env.sh
     if command -v spack &>/dev/null; then
       echo "Initializing \e[36mSpack\e[m ..."
 
@@ -377,6 +382,7 @@ function init-spack() {
       echo "    Loading glfw      " && spack load   glfw     %gcc@8.5.0
       echo "    Loading glm       " && spack load   glm      %gcc@8.5.0
       echo "    Loading gh        " && spack load   gh       %gcc@8.5.0
+      echo "    Loading texlive   " && spack load   texlive  %gcc@8.5.0
       echo -e "Initialized \e[36mSpack\e[m ..."
     fi
   fi
@@ -402,6 +408,7 @@ function deinit-spack() {
       echo "    Unloading glfw    " && spack unload glfw     %gcc@8.5.0
       echo "    Unloading glm     " && spack unload glm      %gcc@8.5.0
       echo "    Unloading gh      " && spack unload gh       %gcc@8.5.0
+      echo "    Unloading texlive " && spack unload texlive  %gcc@8.5.0
       spack find --load
       # echo -e "Initialized \e[36mSpack\e[m ..."
     fi

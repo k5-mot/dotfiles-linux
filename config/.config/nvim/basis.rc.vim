@@ -108,10 +108,11 @@ set ruler
 set display=lastline
 
 " 不可視文字を表示
-"set list
+set list
 
 " 不可視文字の設定
-set listchars=tab:▹\ ,trail:-,extends:»,precedes:«,eol:\ ,nbsp:%
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+" set listchars=tab:▹\ ,trail:-,extends:»,precedes:«,eol:\ ,nbsp:%
 
 " 開始時の挨拶を表示しない
 set shortmess+=I
@@ -167,10 +168,10 @@ set expandtab
 "set cindent
 
 " スマートインデント
-set smartindent
+" set smartindent
 
 " オートインデント
-"set autoindent
+set autoindent
 
 " 全ての数を10進数として扱う
 set nrformats=

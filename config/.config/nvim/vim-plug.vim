@@ -77,11 +77,11 @@ call plug#begin(data_dir . '/plugged')
   " Git
   Plug 'airblade/vim-gitgutter'
 
-	" filetype
+  " filetype
   Plug 'lervag/vimtex', { 'for': ['tex'] }
-	Plug 'vhda/verilog_systemverilog.vim'
-	Plug 'cespare/vim-toml', { 'for': ['toml'] }
-	Plug 'sophacles/vim-processing'
+  " Plug 'vhda/verilog_systemverilog.vim'
+  Plug 'cespare/vim-toml', { 'for': ['toml'] }
+  Plug 'sophacles/vim-processing'
 
   Plug 'jiangmiao/auto-pairs'
   Plug 'godlygeek/tabular'
@@ -93,11 +93,11 @@ call plug#begin(data_dir . '/plugged')
     Plug 'roxma/vim-hug-neovim-rpc'
   endif
 
-	" game
-  Plug 'vim-scripts/TeTrIs.vim'
-  Plug 'PsychoLlama/vim-gol', { 'on': 'GOL' }
-  Plug 'mattn/invader-vim'
-  Plug 'johngrib/vim-game-snake'
+  " game
+  " Plug 'vim-scripts/TeTrIs.vim'
+  " Plug 'PsychoLlama/vim-gol', { 'on': 'GOL' }
+  " Plug 'mattn/invader-vim'
+  " Plug 'johngrib/vim-game-snake'
 call plug#end()
 
 " Check the specified plugin is installed

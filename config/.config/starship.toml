@@ -1,9 +1,9 @@
 
 format = """\
-[\uE0B6](fg:#E45649     bg:none  )$username\
-[\uE0B4](fg:#E45649     bg:#50A14F )$hostname$localip\
-[\uE0B4](fg:#50A14F   bg:#C18401)$directory\
-[\uE0B4](fg:#C18401  bg:#0184BC  )$git_branch$git_status\
+[\uE0B6](fg:#E45649    bg:none  )$username\
+[\uE0B4](fg:#E45649    bg:#50A14F )$hostname$localip\
+[\uE0B4](fg:#50A14F    bg:#C18401)$directory\
+[\uE0B4](fg:#C18401    bg:#0184BC  )$git_branch$git_status\
 [\uE0B4](fg:#0184BC    bg:#A626A4)\
 $c$nodejs$rust$python$package\
 [\uE0B4](fg:#A626A4  bg:#0997B3  )\
@@ -91,7 +91,7 @@ style  = "fg:#fafafa bg:#0184BC"
 [git_status]
 format     = "[ (\ue0b5 $all_status)(\ue0b5 $ahead_behind)]($style)"
 style      = "fg:#fafafa bg:#0184BC"
-conflicted = "\uf071 ${count}"
+conflicted = "\uf071 ${count} "
 up_to_date = ""# "\uf00c"# "✓"
 untracked  = "\ufbae ${count} "#"🤷"
 stashed    = "\uf487 ${count} "#"📦"

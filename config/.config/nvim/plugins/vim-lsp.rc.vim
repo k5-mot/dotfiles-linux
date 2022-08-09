@@ -67,3 +67,11 @@ let g:lsp_settings = {
   \     'allowlist': ['markdown'],
   \   }
   \ }
+
+if executable('svls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'svls',
+        \ 'cmd': {server_info->['svls']},
+        \ 'whitelist': ['systemverilog'],
+        \ })
+endif
