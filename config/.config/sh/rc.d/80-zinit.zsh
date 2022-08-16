@@ -49,8 +49,16 @@ if [ $zsh_ok ]; then
     zinit ice from"gh-r" as"program"
     zinit light junegunn/fzf
 
-    zinit ice from"gh-r" as"program" mv"docker* -> docker-compose" bpick"*linux*"
+    zinit ice from"gh-r" as"program" mv"docker* -> docker-compose"
     zinit load docker/compose
+
+    zinit ice from"gh-r" as"program"
+    zinit load stedolan/jq
+
+    zinit ice from"gh-r" as"program" pick"peco_*/peco"
+    zinit light peco/peco
+
+    zinit light supercrabtree/k
 
     zinit ice \
         as"program" \
@@ -59,6 +67,18 @@ if [ $zsh_ok ]; then
         make \
         pick"src/vim"
     zinit light vim/vim
+
+    zinit ice from"gh-r" as"program" mv"appimage-cli-tool-* -> appimage-cli-tool" pick"appimage-cli-tool-*.AppImage"
+    zinit light AppImageCrafters/appimage-cli-tool
+    # zinit ice \
+    #     as"program" \
+    #     atclone"rm -f src/auto/config.cache; ./configure --with-pydebug" \
+    #     atpull"%atclone" \
+    #     make
+    # zinit light python/cpython
+
+    # https://nodejs.org/dist/v16.16.0/node-v16.16.0-linux-x64.tar.xz
+
 
     # zinit ice depth=1
     # zinit light romkatv/powerlevel10k
