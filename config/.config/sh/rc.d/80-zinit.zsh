@@ -29,14 +29,37 @@ if [ $zsh_ok ]; then
     #     zinit-zsh/z-a-patch-dl \
     #     zinit-zsh/z-a-bin-gem-node
 
-    zinit ice wait lucid
+    # zinit ice wait lucid
     zinit light zsh-users/zsh-completions
-    zinit ice wait lucid
+    # zinit ice wait lucid
     zinit light zsh-users/zsh-autosuggestions
-    zinit ice wait lucid
-    zinit light zsh-users/zsh-syntax-highlighting
-    zinit ice wait lucid
+    # zinit ice wait lucid
+    # zinit light zsh-users/zsh-syntax-highlighting
+    # zinit ice wait lucid
     zinit light chrissicool/zsh-256color
+    zinit light zdharma-continuum/fast-syntax-highlighting
+    zinit light zdharma-continuum/history-search-multi-word
+
+    # zinit ice pick"async.zsh" src"pure.zsh" # with zsh-async library that's bundled with it.
+    # zinit light sindresorhus/pure
+
+    zinit ice as"command" from"gh-r" atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" atpull"%atclone" src"init.zsh"
+    zinit light starship/starship
+
+    zinit ice from"gh-r" as"program"
+    zinit light junegunn/fzf
+
+    zinit ice from"gh-r" as"program" mv"docker* -> docker-compose" bpick"*linux*"
+    zinit load docker/compose
+
+    zinit ice \
+        as"program" \
+        atclone"rm -f src/auto/config.cache; ./configure" \
+        atpull"%atclone" \
+        make \
+        pick"src/vim"
+    zinit light vim/vim
+
     # zinit ice depth=1
     # zinit light romkatv/powerlevel10k
     # Load a few important annexes, without Turbo

@@ -24,6 +24,14 @@ alias lt='exa --tree --icons'
 
 
 ## Functions
+benchmark_zsh-vanilla() {
+  touch /tmp/.zshrc
+  touch /tmp/.zshenv
+  for i in $(seq 1 10); do
+    time ( ZDOTDIR=/tmp/ zsh -i -c exit; )
+  done
+}
+
 
 benchmark_zsh() {
   for i in $(seq 1 10); do
