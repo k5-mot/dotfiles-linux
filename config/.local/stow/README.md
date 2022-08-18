@@ -1,0 +1,1 @@
+# GNU Stow Manager
