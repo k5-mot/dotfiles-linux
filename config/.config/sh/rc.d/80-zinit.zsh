@@ -100,7 +100,7 @@ elif [ "$ZSH_VERSION" -ge 40309 -a "$GIT_VERSION" -ge 10700 ]; then
   zplug "zsh-users/zsh-autosuggestions"
   zplug "mollifier/anyframe"
   zplug "mollifier/cd-gitroot"
-  zplug "starship/starship", from:gh-r, as:command
+  # zplug "starship/starship", from:gh-r, as:command
   zplug "stedolan/jq", from:gh-r, as:command # , rename-to:jq
   zplug "peco/peco", as:command, from:gh-r, rename-to:peco
   zplug "b4b4r07/emoji-cli", on:"stedolan/jq"
@@ -110,7 +110,7 @@ elif [ "$ZSH_VERSION" -ge 40309 -a "$GIT_VERSION" -ge 10700 ]; then
   zplug "junegunn/fzf", from:gh-r, as:command, rename-to:fzf #, use:"*darwin*amd64*"
   zplug "chrissicool/zsh-256color"
   zplug "supercrabtree/k"
-  zplug "docker/compose", from:gh-r, as:command, rename-to:"docker-compose"
+  # zplug "docker/compose", from:gh-r, as:command, rename-to:"docker-compose"
 
   # zplug "AppImageCrafters/appimage-cli-tool", from:gh-r, as:command, rename-to:"appimage-cli-tool" # , use:"appimage-cli-tool-*.AppImage"
 
