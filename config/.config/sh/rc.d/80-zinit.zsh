@@ -112,7 +112,7 @@ elif [ "$ZSH_VERSION" -ge 40309 -a "$GIT_VERSION" -ge 10700 ]; then
   zplug "supercrabtree/k"
   zplug "docker/compose", from:gh-r, as:command, rename-to:"docker-compose"
 
-  zplug "AppImageCrafters/appimage-cli-tool", from:gh-r, as:command, rename-to:"appimage-cli-tool" # , use:"appimage-cli-tool-*.AppImage"
+  # zplug "AppImageCrafters/appimage-cli-tool", from:gh-r, as:command, rename-to:"appimage-cli-tool" # , use:"appimage-cli-tool-*.AppImage"
 
   # zplug "TheAssassin/AppImageLauncher" #, from:gh-r, as:command, rename-to:"appimagelauncher" #, use:"appimagelauncher-lite-*-x86_64*.AppImage"
 
