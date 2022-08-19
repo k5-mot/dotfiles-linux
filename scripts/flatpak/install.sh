@@ -73,6 +73,7 @@ flatpak install --user --assumeyes flathub org.libreoffice.LibreOffice
 flatpak install --user --assumeyes flathub io.gitlab.librewolf-community
 flatpak install --user --assumeyes flathub org.contourterminal.Contour
 flatpak install --user --assumeyes flathub org.wezfurlong.wezterm
+flatpak override --user --env=XDG_CONFIG_HOME=$HOME/.config org.wezfurlong.wezterm
 # flatpak install --user --assumeyes flathub com.github.corna.Vivado
 # flatpak install --user --assumeyes flathub com.google.AndroidStudio
 # flatpak install --user --assumeyes flathub com.sublimetext.three
