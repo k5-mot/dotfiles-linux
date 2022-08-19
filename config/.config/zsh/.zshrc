@@ -113,167 +113,167 @@ unsetopt list_types
 #local WHITE=$'%{^[[1;37m%}'$
 ## }}}
 
-# ## Completion {{{
-# ## Highlight completion.
-# autoload -U compinit
-# compinit
-# compinit -d $XDG_CACHE_HOME/zsh/zcompdump.log
-# zstyle ':completion:*:default' menu select=1
-# # 補完関数の表示を強化する
-# zstyle ':completion:*' verbose yes
-# zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
-# zstyle ':completion:*:messages' format '%F{YELLOW}%d'"$DEFAULT"
-# zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'"$DEFAULT"
-# zstyle ':completion:*:descriptions' format '%F{YELLOW}completing %B%d%b'"$DEFAULT"
-# zstyle ':completion:*:options' description 'yes'
-# zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'"$DEFAULT"
-# # マッチ種別を別々に表示
-# zstyle ':completion:*' group-name ''
-# # セパレータを設定する
-# zstyle ':completion:*' list-separator '-->'
-# zstyle ':completion:*:manuals' separate-sections true
-# ## LS_COLORS
-# #if [[ -f $ZDOTDIR/.dircolors && -x `which dircolors` ]]; then
-# #  eval `dircolors -b $ZDOTDIR/.dircolors`
-# #  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# #fi
-# if [[ -f $XDG_CONFIG_HOME/dircolors && -x `which dircolors` ]]; then
-#   eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
-#   zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# fi
-# ## Define demiter of words.
-# autoload -Uz select-word-style
-# select-word-style default
-# zstyle ':zle:*' word-chars "_-. /=;@:{},|"
-# zstyle ':zle:*' word-style unspecified
-# # match uppercase from lowercase
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# # ../ の後は今いるディレクトリを補完しない
-# zstyle ':completion:*' ignore-parents parent pwd ..
-# # sudo の後ろでコマンド名を補完する
-# zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-# # ps コマンドのプロセス名補完
-# zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
-# # allow one error for every three characters typed in approximate completer
-# zstyle -e ':completion:*:approximate:*' max-errors \
-#   'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
-# # insert all expansions for expand completer
-# zstyle ':completion:*:expand:*' tag-order all-expansions
-# # list of completers to use
-# zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
-# # formatting and messages
-# #zstyle ':completion:*' verbose yes
-# #zstyle ':completion:*:descriptions' format '%B%d%b'
-# #zstyle ':completion:*:messages' format '%d'
-# #zstyle ':completion:*:warnings' format 'No matches for: %d'
-# #zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
-# #zstyle ':completion:*' group-name ''
-# # offer indexes before parameters in subscripts
-# zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
-# # command for process lists, the local web server details and host completion
-# #zstyle ':completion:*:processes' command 'ps -o pid,s,nice,stime,args'
-# #zstyle ':completion:*:urls' local 'www' '/var/www/htdocs' 'public_html'
-# hosts=(`hostname` ftp.math.gatech.edu prep.ai.mit.edu wuarchive.wustl.edu)
-# export hosts
-# zstyle '*' hosts $hosts
-# # Filename suffixes to ignore during completion (except after rm command)
-# zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' \
-#   '*?.old' '*?.pro'
-# # the same for old style completion
-# #fignore=(.o .c~ .old .pro)
-# # ignore completion functions (until the _ignored completer)
-# zstyle ':completion:*:functions' ignored-patterns '_*'
-# ## }}}
-# function peco-select-history() {
-#   BUFFER=$(\history -n -r 1 | peco --query "$LBUFFER")
-#   CURSOR=$#BUFFER
-#   zle clear-screen
-# }
-# zle -N peco-select-history
-# bindkey '^r' peco-select-history
-# function peco-get-destination-from-cdr() {
-#   cdr -l | \
-#   sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
-#   peco --query "$LBUFFER"
-# }
+## Completion {{{
+## Highlight completion.
+autoload -U compinit
+compinit
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump.log
+zstyle ':completion:*:default' menu select=1
+# 補完関数の表示を強化する
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+zstyle ':completion:*:messages' format '%F{YELLOW}%d'"$DEFAULT"
+zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'"$DEFAULT"
+zstyle ':completion:*:descriptions' format '%F{YELLOW}completing %B%d%b'"$DEFAULT"
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'"$DEFAULT"
+# マッチ種別を別々に表示
+zstyle ':completion:*' group-name ''
+# セパレータを設定する
+zstyle ':completion:*' list-separator '-->'
+zstyle ':completion:*:manuals' separate-sections true
+## LS_COLORS
+#if [[ -f $ZDOTDIR/.dircolors && -x `which dircolors` ]]; then
+#  eval `dircolors -b $ZDOTDIR/.dircolors`
+#  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+#fi
+if [[ -f $XDG_CONFIG_HOME/dircolors && -x `which dircolors` ]]; then
+  eval `dircolors -b $XDG_CONFIG_HOME/dircolors`
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi
+## Define demiter of words.
+autoload -Uz select-word-style
+select-word-style default
+zstyle ':zle:*' word-chars "_-. /=;@:{},|"
+zstyle ':zle:*' word-style unspecified
+# match uppercase from lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# ../ の後は今いるディレクトリを補完しない
+zstyle ':completion:*' ignore-parents parent pwd ..
+# sudo の後ろでコマンド名を補完する
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+# ps コマンドのプロセス名補完
+zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
+# allow one error for every three characters typed in approximate completer
+zstyle -e ':completion:*:approximate:*' max-errors \
+  'reply=( $(( ($#PREFIX+$#SUFFIX)/3 )) numeric )'
+# insert all expansions for expand completer
+zstyle ':completion:*:expand:*' tag-order all-expansions
+# list of completers to use
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+# formatting and messages
+#zstyle ':completion:*' verbose yes
+#zstyle ':completion:*:descriptions' format '%B%d%b'
+#zstyle ':completion:*:messages' format '%d'
+#zstyle ':completion:*:warnings' format 'No matches for: %d'
+#zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+#zstyle ':completion:*' group-name ''
+# offer indexes before parameters in subscripts
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+# command for process lists, the local web server details and host completion
+#zstyle ':completion:*:processes' command 'ps -o pid,s,nice,stime,args'
+#zstyle ':completion:*:urls' local 'www' '/var/www/htdocs' 'public_html'
+hosts=(`hostname` ftp.math.gatech.edu prep.ai.mit.edu wuarchive.wustl.edu)
+export hosts
+zstyle '*' hosts $hosts
+# Filename suffixes to ignore during completion (except after rm command)
+zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' \
+  '*?.old' '*?.pro'
+# the same for old style completion
+#fignore=(.o .c~ .old .pro)
+# ignore completion functions (until the _ignored completer)
+zstyle ':completion:*:functions' ignored-patterns '_*'
+## }}}
+function peco-select-history() {
+  BUFFER=$(\history -n -r 1 | peco --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+function peco-get-destination-from-cdr() {
+  cdr -l | \
+  sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
+  peco --query "$LBUFFER"
+}
 
-# ### search a destination from cdr list and cd the destination
-# function peco-cdr() {
-#   local destination="$(peco-get-destination-from-cdr)"
-#   if [ -n "$destination" ]; then
-#     BUFFER="cd $destination"
-#     zle accept-line
-#   else
-#     zle reset-prompt
-#   fi
-# }
-# zle -N peco-cdr
-# bindkey '^x' peco-cdr
-# alias gh='cd $(ghq list -p | peco)'
-# alias gho='gh-open $(ghq list -p | peco)'
-# ## Keybinding {{{
-# ## Set up Vim key bindings.
-# bindkey -v
-# ## Set up Emacs key bindings.
-# #bindkey -e
-# bindkey ' ' magic-space    # also do history expansion on space
-# bindkey '^I' complete-word # complete on tab, leave expansion to _expand
-# bindkey '^P' up-line-or-search
-# bindkey '^N' down-line-or-search
-# bindkey '^W' backward-kill-word
-# # Some nice key bindings
-# #bindkey '^X^Z' universal-argument ' ' magic-space
-# #bindkey '^X^A' vi-find-prev-char-skip
-# #bindkey '^Xa' _expand_alias
-# #bindkey '^Z' accept-and-hold
-# #bindkey -s '\M-/' \\\\
-# #bindkey -s '\M-=' \|
+### search a destination from cdr list and cd the destination
+function peco-cdr() {
+  local destination="$(peco-get-destination-from-cdr)"
+  if [ -n "$destination" ]; then
+    BUFFER="cd $destination"
+    zle accept-line
+  else
+    zle reset-prompt
+  fi
+}
+zle -N peco-cdr
+bindkey '^x' peco-cdr
+alias gh='cd $(ghq list -p | peco)'
+alias gho='gh-open $(ghq list -p | peco)'
+## Keybinding {{{
+## Set up Vim key bindings.
+bindkey -v
+## Set up Emacs key bindings.
+#bindkey -e
+bindkey ' ' magic-space    # also do history expansion on space
+bindkey '^I' complete-word # complete on tab, leave expansion to _expand
+bindkey '^P' up-line-or-search
+bindkey '^N' down-line-or-search
+bindkey '^W' backward-kill-word
+# Some nice key bindings
+#bindkey '^X^Z' universal-argument ' ' magic-space
+#bindkey '^X^A' vi-find-prev-char-skip
+#bindkey '^Xa' _expand_alias
+#bindkey '^Z' accept-and-hold
+#bindkey -s '\M-/' \\\\
+#bindkey -s '\M-=' \|
 
-# # suggestion
-# bindkey '^ ' autosuggest-accept
-# ## }}}
-# autoload -Uz add-zsh-hook
+# suggestion
+bindkey '^ ' autosuggest-accept
+## }}}
+autoload -Uz add-zsh-hook
 
-# ## git設定
-# autoload -Uz vcs_info
-# setopt prompt_subst
+## git設定
+autoload -Uz vcs_info
+setopt prompt_subst
 
-# zstyle ':vcs_info:git:*' check-for-changes true
-# zstyle ':vcs_info:git:*' stagedstr "%F{yellow}+"
-# zstyle ':vcs_info:git:*' unstagedstr "%F{red}±"
-# zstyle ':vcs_info:*' formats "%F{green}$(echo "\uf7a1 ")%c%u %b%f"
-# zstyle ':vcs_info:*' actionformats "%F{cyan}$(echo "\uf7a1 ") %b|%a%f"
-
-
-# export PROMPT="%F{green}%n%f%F{magenta}@%f%F{blue}%m%f%F{magenta}:%f%F{cyan}%~%f
-# %F{green}$%f "
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}+"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}±"
+zstyle ':vcs_info:*' formats "%F{green}$(echo "\uf7a1 ")%c%u %b%f"
+zstyle ':vcs_info:*' actionformats "%F{cyan}$(echo "\uf7a1 ") %b|%a%f"
 
 
-# ## Others {{{
-# # ディレクトリ選択時、最後の/を残す
-# setopt no_auto_remove_slash
-# # Set/unset  shell options
-# setopt notify globdots correct pushdtohome cdablevars autolist
-# setopt correctall autocd recexact longlistjobs
-# setopt autoresume histignoredups pushdsilent noclobber
-# setopt autopushd pushdminus extendedglob rcquotes mailwarning
-# setopt ignoreeof
-# setopt no_beep
-# setopt nolistbeep
-# unsetopt bgnice autoparamslash
-# # Autoload zsh modules when they are referenced
-# zmodload -a zsh/stat stat
-# zmodload -a zsh/zpty zpty
-# # zmodload -a zsh/zprof zprof
-# zmodload -ap zsh/mapfile mapfile
-# # set up tetris
-# autoload -Uz tetris
-# zle -N tetris
-# #bindkey '...' tetris
-# # set up tetris 1
-# autoload -Uz tetriscurses
-# #alias tetris=tetriscurses
-# ## }}}
+export PROMPT="%F{green}%n%f%F{magenta}@%f%F{blue}%m%f%F{magenta}:%f%F{cyan}%~%f
+%F{green}$%f "
+
+
+## Others {{{
+# ディレクトリ選択時、最後の/を残す
+setopt no_auto_remove_slash
+# Set/unset  shell options
+setopt notify globdots correct pushdtohome cdablevars autolist
+setopt correctall autocd recexact longlistjobs
+setopt autoresume histignoredups pushdsilent noclobber
+setopt autopushd pushdminus extendedglob rcquotes mailwarning
+setopt ignoreeof
+setopt no_beep
+setopt nolistbeep
+unsetopt bgnice autoparamslash
+# Autoload zsh modules when they are referenced
+zmodload -a zsh/stat stat
+zmodload -a zsh/zpty zpty
+# zmodload -a zsh/zprof zprof
+zmodload -ap zsh/mapfile mapfile
+# set up tetris
+autoload -Uz tetris
+zle -N tetris
+#bindkey '...' tetris
+# set up tetris 1
+autoload -Uz tetriscurses
+#alias tetris=tetriscurses
+## }}}
 
 # ## Local Setting
 # if [ -f ~/.zshrc_local ]; then

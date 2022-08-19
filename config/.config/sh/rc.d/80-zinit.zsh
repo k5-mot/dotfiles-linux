@@ -110,6 +110,7 @@ elif [ "$ZSH_VERSION" -ge 40309 -a "$GIT_VERSION" -ge 10700 ]; then
   zplug "junegunn/fzf", from:gh-r, as:command, rename-to:fzf #, use:"*darwin*amd64*"
   zplug "chrissicool/zsh-256color"
   zplug "supercrabtree/k"
+  zplug "modules/prompt", from:prezto
   # zplug "docker/compose", from:gh-r, as:command, rename-to:"docker-compose"
 
   # zplug "AppImageCrafters/appimage-cli-tool", from:gh-r, as:command, rename-to:"appimage-cli-tool" # , use:"appimage-cli-tool-*.AppImage"
