@@ -19,7 +19,6 @@ require("packer").startup(function(use)
     use 'cocopon/iceberg.vim'
 
     --use {'fatih/vim-go', opt = true, ft = {'go'}}
-    use { 'kyazdani42/nvim-web-devicons' }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -28,18 +27,92 @@ require("packer").startup(function(use)
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
 
-    use "hrsh7th/nvim-cmp"
-    use "hrsh7th/cmp-nvim-lsp"
-    use "hrsh7th/vim-vsnip"
+    --use "hrsh7th/nvim-cmp"
+    --use "hrsh7th/cmp-nvim-lsp"
+    --use "hrsh7th/vim-vsnip"
 end)
+
 
 -- nvim-lualine/lualine.nvim
 require('lualine').setup({
-    options = { theme = 'tokyonight' }
+	options = {
+		icons_enabled = true,
+		theme = 'tokyonight',
+		component_separators = { left = '', right = ''},
+		section_separators = { left = '', right = ''},
+		disabled_filetypes = {
+			statusline = {},
+			winbar = {},
+		},
+		ignore_focus = {},
+		always_divide_middle = true,
+		globalstatus = false,
+		refresh = {
+			statusline = 1000,
+			tabline = 1000,
+			winbar = 1000,
+		}
+	},
+	sections = {
+		lualine_a = {'mode'},
+		lualine_b = {
+			'branch',
+			{
+				'diff',
+				colored = true,
+				symbols = {added = ' ', modified = ' ', removed = ' '},
+			},
+			{
+				'diagnostics',
+				sections = { 'error', 'warn', 'info', 'hint' },
+				symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
+				colored = true,
+				update_in_insert = false, -- Update diagnostics in insert mode.
+				always_visible = true,   -- Show diagnostics even if there are none.
+			},
+		},
+		lualine_c = {'filename'},
+		lualine_x = {'encoding', 'fileformat', 'filetype'},
+		lualine_y = {'progress'},
+		lualine_z = {'location'}
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = {'filename'},
+		lualine_x = {'location'},
+		lualine_y = {},
+		lualine_z = {}
+	},
+	tabline = {},
+	winbar = {},
+	inactive_winbar = {},
+	extensions = {}
 })
 
+vim.fn.sign_define('DiagnosticSignError', {text = ' ', texthl = 'DiagnosticSignError', numhl = 'DiagnosticSignError'})
+vim.fn.sign_define('DiagnosticSignWarn',  {text = ' ', texthl = 'DiagnosticSignWarn',  numhl = 'DiagnosticSignWarn' })
+vim.fn.sign_define('DiagnosticSignHint',  {text = ' ', texthl = 'DiagnosticSignHint',  numhl = 'DiagnosticSignHint' })
+vim.fn.sign_define('DiagnosticSignInfo',  {text = ' ', texthl = 'DiagnosticSignInfo',  numhl = 'DiagnosticSignInfo' })
+
+--sign({name = 'DiagnosticSignError', text = ''})
+--sign({name = 'DiagnosticSignWarn', text = ''})
+--sign({name = 'DiagnosticSignHint', text = ''})
+--sign({name = 'DiagnosticSignInfo', text = ''})
+
 -- 1. LSP Sever management
-require('mason').setup()
+require('mason').setup({
+--	ui = {
+--		icons = {
+--			server_installed = "✓",
+--			server_pending = "➜",
+--			server_uninstalled = "✗",
+--			package_installed = "✓",
+--			package_pending = "➜",
+--			package_uninstalled = "✗"
+--		}
+--	}
+})
 require('mason-lspconfig').setup_handlers({ function(server)
     local opt = {
         -- -- Function executed when the LSP server startup
