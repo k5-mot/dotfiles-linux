@@ -81,7 +81,7 @@ if [ "$ZSH_VERSION" -ge 50400 ]; then
     zinit light TheAssassin/AppImageLauncher
 
 elif [ "$ZSH_VERSION" -ge 40309 -a "$GIT_VERSION" -ge 10700 ]; then
-
+  # eval "$(sheldon source)"
   ## Install
   # export ZPLUG_HOME=$ZDOTCACHE/zplug
   if [[ ! -e $ZPLUG_HOME ]]; then

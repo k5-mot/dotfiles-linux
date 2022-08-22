@@ -25,12 +25,27 @@ export TERM="xterm-256color"
 # export TERM="screen-256color"
 
 ## Default editor
-if command -v nvim 1>/dev/null 2>&1; then
+if command -v neovim &>/dev/null; then
+  export EDITOR="neovim"
+elif command -v nvim &>/dev/null; then
   export EDITOR="nvim"
-elif command -v vim 1>/dev/null 2>&1; then
+elif command -v vim  &>/dev/null; then
   export EDITOR="vim"
-else
+elif command -v vi   &>/dev/null; then
   export EDITOR="vi"
+fi
+
+if command -v neovim &>/dev/null; then
+  alias nvim="neovim"
+  alias vim="neovim"
+  alias vi="neovim"
+elif command -v nvim &>/dev/null; then
+  alias vim="nvim"
+  alias vi="nvim"
+elif command -v vim  &>/dev/null; then
+  alias vi="vim"
+elif command -v vi   &>/dev/null; then
+  alias vi="vi"
 fi
 
 ## Default pager
