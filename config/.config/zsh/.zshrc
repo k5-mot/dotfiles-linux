@@ -421,6 +421,14 @@ done
 # fi
 
 # ### }}}
+if command -v flatpak &> /dev/null; then
+  if [ -e $FLATPAK_ROOT ]; then
+    export PATH=$FLATPAK_ROOT/bin:$PATH
+  fi
+fi
+if [ -e $LOCAL_ROOT ]; then
+  export PATH=$LOCAL_ROOT/bin:$PATH
+fi
 
 ## Compile
 if [ $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]; then
@@ -430,3 +438,4 @@ fi
 # # if (which zprof > /dev/null); then
 # #   zprof | less
 # # fi
+#

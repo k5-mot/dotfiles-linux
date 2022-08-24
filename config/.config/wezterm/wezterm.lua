@@ -28,7 +28,7 @@ return {
   background = {
     {
       source = {
-        File = '/home/users/kmoto/Pictures/Wallpapers/city.jpg',
+        File = '/home/users/kmoto/Pictures/Wallpapers/white.jpg',
       },
       attachment = 'Fixed',
       width  = '100%',
@@ -36,7 +36,7 @@ return {
       -- height = '100%',
       -- width  = 'Contain',
       hsb = {
-        brightness = 0.05,
+        brightness = 0.03,
         hue = 1.0,
         saturation = 1.0,
       },
