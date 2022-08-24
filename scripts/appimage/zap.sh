@@ -12,7 +12,8 @@
 export HOSTNAME=$(hostname -s)
 export PORG_HOME=$HOME/.local/porg/$HOSTNAME
 if command -v zap &> /dev/null; then
-    zap remove neovim
+    zap remove nvim
+    zap remove tmux
 fi
 mkdir -pv $HOME/.local/bin
 rm -rfv   $HOME/.local/bin/zap
@@ -29,6 +30,7 @@ zap --help
 ## Install AppImage via zap
 if command -v zap &> /dev/null; then
     echo "Installed zap"
-    zap install neovim
+    zap install --github --from neovim/neovim            --executable nvim
+    zap install --github --from nelsonenzo/tmux-appimage --executable tmux
 fi
 

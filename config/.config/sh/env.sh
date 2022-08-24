@@ -25,9 +25,9 @@ export TERM="xterm-256color"
 # export TERM="screen-256color"
 
 ## Default editor
-if command -v neovim &>/dev/null; then
-  export EDITOR="neovim"
-elif command -v nvim &>/dev/null; then
+# if command -v neovim &>/dev/null; then
+#   export EDITOR="neovim"
+if command -v nvim &>/dev/null; then
   export EDITOR="nvim"
 elif command -v vim  &>/dev/null; then
   export EDITOR="vim"
@@ -35,11 +35,11 @@ elif command -v vi   &>/dev/null; then
   export EDITOR="vi"
 fi
 
-if command -v neovim &>/dev/null; then
-  alias nvim="neovim"
-  alias vim="neovim"
-  alias vi="neovim"
-elif command -v nvim &>/dev/null; then
+# if command -v neovim &>/dev/null; then
+#   alias nvim="neovim"
+#   alias vim="neovim"
+#   alias vi="neovim"
+if command -v nvim &>/dev/null; then
   alias vim="nvim"
   alias vi="nvim"
 elif command -v vim  &>/dev/null; then
