@@ -419,8 +419,24 @@ done
 # if [ -f ~/.zshrc_local ]; then
 #   source ~/.zshrc_local
 # fi
+#
 
 # ### }}}
+# ASDF {{{
+export ASDF_CONFIG_FILE=$XDG_CONFIG_HOME/asdf/asdfrc
+export ASDF_DIR=$XDG_DATA_HOME/asdf
+export ASDF_DATA_DIR=$ASDF_DIR
+# export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=tool-version
+if [ -d $ASDF_DIR ]; then
+	. $XDG_DATA_HOME/asdf/asdf.sh
+fi
+fpath=(${ASDF_DIR}/completions $fpath)
+# if [ ! -f $ASDF_DEFAULT_TOOL_VERSIONS_FILENAME ]; then 
+# 	mkdir -pv $ASDF_DIR
+# 	touch $ASDF_DEFAULT_TOOL_VERSIONS_FILENAME
+# fi
+### }}}
+
 if command -v flatpak &> /dev/null; then
   if [ -e $FLATPAK_ROOT ]; then
     export PATH=$FLATPAK_ROOT/bin:$PATH
@@ -429,6 +445,7 @@ fi
 if [ -e $LOCAL_ROOT ]; then
   export PATH=$LOCAL_ROOT/bin:$PATH
 fi
+
 
 ## Compile
 if [ $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]; then
