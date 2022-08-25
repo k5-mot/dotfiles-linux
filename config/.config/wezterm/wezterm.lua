@@ -36,7 +36,7 @@ return {
       -- height = '100%',
       -- width  = 'Contain',
       hsb = {
-        brightness = 0.03,
+        brightness = 0.015,
         hue = 1.0,
         saturation = 1.0,
       },
