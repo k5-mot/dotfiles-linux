@@ -63,11 +63,11 @@ asdf plugin add go     https://github.com/kennyp/asdf-golang.git   > $INSTALL_LO
 
 echo "Install env"
 
-asdf install python 3.9.13  > $INSTALL_LOG &
-asdf install ruby   3.1.2   > $INSTALL_LOG &
-asdf install nodejs 16.17.0 > $INSTALL_LOG &
-asdf install rust   1.63.0  > $INSTALL_LOG &
-asdf install go     1.18.5  > $INSTALL_LOG &
+asdf install python 3.9.13  > $INSTALL_LOG #&
+asdf install ruby   3.1.2   > $INSTALL_LOG #&
+asdf install nodejs 16.17.0 > $INSTALL_LOG #&
+asdf install rust   1.63.0  > $INSTALL_LOG #&
+asdf install go     1.18.5  > $INSTALL_LOG #&
 
 wait $!
 echo "  Installed: $?"
@@ -82,10 +82,10 @@ asdf global  go     1.18.5  > $INSTALL_LOG
 
 echo "Install packages"
 
-install-via-pip3  > $INSTALL_LOG &
-install-via-gem   > $INSTALL_LOG &
-install-via-npm   > $INSTALL_LOG &
-install-via-cargo > $INSTALL_LOG &
+install-via-pip3  > $INSTALL_LOG #&
+install-via-gem   > $INSTALL_LOG #&
+install-via-npm   > $INSTALL_LOG #&
+install-via-cargo > $INSTALL_LOG #&
 
 wait $!
 echo "  Installed: $?"
