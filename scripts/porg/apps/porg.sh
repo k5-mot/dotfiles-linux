@@ -34,7 +34,7 @@ echo "PWD: $(pwd)"
   --with-porg-logdir=$PORG_HOME/var/log/porg \
   --disable-grop
 make
-./porg/porg -lD "make install"
+./porg/porg -lp porg "make install"
 
 ## Check
 ./porg/porg porg

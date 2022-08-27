@@ -18,4 +18,7 @@ for applink in $(ls $HOME/.local/share/flatpak/exports/bin/*); do
   # echo "$appname $apppath"
   ln -sfv $apppath $FLATPAK_BINDIR/$appname
 done
+ln -sfv $HOME/.local/share/flatpak/exports/bin/org.eclipse.Java          $FLATPAK_BINDIR/eclipse
+ln -sfv $HOME/.local/share/flatpak/exports/bin/io.github.shiftey.Desktop $FLATPAK_BINDIR/github-desktop
+ln -sfv $HOME/.local/share/flatpak/exports/bin/com.spotify.Client        $FLATPAK_BINDIR/spotify
 

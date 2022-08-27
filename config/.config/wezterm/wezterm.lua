@@ -28,7 +28,8 @@ return {
   background = {
     {
       source = {
-        File = '/home/users/kmoto/Pictures/Wallpapers/white.jpg',
+		-- File = '/home/users/kmoto/Pictures/Wallpapers/white.jpg',
+        File = "/home/users/kmoto/Pictures/Wallpapers/tile.gif",
       },
       attachment = 'Fixed',
       width  = '100%',
@@ -36,7 +37,7 @@ return {
       -- height = '100%',
       -- width  = 'Contain',
       hsb = {
-        brightness = 0.015,
+        brightness = 0.15,
         hue = 1.0,
         saturation = 1.0,
       },

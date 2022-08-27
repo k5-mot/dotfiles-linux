@@ -76,3 +76,7 @@ typeset -U pkg_config_path PKG_CONFIG_PATH
 # export INFOPATH=$(echo $INFOPATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 # export PKG_CONFIG_PATH=$(echo $PKG_CONFIG_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
+
+if [ $ZDOTDIR/.zshenv -nt $ZDOTDIR/.zshenv.zwc ]; then
+  zcompile $ZDOTDIR/.zshenv
+fi
