@@ -95,6 +95,7 @@ flatpak remotes
 
 
 ## Update
+flatpak repair --user --assumeyes
 flatpak update --user --assumeyes
 
 ## Install
