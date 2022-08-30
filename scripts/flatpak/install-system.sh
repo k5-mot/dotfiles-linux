@@ -87,21 +87,20 @@ sudo flatpak remotes
 
 ## Setup
 sudo flatpak remote-add --if-not-exists flathub      https://dl.flathub.org/repo/flathub.flatpakrepo
-sudo flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-sudo flatpak remote-add --if-not-exists elementary   https://flatpak.elementary.io/repo.flatpakrepo
-sudo flatpak remote-add --if-not-exists kdeapps      https://distribute.kde.org/kdeapps.flatpakrepo
+# sudo flatpak remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+# sudo flatpak remote-add --if-not-exists elementary   https://flatpak.elementary.io/repo.flatpakrepo
+# sudo flatpak remote-add --if-not-exists kdeapps      https://distribute.kde.org/kdeapps.flatpakrepo
 sudo flatpak remotes
 
 
 ## Update
-sudo flatpak repair --assumeyes
+sudo flatpak repair
 sudo flatpak update --assumeyes
 
 ## Install
 sudo flatpak install --assumeyes flathub com.github.tchx84.Flatseal
 sudo flatpak install --assumeyes flathub io.neovim.nvim
 sudo flatpak install --assumeyes flathub com.visualstudio.code
-# flatpak install --assumeyes flathub org.eclipse.Java
 sudo flatpak install --assumeyes flathub io.github.shiftey.Desktop
 sudo flatpak install --assumeyes flathub org.blender.Blender
 sudo flatpak install --assumeyes flathub org.freecadweb.FreeCAD
@@ -110,7 +109,6 @@ sudo flatpak install --assumeyes flathub org.gimp.GIMP
 sudo flatpak install --assumeyes flathub org.inkscape.Inkscape
 sudo flatpak install --assumeyes flathub org.octave.Octave
 sudo flatpak install --assumeyes flathub org.libreoffice.LibreOffice
-# flatpak install --assumeyes flathub org.kde.okular
 sudo flatpak install --assumeyes flathub com.google.Chrome
 sudo flatpak install --assumeyes flathub org.mozilla.firefox
 sudo flatpak install --assumeyes flathub org.mozilla.Thunderbird
@@ -120,13 +118,15 @@ sudo flatpak install --assumeyes flathub com.slack.Slack
 sudo flatpak install --assumeyes flathub us.zoom.Zoom
 sudo flatpak install --assumeyes flathub com.microsoft.Teams
 sudo flatpak install --assumeyes flathub org.videolan.VLC
+sudo flatpak install --assumeyes flathub org.wezfurlong.wezterm
+sudo flatpak install --assumeyes flathub io.github.f3d_app.f3d
+# flatpak install --assumeyes flathub org.eclipse.Java
+# flatpak install --assumeyes flathub org.kde.okular
 # flatpak install --assumeyes flathub com.spotify.Client
 # flatpak install --assumeyes flathub com.mojang.Minecraft
 # flatpak install --assumeyes flathub com.github.k4zmu2a.spacecadetpinball
 # flatpak install --assumeyes flathub org.kde.kmines
 # flatpak install --assumeyes flathub org.processing.processingide
-sudo flatpak install --assumeyes flathub org.wezfurlong.wezterm
-sudo flatpak install --assumeyes flathub io.github.f3d_app.f3d
 # flatpak install --assumeyes flathub com.google.ChromeDev
 # flatpak install --assumeyes flathub net.meshlab.MeshLab
 # flatpak install --user --assumeyes flathub org.gnu.emacs
