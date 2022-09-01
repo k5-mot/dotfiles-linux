@@ -432,6 +432,14 @@ if [ -d $ASDF_DIR ]; then
 fi
 fpath=(${ASDF_DIR}/completions $fpath)
 
+
+export HOSTNAME=$(hostname -s)
+export STOW_HOME=$HOME/.local/xstow/$HOSTNAME
+if [ -d $STOW_HOME ]; then
+	export PATH=$STOW_HOME/usr/bin:$PATH
+fi
+
+
 if command -v asdf &> /dev/null; then
 	if command -v rustc &> /dev/null; then
 		export RUST_VERSION=$(rustc --version | awk '{print $2}')

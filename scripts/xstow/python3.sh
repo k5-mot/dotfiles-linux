@@ -6,9 +6,7 @@
 
 ## Remove
 export HOSTNAME=$(hostname -s)
-if (type "porg" > /dev/null 2>&1); then
-  porg -r python-3
-fi
+export STOW_HOME=$HOME/.local/xstow/$HOSTNAME
 rm -rf    ${HOME}/.porg/$HOSTNAME/src/python3
 
 ## Setup
