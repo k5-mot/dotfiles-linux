@@ -39,14 +39,14 @@ fi
 #   alias nvim="neovim"
 #   alias vim="neovim"
 #   alias vi="neovim"
-if command -v nvim &>/dev/null; then
-  alias vim="nvim"
-  alias vi="nvim"
-elif command -v vim  &>/dev/null; then
-  alias vi="vim"
-elif command -v vi   &>/dev/null; then
-  alias vi="vi"
-fi
+# if command -v nvim &>/dev/null; then
+#   alias vim="nvim"
+#  alias vi="nvim"
+# elif command -v vim  &>/dev/null; then
+#   alias vi="vim"
+# elif command -v vi   &>/dev/null; then
+#   alias vi="vi"
+# fi
 
 ## Default pager
 if command -v vimpager 1>/dev/null 2>&1; then

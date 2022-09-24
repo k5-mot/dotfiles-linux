@@ -17,24 +17,20 @@ rm -rfv   $PORG_HOME
 mkdir -pv $PORG_HOME/{tmp,src,var/log/porg}
 
 ## Download
-cd        $PORG_HOME/tmp
-echo "PWD: $(pwd)"
+cd        $PORG_HOME/tmp 
 wget --no-check-certificate --content-disposition "https://sourceforge.net/projects/porg/files/latest/download"
-
 cd        $PORG_HOME/src
-echo "PWD: $(pwd)"
-tar -xvf $PORG_HOME/tmp/porg-*.tar.gz
+tar -xvf  $PORG_HOME/tmp/porg-*.tar.gz
 cd porg-*/
-echo "PWD: $(pwd)"
 
 ## Install
 ./configure \
   --prefix=$PORG_HOME/usr \
   --sysconfdir=$PORG_HOME/etc \
-  --with-porg-logdir=$PORG_HOME/var/log/porg \
-  --disable-grop
+  --with-porg-logdir=$PORG_HOME/var/log/porg # \
+#   --disable-grop
 make
-./porg/porg -lp porg "make install"
+./porg/porg -lD "make install"
 
 ## Check
 ./porg/porg porg

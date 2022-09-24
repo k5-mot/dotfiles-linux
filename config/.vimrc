@@ -1,3 +1,3 @@
 " Load configuration for NeoVim.
-source ~/.config/nvim/init.vim
+source ~/.config/vim/init.vim
 "source ~/.vimrc.bak

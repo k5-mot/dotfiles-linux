@@ -11,6 +11,8 @@ return {
   },
   font_size = 10.0,
 
+  check_for_updates = false,
+
   -- color_scheme = "Gruvbox Dark",
   -- color_scheme = "Material (base16)",
   -- color_scheme = "Material (Gogh)",
@@ -28,7 +30,7 @@ return {
   background = {
     {
       source = {
-		-- File = '/home/users/kmoto/Pictures/Wallpapers/white.jpg',
+        -- File = '/home/users/kmoto/Pictures/Wallpapers/white.jpg',
         File = "/home/users/kmoto/Pictures/Wallpapers/tile.gif",
       },
       attachment = 'Fixed',
@@ -53,6 +55,15 @@ return {
   -- },
   -- window_background_opacity = 1.0,
   tab_max_width = 10,
+  tab_bar_at_bottom = true,
+
+  keys = {
+    {
+        key    = 'n',
+        mods   = 'SHIFT|CTRL',
+        action = wezterm.action.ToggleFullScreen,
+    },
+  }
 
 }
 

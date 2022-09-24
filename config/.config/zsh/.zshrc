@@ -267,11 +267,11 @@ zmodload -a zsh/zpty zpty
 # zmodload -a zsh/zprof zprof
 zmodload -ap zsh/mapfile mapfile
 # set up tetris
-autoload -Uz tetris
-zle -N tetris
-#bindkey '...' tetris
-# set up tetris 1
-autoload -Uz tetriscurses
+# autoload -Uz tetris
+# zle -N tetris
+# #bindkey '...' tetris
+# # set up tetris 1
+# autoload -Uz tetriscurses
 #alias tetris=tetriscurses
 ## }}}
 
@@ -355,6 +355,7 @@ for i in $XDG_CONFIG_HOME/sh/rc.d/*.sh $XDG_CONFIG_HOME/sh/rc.d/*.zsh ; do
   fi
 done
 
+
 # if [ -d $HOME/.local/flatpak ]; then
 #   export PATH=$PATH:$HOME/.local/flatpak/bin
 # fi
@@ -433,22 +434,22 @@ fi
 fpath=(${ASDF_DIR}/completions $fpath)
 
 
-export HOSTNAME=$(hostname -s)
-export STOW_HOME=$HOME/.local/xstow/$HOSTNAME
-if [ -d $STOW_HOME ]; then
-	export PATH=$STOW_HOME/usr/bin:$PATH
-fi
+# export HOSTNAME=$(hostname -s)
+# export STOW_HOME=$HOME/.local/xstow/$HOSTNAME
+# if [ -d $STOW_HOME ]; then
+#     export PATH=$STOW_HOME/usr/bin:$PATH
+# fi
 
 
 if command -v asdf &> /dev/null; then
-	if command -v rustc &> /dev/null; then
-		export RUST_VERSION=$(rustc --version | awk '{print $2}')
-		export PATH=$XDG_DATA_HOME/asdf/installs/rust/$RUST_VERSION/bin:$PATH
-	fi
+    if command -v rustc &> /dev/null; then
+        export RUST_VERSION=$(rustc --version | awk '{print $2}')
+        export PATH=$XDG_DATA_HOME/asdf/installs/rust/$RUST_VERSION/bin:$PATH
+    fi
 fi
 # if [ ! -f $ASDF_DEFAULT_TOOL_VERSIONS_FILENAME ]; then 
-# 	mkdir -pv $ASDF_DIR
-# 	touch $ASDF_DEFAULT_TOOL_VERSIONS_FILENAME
+#   mkdir -pv $ASDF_DIR
+#   touch $ASDF_DEFAULT_TOOL_VERSIONS_FILENAME
 # fi
 ### }}}
 

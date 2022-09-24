@@ -58,14 +58,15 @@ vim.opt.errorbells = false
 vim.opt.visualbell = true
 
 -- Indent
-vim.opt.smartindent = true
--- vim.opt.autoindent  = true
+--vim.opt.smartindent = true
+vim.opt.autoindent  = true
 vim.opt.shiftround  = true
 vim.opt.breakindent = true
 vim.opt.breakindentopt = 'min:20,shift:2'
 
 -- TAB to SPACE
 vim.opt.smarttab    = true
+vim.opt.expandtab   = true
 vim.opt.shiftwidth  = 4
 vim.opt.tabstop     = 4
 vim.opt.softtabstop = -1
@@ -111,6 +112,11 @@ vim.opt.history = 5000
 
 -- Mouse control (Normal, Visual, Insert)
 vim.opt.mouse = 'nvi'
+
+local opts = { noremap = true, silent = true }
+local keymap = vim.api.nvim_set_keymap
+keymap("n", "<Esc><Esc>", ":<C-u>set nohlsearch<Return>", opts)
+
 
 function Exists(file)
     local ok, err, code = os.rename(file, file)

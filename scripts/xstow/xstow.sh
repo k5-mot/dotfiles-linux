@@ -39,14 +39,14 @@ cd $STOW_HOME/pkg/xstow-*
 echo "PWD: $(pwd)"
 dirs=$(find . -type d)
 for dir in $dirs; do 
-	mkdir -pv $STOW_HOME/$dir
+    mkdir -pv $STOW_HOME/$dir
 done
 cd $STOW_HOME/pkg
 $STOW_HOME/pkg/xstow-1.1.0/usr/bin/xstow -v xstow-1.1.0/
 if [ $? = 0 ]; then
-	echo "Success $?"
+    echo "Success $?"
 else
-	echo "Failed $?"
+    echo "Failed $?"
 fi
 
 ## Check
