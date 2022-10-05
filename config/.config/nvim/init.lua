@@ -117,23 +117,24 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 keymap("n", "<Esc><Esc>", ":<C-u>set nohlsearch<Return>", opts)
 
-
-function Exists(file)
-    local ok, err, code = os.rename(file, file)
-    if not ok then
-       if code == 13 then
-          -- Permission denied, but it exists
-          return true
-       end
-    end
-    return ok, err
- end
-function IsDir(path)
-    -- "/" works on both Unix and Windows
-    return Exists(path.."/")
+function exists(file)
+   local ok, err, code = os.rename(file, file)
+   if not ok then
+      if code == 13 then
+         -- Permission denied, but it exists
+         return true
+      end
+   end
+   return ok, err
 end
 
-if not IsDir("~/.local/share/nvim/site/pack/packer/start/packer.nvim") then
+--- Check if a directory exists in this path
+function isdir(path)
+   -- "/" works on both Unix and Windows
+   return exists(path.."/")
+end
+
+if not isdir("~/.local/share/nvim/site/pack/packer/start/packer.nvim") then
     os.execute("git clone --verbose --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim")
 end
 
