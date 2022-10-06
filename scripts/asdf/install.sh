@@ -63,7 +63,10 @@ function install-via-cargo() {
 }
 
 function setup-asdf() {
-    mkdir -pv $XDG_CACHE_HOME/asdf
+    
+    if [ -z $XDG_DATA_HOME ]; then
+        export XDG_DATA_HOME=$HOME/.local/share
+    fi
 
     echo -e "\e[34mSetup\e[m"
     rm -rfv   $XDG_DATA_HOME/asdf > /dev/null 2>&1
