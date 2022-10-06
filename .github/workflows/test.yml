@@ -16,7 +16,7 @@ jobs:
       - shell: bash
         run: make install
 
-      - name: 'Test scripts of apt'
+      - name: 'APT'
         shell: bash
         run: |
           cd ${GITHUB_WORKSPACE}/scripts/apt
@@ -34,7 +34,7 @@ jobs:
       - name: 'ASDF'
         shell: bash
         run: |
-          cd ${GITHUB_WORKSPACE}/scripts/porg
+          cd ${GITHUB_WORKSPACE}/scripts/asdf
           ./install.sh
 
       - name: 'Benchmark bash'
