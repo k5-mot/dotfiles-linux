@@ -52,33 +52,33 @@ if [ "$ZSH_VERSION" -ge 50400 ]; then
     zinit ice as"command" from"gh-r" atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" atpull"%atclone" src"init.zsh"
     zinit light starship/starship
 
-    zinit ice from"gh-r" as"program"
-    zinit light junegunn/fzf
+    # zinit ice from"gh-r" as"program"
+    # zinit light junegunn/fzf
 
     zinit ice from"gh-r" as"program" mv"docker* -> docker-compose"
     zinit load docker/compose
 
-    zinit ice from"gh-r" as"program"
-    zinit load stedolan/jq
+    # zinit ice from"gh-r" as"program"
+    # zinit load stedolan/jq
 
-    zinit ice from"gh-r" as"program" pick"peco_*/peco"
-    zinit light peco/peco
+    # zinit ice from"gh-r" as"program" pick"peco_*/peco"
+    # zinit light peco/peco
 
     zinit light supercrabtree/k
 
-    zinit ice \
-        as"program" \
-        atclone"rm -f src/auto/config.cache; ./configure" \
-        atpull"%atclone" \
-        make \
-        pick"src/vim"
-    zinit light vim/vim
+    # zinit ice \
+    #     as"program" \
+    #     atclone"rm -f src/auto/config.cache; ./configure" \
+    #     atpull"%atclone" \
+    #     make \
+    #     pick"src/vim"
+    # zinit light vim/vim
 
-    zinit ice from"gh-r" as"program" mv"appimage-cli-tool-* -> appimage-cli-tool" pick"appimage-cli-tool-*.AppImage"
-    zinit light AppImageCrafters/appimage-cli-tool
+    # zinit ice from"gh-r" as"program" mv"appimage-cli-tool-* -> appimage-cli-tool" pick"appimage-cli-tool-*.AppImage"
+    # zinit light AppImageCrafters/appimage-cli-tool
 
-    zinit ice from"gh-r" as"program" mv"appimagelauncher-lite-* -> appimagelauncher" pick"appimage-launcher-*.AppImage"
-    zinit light TheAssassin/AppImageLauncher
+    # zinit ice from"gh-r" as"program" mv"appimagelauncher-lite-* -> appimagelauncher" pick"appimage-launcher-*.AppImage"
+    # zinit light TheAssassin/AppImageLauncher
 
 elif [ "$ZSH_VERSION" -ge 40309 -a "$GIT_VERSION" -ge 10700 ]; then
   # eval "$(sheldon source)"
@@ -101,16 +101,17 @@ elif [ "$ZSH_VERSION" -ge 40309 -a "$GIT_VERSION" -ge 10700 ]; then
   zplug "mollifier/anyframe"
   zplug "mollifier/cd-gitroot"
   # zplug "starship/starship", from:gh-r, as:command
-  zplug "stedolan/jq", from:gh-r, as:command # , rename-to:jq
-  zplug "peco/peco", as:command, from:gh-r, rename-to:peco
-  zplug "b4b4r07/emoji-cli", on:"stedolan/jq"
+  # zplug "stedolan/jq", from:gh-r, as:command # , rename-to:jq
+  # zplug "peco/peco", as:command, from:gh-r, rename-to:peco
+  zplug "b4b4r07/emoji-cli"
 #   zplug "b4b4r07/enhancd"
   zplug "mrowa44/emojify", as:command
   zplug "bilelmoussaoui/flatpak-zsh-completion", defer:2
-  zplug "junegunn/fzf", from:gh-r, as:command, rename-to:fzf #, use:"*darwin*amd64*"
+  # zplug "junegunn/fzf", from:gh-r, as:command, rename-to:fzf #, use:"*darwin*amd64*"
   zplug "chrissicool/zsh-256color"
   zplug "supercrabtree/k"
-  zplug "modules/prompt", from:prezto
+  zplug "starship/starship", as:command
+  # zplug "modules/prompt", from:prezto
   # zplug "docker/compose", from:gh-r, as:command, rename-to:"docker-compose"
 
   # zplug "AppImageCrafters/appimage-cli-tool", from:gh-r, as:command, rename-to:"appimage-cli-tool" # , use:"appimage-cli-tool-*.AppImage"
@@ -129,8 +130,9 @@ elif [ "$ZSH_VERSION" -ge 40309 -a "$GIT_VERSION" -ge 10700 ]; then
 
   # zsh-completions
   # export FPATH=$FPATH:$ZPLUG_HOME/repos/zsh-users/zsh-completions/src
-  bindkey '^xe' emoji::cli
-  bindkey '^x^e' emoji::cli
+  # bindkey '^xe' emoji::cli
+  # bindkey '^x^e' emoji::cli
+  export EMOJI_CLI_KEYBIND="^f"
 
 elif [ $ZSH_VERSION -ge 40311 ]; then
   export ADOTDIR="$HOME/.cache/zsh/antigen"

@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 ## fontconfig
-rm -rf ${HOME}/.fontconfig
-rm -rf ${HOME}/.cache/fontconfig
+rm    -rfv $HOME/.fontconfig
+rm    -rfv $HOME/.cache/fontconfig
 
 ## zip
-rm -rf    ${HOME}/.local/share/fonts
-mkdir -pv ${HOME}/.local/share/fonts/zip
-cd        ${HOME}/.local/share/fonts/zip
+rm    -rfv $HOME/.local/share/fonts
+mkdir -pv  $HOME/.local/share/fonts/zip
+cd         $HOME/.local/share/fonts/zip
 wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Noto+Sans
 wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Noto+Sans+JP
 wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Noto+Serif+JP
@@ -25,25 +25,25 @@ wget --no-check-certificate --content-disposition https://fonts.google.com/downl
 wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Train+One
 # wget --content-disposition https://ja.osdn.net/downloads/users/8/8637/genshingothic-20150607.zip
 wget --no-check-certificate --content-disposition https://github.com/tomokuni/Myrica/raw/master/product/Myrica.zip
-for f in *.zip; do unzip -q -d "../${f%*.zip}" "$f"; done
+for f in *.zip; do 
+    unzip -q -d "../${f%*.zip}" "$f"; 
+done
 
 ## git
-cd        ${HOME}/.local/share/fonts
+cd        $HOME/.local/share/fonts
 
-git clone https://github.com/adobe-fonts/source-serif.git
-git clone https://github.com/adobe-fonts/source-sans.git
-git clone https://github.com/adobe-fonts/source-code-pro.git
-git clone https://github.com/adobe-fonts/source-han-serif.git
-git clone https://github.com/adobe-fonts/source-han-sans.git
-git clone https://github.com/adobe-fonts/source-han-mono.git
-git https://github.com/googlefonts/noto-emoji.git
-
-git clone https://github.com/microsoft/cascadia-code.git
-
-git clone https://github.com/edihbrandon/RictyDiminished.git
-git clone https://github.com/tonsky/FiraCode.git
-git clone https://github.com/ryanoasis/nerd-fonts.git
-git clone https://github.com/macchaberrycream/RictyDiminished-Nerd-Fonts.git
+git clone --verbose https://github.com/adobe-fonts/source-serif.git
+git clone --verbose https://github.com/adobe-fonts/source-sans.git
+git clone --verbose https://github.com/adobe-fonts/source-code-pro.git
+git clone --verbose https://github.com/adobe-fonts/source-han-serif.git
+git clone --verbose https://github.com/adobe-fonts/source-han-sans.git
+git clone --verbose https://github.com/adobe-fonts/source-han-mono.git
+git clone --verbose https://github.com/googlefonts/noto-emoji.git
+git clone --verbose https://github.com/microsoft/cascadia-code.git
+git clone --verbose https://github.com/edihbrandon/RictyDiminished.git
+git clone --verbose https://github.com/tonsky/FiraCode.git
+git clone --verbose https://github.com/ryanoasis/nerd-fonts.git
+git clone --verbose https://github.com/macchaberrycream/RictyDiminished-Nerd-Fonts.git
 
 ## svn
 #svn export https://github.com/ryanoasis/nerd-fonts/branches/master/patched-fonts/CascadiaCode

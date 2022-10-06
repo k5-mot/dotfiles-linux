@@ -14,7 +14,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - shell: bash
-        run: make install
+        run: | 
+          make install
 
       - name: 'APT'
         shell: bash
@@ -37,15 +38,29 @@ jobs:
           cd ${GITHUB_WORKSPACE}/scripts/asdf
           ./install.sh
 
-      - name: 'Benchmark bash'
+      - name: 'BENCHMARK (Vanilla BASH)'
         shell: bash
         run: |
-          for i in $(seq 1 10); do time bash -i -c exit; done
+          touch /tmp/.bashrc
+          touch /tmp/.bash_profile
+          for i in $(seq 1 10); do time ( BASHDOTDIR=/tmp/ bash -i -c exit; ) done
 
-      - name: 'Benchmark zsh'
+      - name: 'BENCHMARK (Custom BASH)'
+        shell: bash
+        run: |
+          for i in $(seq 1 10); do time ( bash -i -c exit; ) done
+
+      - name: 'BENCHMARK (Vanilla ZSH)'
         shell: zsh {0}
         run: |
-          for i in $(seq 1 10); do time zsh -i -c exit; done
+          touch /tmp/.zshrc
+          touch /tmp/.zshenv
+          for i in $(seq 1 10); do time ( ZDOTDIR=/tmp/ zsh -i -c exit; )  done
+
+      - name: 'BENCHMARK (Custom ZSH)'
+        shell: zsh {0}
+        run: |
+          for i in $(seq 1 10); do time ( zsh -i -c exit; ) done
 
           #      - name: 'Benchmark Vim (bash)'
           #        shell: bash

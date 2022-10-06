@@ -18,9 +18,9 @@ function install-via-pip() {
     python3 -m pip install numpy         > /dev/null 2>&1
     python3 -m pip install scipy         > /dev/null 2>&1
     python3 -m pip install pandas        > /dev/null 2>&1
-    python3 -m pip install torch         > /dev/null 2>&1
-    python3 -m pip install torchvision   > /dev/null 2>&1
-    python3 -m pip install tensorflow    > /dev/null 2>&1
+    # python3 -m pip install torch         > /dev/null 2>&1
+    # python3 -m pip install torchvision   > /dev/null 2>&1
+    # python3 -m pip install tensorflow    > /dev/null 2>&1
     python3 -m pip list                  # > /dev/null 2>&1
 }
 

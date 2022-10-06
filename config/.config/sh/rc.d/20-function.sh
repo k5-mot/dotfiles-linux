@@ -99,3 +99,12 @@ print_colors() {
   echo -e "\e[0m"
 }
 
+print-emoji() {
+    cnt = 0
+    for i in {61545..62178}; do 
+        echo -n -e "$(printf '\\u%x' $i) ";
+    done
+}
+
+
+
