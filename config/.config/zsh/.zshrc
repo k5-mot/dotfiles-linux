@@ -441,12 +441,12 @@ fpath=(${ASDF_DIR}/completions $fpath)
 # fi
 
 
-if command -v asdf &> /dev/null; then
-    if command -v rustc &> /dev/null; then
-        export RUST_VERSION=$(rustc --version | awk '{print $2}')
-        export PATH=$XDG_DATA_HOME/asdf/installs/rust/$RUST_VERSION/bin:$PATH
-    fi
-fi
+# if command -v asdf &> /dev/null; then
+#     if command -v rustc &> /dev/null; then
+#         export RUST_VERSION=$(rustc --version | awk '{print $2}')
+#         export PATH=$XDG_DATA_HOME/asdf/installs/rust/$RUST_VERSION/bin:$PATH
+#     fi
+# fi
 # if [ ! -f $ASDF_DEFAULT_TOOL_VERSIONS_FILENAME ]; then 
 #   mkdir -pv $ASDF_DIR
 #   touch $ASDF_DEFAULT_TOOL_VERSIONS_FILENAME

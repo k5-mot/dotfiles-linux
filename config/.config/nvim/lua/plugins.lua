@@ -30,6 +30,12 @@ require("packer").startup(function(use)
         requires = { 'nvim-lua/plenary.nvim' }
     }
 
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        --run = ':TSUpdate'
+        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    }
+
     -- Completion
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'

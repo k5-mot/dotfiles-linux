@@ -21,8 +21,8 @@ export LC_ALL="en_US.UTF-8"
 ### Environment variable {{{
 
 ## Term
-export TERM="xterm-256color"
-# export TERM="screen-256color"
+# export TERM="xterm-256color"
+export TERM="screen-256color"
 
 ## Default editor
 # if command -v neovim &>/dev/null; then
@@ -104,8 +104,8 @@ export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc.py"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java"
-export RUSTUP_HOME="$XDG_CACHE_HOME/rustup"
-export CARGO_HOME="$XDG_CONFIG_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export BAT_THEME="OneHalfDark"
 export LOCAL_ROOT="$HOME/.local"
 

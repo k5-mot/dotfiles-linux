@@ -1,59 +1,38 @@
 #!/usr/bin/env bash
 
-## fontconfig
-rm    -rfv $HOME/.fontconfig
-rm    -rfv $HOME/.cache/fontconfig
+set -x
 
-## zip
-rm    -rfv $HOME/.local/share/fonts
-mkdir -pv  $HOME/.local/share/fonts/zip
-cd         $HOME/.local/share/fonts/zip
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Noto+Sans
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Noto+Sans+JP
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Noto+Serif+JP
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Roboto
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Roboto+Condensed
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Roboto+Mono
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Roboto+Slab
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=RocknRoll+One
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Reggae+One
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Yusei+Magic
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Kaisei+Tokumin
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Potta+One
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=DotGothic16
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Hachi+Maru+Pop
-wget --no-check-certificate --content-disposition https://fonts.google.com/download?family=Train+One
-# wget --content-disposition https://ja.osdn.net/downloads/users/8/8637/genshingothic-20150607.zip
-wget --no-check-certificate --content-disposition https://github.com/tomokuni/Myrica/raw/master/product/Myrica.zip
-for f in *.zip; do 
-    unzip -q -d "../${f%*.zip}" "$f"; 
+## Initialize
+rm    -rf $HOME/.fontconfig
+rm    -rf $HOME/.cache/fontconfig
+rm    -rf $HOME/.local/share/fonts
+
+## Download
+mkdir -p  $HOME/.local/share/fonts/tarball
+cd        $HOME/.local/share/fonts/tarball
+wget --no-check-certificate https://github.com/google/fonts/archive/main.tar.gz                      -O GoogleFonts.tar.gz
+wget --no-check-certificate https://github.com/tonsky/FiraCode/archive/master.tar.gz                 -O FiraCode.tar.gz
+wget --no-check-certificate https://github.com/ryanoasis/nerd-fonts/archive/master.tar.gz            -O NerdFonts.tar.gz
+wget --no-check-certificate https://github.com/powerline/fonts/archive/master.tar.gz                 -O Powerline.tar.gz
+wget --no-check-certificate https://github.com/microsoft/cascadia-code/archive/main.tar.gz           -O CascadiaCode.tar.gz
+# wget --no-check-certificate https://github.com/adobe-fonts/source-serif/archive/release.tar.gz       -O AdobeSourceSerif.tar.gz
+# wget --no-check-certificate https://github.com/adobe-fonts/source-sans/archive/release.tar.gz        -O AdobeSourceSans.tar.gz
+# wget --no-check-certificate https://github.com/adobe-fonts/source-code-pro/archive/release.tar.gz    -O AdobeSourceCodePro.tar.gz
+# wget --no-check-certificate https://github.com/adobe-fonts/source-han-serif/archive/release.tar.gz   -O AdobeSourceHanSerif.tar.gz
+# wget --no-check-certificate https://github.com/adobe-fonts/source-han-sans/archive/release.tar.gz    -O AdobeSourceHanSans.tar.gz
+# wget --no-check-certificate https://github.com/adobe-fonts/source-han-mono/archive/release.tar.gz    -O AdobeSourceHanMono.tar.gz
+wget --no-check-certificate https://github.com/adobe-fonts/source-han-code-jp/archive/release.tar.gz -O AdobeSourceHanCodeJP.tar.gz
+wget --no-check-certificate https://github.com/edihbrandon/RictyDiminished/archive/master.tar.gz     -O RictyDiminished.tar.gz
+wget --no-check-certificate https://github.com/macchaberrycream/RictyDiminished-Nerd-Font/archive/master.tar.gz -O RictyDiminishedNerdFont.tar.gz
+
+## Extract
+cd         $HOME/.local/share/fonts
+for tarball in tarball/*.tar.gz; do 
+    mkdir -p $(basename $tarball .tar.gz)
+    tar -xf $tarball -C $(basename $tarball .tar.gz) --strip-components 1
 done
 
-## git
-cd        $HOME/.local/share/fonts
-
-git clone --verbose https://github.com/adobe-fonts/source-serif.git
-git clone --verbose https://github.com/adobe-fonts/source-sans.git
-git clone --verbose https://github.com/adobe-fonts/source-code-pro.git
-git clone --verbose https://github.com/adobe-fonts/source-han-serif.git
-git clone --verbose https://github.com/adobe-fonts/source-han-sans.git
-git clone --verbose https://github.com/adobe-fonts/source-han-mono.git
-git clone --verbose https://github.com/googlefonts/noto-emoji.git
-git clone --verbose https://github.com/google/fonts.git
-git clone --verbose https://github.com/microsoft/cascadia-code.git
-git clone --verbose https://github.com/edihbrandon/RictyDiminished.git
-git clone --verbose https://github.com/tonsky/FiraCode.git
-git clone --verbose https://github.com/ryanoasis/nerd-fonts.git
-git clone --verbose https://github.com/macchaberrycream/RictyDiminished-Nerd-Fonts.git
-git clone --verbose https://github.com/powerline/fonts.git
-git clone --verbose https://github.com/FortAwesome/Font-Awesome.git
-
-## svn
-#svn export https://github.com/ryanoasis/nerd-fonts/branches/master/patched-fonts/CascadiaCode
-#svn export https://github.com/ryanoasis/nerd-fonts/branches/master/patched-fonts/FiraMono
-#svn export https://github.com/ryanoasis/nerd-fonts/branches/master/patched-fonts/FiraCode
-
-## Check
+## Update
 fc-cache -fv
 fc-list
 

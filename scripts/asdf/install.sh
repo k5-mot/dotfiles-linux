@@ -43,22 +43,23 @@ function install-via-npm() {
 }
 
 function install-via-cargo() {
-    rustup update           > /dev/null 2>&1
-    cargo --version         # > /dev/null 2>&1
-    cargo install exa       > /dev/null 2>&1
-    cargo install bat       > /dev/null 2>&1
-    cargo install fd-find   > /dev/null 2>&1
-    cargo install hexyl     > /dev/null 2>&1
-    cargo install procs     > /dev/null 2>&1
-    cargo install ripgrep   > /dev/null 2>&1
-    cargo install sd        > /dev/null 2>&1
-    cargo install zoxide    > /dev/null 2>&1
-    cargo install gitui     > /dev/null 2>&1
-    cargo install svls      > /dev/null 2>&1
-    cargo install texlab    > /dev/null 2>&1
-    cargo install stylua    > /dev/null 2>&1
-    cargo install delta     > /dev/null 2>&1
-    cargo install alacritty > /dev/null 2>&1
+    rustup update                    > /dev/null 2>&1
+    cargo --version                  # > /dev/null 2>&1
+    cargo install exa                > /dev/null 2>&1
+    cargo install bat                > /dev/null 2>&1
+    cargo install fd-find            > /dev/null 2>&1
+    cargo install hexyl              > /dev/null 2>&1
+    cargo install procs              > /dev/null 2>&1
+    cargo install ripgrep            > /dev/null 2>&1
+    cargo install sd                 > /dev/null 2>&1
+    cargo install zoxide             > /dev/null 2>&1
+    cargo install gitui              > /dev/null 2>&1
+    cargo install svls               > /dev/null 2>&1
+    cargo install texlab             > /dev/null 2>&1
+    cargo install stylua             > /dev/null 2>&1
+    cargo install delta              > /dev/null 2>&1
+    cargo install alacritty          > /dev/null 2>&1
+    cargo install starship  --locked > /dev/null 2>&1
     cargo --list            # > /dev/null 2>&1
 }
 
@@ -88,6 +89,7 @@ function setup-asdf() {
     asdf plugin add java       https://github.com/halcyon/asdf-java.git               > /dev/null 2>&1
     asdf plugin add julia      https://github.com/rkyleg/asdf-julia.git               > /dev/null 2>&1
     asdf plugin add deno       https://github.com/asdf-community/asdf-deno.git        > /dev/null 2>&1
+    asdf plugin add lua        https://github.com/Stratus3D/asdf-lua.git              > /dev/null 2>&1
     asdf plugin add zig        https://github.com/cheetah/asdf-zig.git                > /dev/null 2>&1
     asdf plugin add jq         https://github.com/azmcode/asdf-jq.git                 > /dev/null 2>&1
     asdf plugin add peco       https://github.com/asdf-community/asdf-peco.git        > /dev/null 2>&1
@@ -110,6 +112,7 @@ function setup-asdf() {
     asdf install java       openjdk-18.0.2.1 > /dev/null 2>&1
     asdf install julia      latest           > /dev/null 2>&1
     asdf install deno       latest           > /dev/null 2>&1
+    asdf install lua        latest           > /dev/null 2>&1
     asdf install zig        latest           > /dev/null 2>&1
     asdf install jq         latest           > /dev/null 2>&1
     asdf install peco       latest           > /dev/null 2>&1
@@ -134,6 +137,7 @@ function setup-asdf() {
     asdf global  java       openjdk-18.0.2.1 > /dev/null 2>&1
     asdf global  julia      latest           > /dev/null 2>&1
     asdf global  deno       latest           > /dev/null 2>&1
+    asdf global  lua        latest           > /dev/null 2>&1
     asdf global  zig        latest           > /dev/null 2>&1
     asdf global  jq         latest           > /dev/null 2>&1
     asdf global  peco       latest           > /dev/null 2>&1
@@ -145,6 +149,11 @@ function setup-asdf() {
     asdf global  neovim     0.7.2            > /dev/null 2>&1
     asdf global  tmux       latest           > /dev/null 2>&1
     cat $HOME/.tool-versions
+
+    asdf reshim python
+    asdf reshim ruby
+    asdf reshim nodejs
+    asdf reshim rust
 }
 
 set -x
