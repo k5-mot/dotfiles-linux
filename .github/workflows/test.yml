@@ -23,13 +23,19 @@ jobs:
           ./update.sh
           ./install.sh
 
-      - name: 'Test scripts of Porg'
+          #      - name: 'Test scripts of Porg'
+          #        shell: bash
+          #        run: |
+          #          cd ${GITHUB_WORKSPACE}/scripts/porg
+          #          ./init.sh
+          #          ./env.sh
+          #          ./tools.sh
+
+      - name: 'ASDF'
         shell: bash
         run: |
           cd ${GITHUB_WORKSPACE}/scripts/porg
-          ./init.sh
-          ./env.sh
-          ./tools.sh
+          ./install.sh
 
       - name: 'Benchmark bash'
         shell: bash
