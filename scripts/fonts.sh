@@ -39,11 +39,14 @@ git clone --verbose https://github.com/adobe-fonts/source-han-serif.git
 git clone --verbose https://github.com/adobe-fonts/source-han-sans.git
 git clone --verbose https://github.com/adobe-fonts/source-han-mono.git
 git clone --verbose https://github.com/googlefonts/noto-emoji.git
+git clone --verbose https://github.com/google/fonts.git
 git clone --verbose https://github.com/microsoft/cascadia-code.git
 git clone --verbose https://github.com/edihbrandon/RictyDiminished.git
 git clone --verbose https://github.com/tonsky/FiraCode.git
 git clone --verbose https://github.com/ryanoasis/nerd-fonts.git
 git clone --verbose https://github.com/macchaberrycream/RictyDiminished-Nerd-Fonts.git
+git clone --verbose https://github.com/powerline/fonts.git
+git clone --verbose https://github.com/FortAwesome/Font-Awesome.git
 
 ## svn
 #svn export https://github.com/ryanoasis/nerd-fonts/branches/master/patched-fonts/CascadiaCode

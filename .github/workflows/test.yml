@@ -13,7 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - shell: bash
+      - name: 'INSTALL CONFIGS'
+        shell: bash
         run: | 
           make install
 
@@ -40,6 +41,7 @@ jobs:
 
       - name: 'BENCHMARK (Vanilla BASH)'
         shell: bash
+        continue-on-error: true
         run: |
           touch /tmp/.bashrc
           touch /tmp/.bash_profile
@@ -47,11 +49,13 @@ jobs:
 
       - name: 'BENCHMARK (Custom BASH)'
         shell: bash
+        continue-on-error: true
         run: |
           for i in $(seq 1 10); do time ( bash -i -c exit; ) done
 
       - name: 'BENCHMARK (Vanilla ZSH)'
         shell: zsh {0}
+        continue-on-error: true
         run: |
           touch /tmp/.zshrc
           touch /tmp/.zshenv
@@ -59,6 +63,7 @@ jobs:
 
       - name: 'BENCHMARK (Custom ZSH)'
         shell: zsh {0}
+        continue-on-error: true
         run: |
           for i in $(seq 1 10); do time ( zsh -i -c exit; ) done
 
