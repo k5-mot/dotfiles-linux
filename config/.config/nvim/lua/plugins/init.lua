@@ -1,9 +1,70 @@
-vim.cmd [[packadd packer.nvim]]
+-- [[ plugins.lua ]]
+
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    print("Installing packer close and reopen Neovim...")
+    return true
+  end
+  return false
+end
+
+local packer_bootstrap = ensure_packer()
 
 -- Packer.nvim {{{
 require("packer").startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+
+    -- LSP
+    use {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'neovim/nvim-lspconfig',
+    }
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = { 'nvim-lua/plenary.nvim' }
+    }
+
+    -- Treesitter
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        -- run = ':TSUpdate',
+        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    }
+
+    -- Completion
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
+
+    -- Autopairs
+    use {
+        'windwp/nvim-autopairs',
+        config = function() require('nvim-autopairs').setup({}) end,
+    }
+
+    -- Statusline
+    use 'kyazdani42/nvim-web-devicons'
+    use 'lewis6991/gitsigns.nvim'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    }
+    -- use {
+    --     'feline-nvim/feline.nvim',
+    --     config   = function() require('plugins.feline').setup({}) end,
+    --     requires = {
+    --         'kyazdani42/nvim-web-devicons',
+    --         'lewis6991/gitsigns.nvim',
+    --     },
+    -- }
 
     -- Colorscheme
     use 'dracula/vim'
@@ -19,40 +80,29 @@ require("packer").startup(function(use)
     use 'junegunn/seoul256.vim'
     use 'cocopon/iceberg.vim'
 
-    -- LSP
-    use {
-        'neovim/nvim-lspconfig',
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim'
-    }
-    use {
-        'jose-elias-alvarez/null-ls.nvim',
-        requires = { 'nvim-lua/plenary.nvim' }
-    }
-
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        --run = ':TSUpdate'
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    }
-
-    -- Completion
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
-
-    -- Statusline
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
+    if packer_bootstrap then
+        require('packer').sync()
+    end
 end)
 -- }}}
 
+require('plugins.lualine')
+
+
 -- LSP {{{
 require('mason').setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { 
+        "lua-language-server",
+        "markdownlist",
+        "stylua",
+        "svls",
+        "textlint",
+        "texlab",
+        "prettier",
+    },
+    automatic_installation = true,
+})
 require('mason-lspconfig').setup_handlers({ function(server)
     local opt = {
         capabilities = require('cmp_nvim_lsp').update_capabilities(
@@ -61,6 +111,7 @@ require('mason-lspconfig').setup_handlers({ function(server)
     }
     require('lspconfig')[server].setup(opt)
 end })
+
 require("null-ls").setup({
     sources = {
         require("null-ls").builtins.formatting.stylua,
@@ -209,85 +260,6 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 -- }
 -- }}}
 
--- Statusline {{{
-require('lualine').setup({
-    options = {
-        icons_enabled = true,
-        theme = 'tokyonight',
-        component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = ''},
-        disabled_filetypes = {
-            statusline = {},
-            winbar = {},
-        },
-        ignore_focus = {},
-        always_divide_middle = true,
-        globalstatus = false,
-        refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
-        }
-    },
-    sections = {
-        lualine_a = {'mode'},
-        lualine_b = {
-            'branch',
-            {
-                'diff',
-                colored = true,
-                symbols = {added = ' ', modified = ' ', removed = ' '},
-            },
-            {
-                'diagnostics',
-                sections = { 'error', 'warn', 'info', 'hint' },
-                symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
-                colored = true,
-                update_in_insert = false, -- Update diagnostics in insert mode.
-                always_visible = true,   -- Show diagnostics even if there are none.
-            },
-        },
-        lualine_c = {'filename'},
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
-    },
-    inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
-        lualine_y = {},
-        lualine_z = {}
-    },
-    tabline = {
-        lualine_a = {},
-        lualine_b = {'branch'},
-        lualine_c = {'filename'},
-        lualine_x = {},
-        lualine_y = {'buffers'},
-        lualine_z = {'tabs'}
-    },
-    --winbar = {
-    --  lualine_a = {},
-    --  lualine_b = {},
-    --  lualine_c = {'filename'},
-    --  lualine_x = {},
-    --  lualine_y = {},
-    --  lualine_z = {}
-    --},
-
-    inactive_winbar = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {}
-    },
-    extensions = {}
-})
---- }}}
 
 -- Diagnostics 
 vim.fn.sign_define('DiagnosticSignError', {text = ' ', texthl = 'DiagnosticSignError', numhl = 'DiagnosticSignError'})
@@ -296,3 +268,4 @@ vim.fn.sign_define('DiagnosticSignHint',  {text = ' ', texthl = 'DiagnosticSi
 vim.fn.sign_define('DiagnosticSignInfo',  {text = ' ', texthl = 'DiagnosticSignInfo',  numhl = 'DiagnosticSignInfo' })
 -- }}}
 
+vim.cmd('colorscheme tokyonight')
