@@ -100,8 +100,6 @@ flatpak update --user --assumeyes
 
 ## Install
 flatpak install --user --assumeyes flathub com.github.tchx84.Flatseal
-flatpak install --user --assumeyes flathub org.gnu.emacs
-flatpak install --user --assumeyes flathub org.vim.Vim
 flatpak install --user --assumeyes flathub io.neovim.nvim
 flatpak install --user --assumeyes flathub com.visualstudio.code
 flatpak install --user --assumeyes flathub org.eclipse.Java
@@ -131,6 +129,8 @@ flatpak install --user --assumeyes flathub org.processing.processingide
 flatpak install --user --assumeyes flathub org.wezfurlong.wezterm
 flatpak install --user --assumeyes flathub io.github.f3d_app.f3d
 flatpak install --user --assumeyes flathub net.meshlab.MeshLab
+# flatpak install --user --assumeyes flathub org.gnu.emacs
+# flatpak install --user --assumeyes flathub org.vim.Vim
 # flatpak install --user --assumeyes flathub org.apache.netbeans
 # flatpak install --user --assumeyes flathub com.jetbrains.PyCharm-Community
 # flatpak install --user --assumeyes flathub com.unity.UnityHub

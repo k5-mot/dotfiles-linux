@@ -1,20 +1,20 @@
--- [[ lualine.lua ]]
+-- [[ statusline.lua ]]
 
 require('lualine').setup({
     options = {
         icons_enabled = true,
-        theme = 'tokyonight',
+        theme = 'sonokai',
+        -- component_separators = { left = '', right = '' },
+        -- section_separators   = { left = ' ', right = ' ' },
         component_separators = { left = ' ', right = ' ' },
         section_separators   = { left = ' ', right = ' ' },
-        --component_separators = { left = '', right = ''},
-        --section_separators   = { left = '', right = ''},
         disabled_filetypes = {
             statusline = {},
             winbar = {},
         },
         ignore_focus = {},
         always_divide_middle = true,
-        globalstatus = false,
+        globalstatus = true,
         refresh = {
             statusline = 1000,
             tabline = 1000,
@@ -53,30 +53,39 @@ require('lualine').setup({
         lualine_z = {}
     },
     tabline = {
-        lualine_a = {},
-        lualine_b = {'branch'},
-        lualine_c = {'filename'},
-        lualine_x = {},
-        lualine_y = {},--'buffers'},
-        lualine_z = {'tabs'}
+        --lualine_a = {
+        --    {
+        --        'tabs',
+        --        mode = 2,
+        --    },
+        --},
+        --lualine_a = {'filetype'},
+        --lualine_b = {'filename'},
+        --lualine_c = {},
+        --lualine_x = {'close'},
+        --lualine_y = {'filename'},--'buffers'},
+        --lualine_z = {'tabs'},
     },
-    --winbar = {
-    --  lualine_a = {},
-    --  lualine_b = {},
-    --  lualine_c = {'filename'},
-    --  lualine_x = {},
-    --  lualine_y = {},
-    --  lualine_z = {}
-    --},
-
-    inactive_winbar = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {}
-    },
+    winbar = {},
+    inactive_winbar = {},
     extensions = {}
 })
 
+
+--local lsp = require('feline.providers.lsp')
+--local vi_mode_utils = require('feline.providers.vi_mode')
+--local gps = require("nvim-gps")
+--
+--require('feline').setup({
+--  theme = gruvbox,
+----  default_bg = bg,
+----  default_fg = fg,
+----  vi_mode_colors = vi_mode_colors,
+----  components = components,
+----  force_inactive = force_inactive,
+--})
+--
+----require('feline').winbar.setup({
+----  components = winbar_components,
+----  force_inactive = force_inactive,
+----})
