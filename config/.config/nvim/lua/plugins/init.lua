@@ -93,7 +93,7 @@ require("packer").startup(function(use)
 end)
 -- }}}
 
-require('plugins.lualine')
+require('plugins.statusline')
 require('plugins.lsp')
 require('plugins.completion')
 require('plugins.filer')

@@ -20,7 +20,7 @@ vim.opt.number      = true
 -- vim.opt.colorcolumn = '100'
 vim.opt.signcolumn  = 'number'
 
--- Fold 
+-- Fold
 vim.opt.foldenable = true
 vim.opt.foldmethod = 'marker'
 -- vim.opt.foldmethod = { 'indent', 'marker' }
@@ -113,43 +113,41 @@ vim.o.clipboard = vim.o.clipboard .. 'unnamedplus'
 
 vim.cmd("autocmd!")
 
-vim.cmd([[
-"augroup FoldState
-"   autocmd!
-"   autocmd BufWinLeave * mkview
-"   autocmd BufWinEnter * silent loadview
-"augroup end
-]])
-vim.cmd([[
-]])
-
--- colorscheme -----------------------------------------------------------------
-vim.cmd('autocmd ColorScheme * highlight Normal         ctermbg=none guibg=none')
-vim.cmd('autocmd ColorScheme * highlight NonText        ctermbg=none guibg=none')
-vim.cmd('autocmd ColorScheme * highlight LineNr         ctermbg=none guibg=none')
-vim.cmd('autocmd ColorScheme * highlight Folded         ctermbg=none guibg=none')
-vim.cmd('autocmd ColorScheme * highlight EndOfBuffer    ctermbg=none guibg=none')
-vim.cmd('autocmd Colorscheme * highlight Comment        term=NONE cterm=NONE gui=NONE')
-vim.cmd('autocmd Colorscheme * highlight SpecialComment term=NONE cterm=NONE gui=NONE')
-
-vim.cmd('autocmd ColorScheme * highlight FoldColumn       ctermbg=none guibg=none')
-vim.cmd('autocmd Colorscheme * highlight NormalNC ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Constant ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Special ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Identifier ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Statement ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight PreProc ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Type ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Underlined ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Todo         ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight String       ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Function     ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Conditional  ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Repeat       ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Operator     ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Structure    ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight SignColumn   ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight CursorLineNr ctermbg=none guibg=NONE')
 
 
+local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
+local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
+
+-- Remove whitespace on save
+autocmd("BufWritePre", {
+    pattern = "*",
+    command = ":%s/\\s\\+$//e",
+})
+
+-- Don't auto commenting new lines
+autocmd("BufEnter", {
+    pattern = "*",
+    command = "set fo-=c fo-=r fo-=o",
+})
+
+-- Restore cursor location when file is opened
+autocmd({ "BufReadPost" }, {
+    pattern = { "*" },
+    callback = function()
+        vim.api.nvim_exec('silent! normal! g`"zv', false)
+    end,
+})
+
+-- Save Fold state
+augroup("FoldRestore", {})
+autocmd("BufWinLeave", {
+    group    = "FoldRestore",
+    pattern  = "*",
+    callback = function () vim.cmd("mkview") end,
+})
+autocmd("BufWinEnter", {
+    group    = "FoldRestore",
+    pattern  = "*",
+    callback = function () vim.cmd("silent mkview") end,
+})
 
