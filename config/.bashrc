@@ -56,6 +56,29 @@ bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 bind '"\e[Z":menu-complete-backward'
 
+### ASDF {{{
+export ASDF_CONFIG_FILE=$XDG_CONFIG_HOME/asdf/asdfrc
+export ASDF_DIR=$XDG_DATA_HOME/asdf
+export ASDF_DATA_DIR=$ASDF_DIR
+# export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=tool-version
+if [ -d $ASDF_DIR ]; then
+    . $XDG_DATA_HOME/asdf/asdf.sh
+fi
+### }}}
+
+### Flatpak, LOCAL {{{
+if command -v flatpak &> /dev/null; then
+  if [ -e $FLATPAK_ROOT ]; then
+    export PATH=$FLATPAK_ROOT/bin:$PATH
+  fi
+fi
+if [ -e $LOCAL_ROOT ]; then
+  export PATH=$LOCAL_ROOT/bin:$PATH
+fi
+### }}}
+
+
+
 ### Appendix {{{
 for i in $XDG_CONFIG_HOME/sh/rc.d/*.sh $XDG_CONFIG_HOME/sh/rc.d/*.bash ; do
   if [ -r "$i" ]; then

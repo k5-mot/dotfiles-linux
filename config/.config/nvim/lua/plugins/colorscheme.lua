@@ -1,44 +1,67 @@
 
+-- ColorScheme {{{
+-- vim.cmd('autocmd ColorScheme * highlight Normal         ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight NonText        ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight LineNr         ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Folded         ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight EndOfBuffer    ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Comment        term=NONE cterm=NONE gui=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight SpecialComment term=NONE cterm=NONE gui=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight FoldColumn     ctermbg=NONE guibg=none')
+-- vim.cmd('autocmd ColorScheme * highlight NormalNC       ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Constant       ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Special        ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Identifier     ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Statement      ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight PreProc        ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Type           ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Underlined     ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Todo           ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight String         ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Function       ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Conditional    ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Repeat         ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Operator       ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight Structure      ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight SignColumn     ctermbg=NONE guibg=NONE')
+-- vim.cmd('autocmd ColorScheme * highlight CursorLineNr   ctermbg=NONE guibg=NONE')
 
--- colorscheme -----------------------------------------------------------------
-vim.cmd('autocmd ColorScheme * highlight Normal         ctermbg=none guibg=none')
-vim.cmd('autocmd ColorScheme * highlight NonText        ctermbg=none guibg=none')
-vim.cmd('autocmd ColorScheme * highlight LineNr         ctermbg=none guibg=none')
-vim.cmd('autocmd ColorScheme * highlight Folded         ctermbg=none guibg=none')
-vim.cmd('autocmd ColorScheme * highlight EndOfBuffer    ctermbg=none guibg=none')
-vim.cmd('autocmd Colorscheme * highlight Comment        term=NONE cterm=NONE gui=NONE')
-vim.cmd('autocmd Colorscheme * highlight SpecialComment term=NONE cterm=NONE gui=NONE')
+local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
+local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 
-vim.cmd('autocmd ColorScheme * highlight FoldColumn       ctermbg=none guibg=none')
-vim.cmd('autocmd Colorscheme * highlight NormalNC ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Constant ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Special ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Identifier ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Statement ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight PreProc ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Type ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Underlined ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Todo         ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight String       ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Function     ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Conditional  ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Repeat       ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Operator     ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight Structure    ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight SignColumn   ctermbg=none guibg=NONE')
-vim.cmd('autocmd Colorscheme * highlight CursorLineNr ctermbg=none guibg=NONE')
+autocmd("ColorScheme", {pattern = "*", command = "highlight Normal         ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight NonText        ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight LineNr         ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Folded         ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight EndOfBuffer    ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Comment        ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight SpecialComment ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight FoldColumn     ctermbg=NONE guibg=none"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight NormalNC       ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Constant       ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Special        ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Identifier     ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Statement      ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight PreProc        ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Type           ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Underlined     ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Todo           ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight String         ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Function       ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Conditional    ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Repeat         ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Operator       ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight Structure      ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight SignColumn     ctermbg=NONE guibg=NONE"})
+autocmd("ColorScheme", {pattern = "*", command = "highlight CursorLineNr   ctermbg=NONE guibg=NONE"})
 
-
-
-
-
--- Diagnostics 
+-- Diagnostics
 vim.fn.sign_define('DiagnosticSignError', {text = ' ', texthl = 'DiagnosticSignError', numhl = 'DiagnosticSignError'})
 vim.fn.sign_define('DiagnosticSignWarn',  {text = ' ', texthl = 'DiagnosticSignWarn',  numhl = 'DiagnosticSignWarn' })
 vim.fn.sign_define('DiagnosticSignHint',  {text = ' ', texthl = 'DiagnosticSignHint',  numhl = 'DiagnosticSignHint' })
 vim.fn.sign_define('DiagnosticSignInfo',  {text = ' ', texthl = 'DiagnosticSignInfo',  numhl = 'DiagnosticSignInfo' })
--- }}}
-
 
 vim.cmd('colorscheme sonokai')
+-- }}}
+
 

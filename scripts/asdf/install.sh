@@ -60,11 +60,12 @@ function install-via-cargo() {
     cargo install delta              > /dev/null 2>&1
     cargo install alacritty          > /dev/null 2>&1
     cargo install starship  --locked > /dev/null 2>&1
+    cargo install zellij    --locked > /dev/null 2>&1
     cargo --list            # > /dev/null 2>&1
 }
 
 function setup-asdf() {
-    
+
     if [ -z $XDG_DATA_HOME ]; then
         export XDG_DATA_HOME=$HOME/.local/share
     fi
@@ -157,13 +158,13 @@ function setup-asdf() {
 }
 
 set -x
-setup-asdf 
+setup-asdf
 
-echo -e "\e[34mInstall packages\e[m" > /dev/null 2>&1 
+echo -e "\e[34mInstall packages\e[m" > /dev/null 2>&1
 
-install-via-pip  
-install-via-gem  
-install-via-npm  
+install-via-pip
+install-via-gem
+install-via-npm
 install-via-cargo
 echo -e "\e[33m  Installed\e[m"
 
