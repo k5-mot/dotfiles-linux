@@ -11,11 +11,11 @@ export PORG_HOME=$HOME/.local/porg/$HOSTNAME
 if (type "porg" > /dev/null 2>&1); then
     porg -r tmux > /dev/null 2>&1
 fi
-rm -rfv   $PORG_HOME/{tmp,src}/tmux > /dev/null 2>&1
+rm -rfv   $PORG_HOME/src/tmux > /dev/null 2>&1
 
 ## Setup
-mkdir -pv $PORG_HOME/src/tmux > /dev/null 2>&1
-cd        $PORG_HOME/src/tmux > /dev/null 2>&1
+mkdir -pv ${HOME}/.porg/$HOSTNAME/src/tmux > /dev/null 2>&1
+cd        ${HOME}/.porg/$HOSTNAME/src/tmux > /dev/null 2>&1
 
 ## Download
 export TMUX_URL=$(curl -s https://api.github.com/repos/tmux/tmux/releases/latest | grep "\"browser_download_url\": \"[^\"]*.tar.gz\"" | sed "s/\"browser_download_url\": //g" | sed "s/[\" ]//g") > /dev/null 2>&1
