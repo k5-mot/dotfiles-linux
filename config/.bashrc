@@ -134,6 +134,3 @@ export C_INCLUDE_PATH=$(echo $C_INCLUDE_PATH | sed -e 's/::/:/g' | sed 's/^://g'
 export CPLUS_INCLUDE_PATH=$(echo $CPLUS_INCLUDE_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 export PKG_CONFIG_PATH=$(echo $PKG_CONFIG_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
-# DO NOT EDIT THE FOLLOWING TWO LINES
-#### LPM(/home/users/kmoto/lcl)
-source /home/users/kmoto/lcl/.bashrc
