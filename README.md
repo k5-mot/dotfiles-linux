@@ -1,4 +1,4 @@
-# dotfiles
+# :gear: dotfiles
 
 ![GitHub issues](https://img.shields.io/github/issues/k5-mot/dotfiles)
 ![GitHub forks](https://img.shields.io/github/forks/k5-mot/dotfiles)
@@ -10,47 +10,47 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/k5-mot/dotfiles)
 ![GitHub contributors](https://img.shields.io/github/contributors/k5-mot/dotfiles)
 
-## Features
+## :rainbow: Features
 
-### Shell
+### :turtle: Shell
 
-* bash
-* zsh
+- zsh
 
-### Editor
+### :penguin: Editor
 
-* emacs
-* vim
-* neovim
+- Neovim
 
-### Tool
+### :swan: Tool
 
-* git
-* latexmk
-* tmux
+- tmux
 
-### Scripts
+### :owl: Script
 
-* apt
-* porg
+- apt
+- porg
 
-## Installation
+## :accordion: Installation
 
-```zsh
+```bash
 git clone https://github.com/k5-mot/dotfiles.git $HOME
-cd ~/dotfiles
+cd $HOME/dotfiles
 make install
 ```
 
-## Note
+```python
+def main():
+    print("Hello")
+```
+
+## :scroll: Note
 
 Good luck!!!
 
-## Author
+## :busts_in_silhouette: Author
 
-* k5-mot
+- k5-mot
 
-## License
+## :heart: License
 
 Copyright (c) 2020-2022 k5-mot All Rights Reserved.
 

@@ -447,7 +447,7 @@ fpath=(${ASDF_DIR}/completions $fpath)
 #         export PATH=$XDG_DATA_HOME/asdf/installs/rust/$RUST_VERSION/bin:$PATH
 #     fi
 # fi
-# if [ ! -f $ASDF_DEFAULT_TOOL_VERSIONS_FILENAME ]; then 
+# if [ ! -f $ASDF_DEFAULT_TOOL_VERSIONS_FILENAME ]; then
 #   mkdir -pv $ASDF_DIR
 #   touch $ASDF_DEFAULT_TOOL_VERSIONS_FILENAME
 # fi

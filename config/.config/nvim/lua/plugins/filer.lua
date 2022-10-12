@@ -71,7 +71,7 @@ require("nvim-tree").setup({
                     unmerged  = " ", -- \ueafe
                     renamed   = " ", -- \ueae0
                     deleted   = " ", -- \ueadf
-                    untracked = " ", -- \uf067
+                    untracked = " ", -- \uf067
                     ignored   = " ", -- \ueadd
                 },
                 folder = {

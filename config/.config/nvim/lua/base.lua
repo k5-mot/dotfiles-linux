@@ -35,6 +35,7 @@ vim.opt.listchars:append('extends:»')
 vim.opt.listchars:append('precedes:«')
 vim.opt.listchars:append('nbsp:␣')
 vim.opt.listchars:append('eol:↲')
+vim.opt.listchars:append('space:⋅')
 
 -- Visual mode
 vim.opt.virtualedit = 'block'
@@ -138,16 +139,16 @@ autocmd({"BufReadPost"}, {
     end,
 })
 
--- Save Fold state
-augroup("FoldRestore", {})
-autocmd({"BufWinLeave"}, {
-    group    = "FoldRestore",
-    pattern  = "*",
-    callback = function () vim.cmd("mkview") end,
-})
-autocmd({"BufWinEnter"}, {
-    group    = "FoldRestore",
-    pattern  = "*",
-    callback = function () vim.cmd("silent mkview") end,
-})
+-- -- Save Fold state
+-- augroup("FoldRestore", {})
+-- autocmd({"BufWinLeave"}, {
+--     group    = "FoldRestore",
+--     pattern  = "*",
+--     callback = function () vim.cmd("mkview") end,
+-- })
+-- autocmd({"BufWinEnter"}, {
+--     group    = "FoldRestore",
+--     pattern  = "*",
+--     callback = function () vim.cmd("silent mkview") end,
+-- })
 

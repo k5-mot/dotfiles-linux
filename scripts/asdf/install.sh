@@ -32,14 +32,15 @@ function install-via-gem() {
 }
 
 function install-via-npm() {
-    npm update  --global         > /dev/null 2>&1
-    npm install --global npm     > /dev/null 2>&1
-    npm --version                # > /dev/null 2>&1
-    npm install --global yarn    > /dev/null 2>&1
-    npm install --global neovim  > /dev/null 2>&1
-    npm install --global eslint  > /dev/null 2>&1
-    npm install --global gtop    > /dev/null 2>&1
-    npm list    --global         # > /dev/null 2>&1
+    npm update  --global                   > /dev/null 2>&1
+    npm install --global npm               > /dev/null 2>&1
+    npm --version                          # > /dev/null 2>&1
+    npm install --global yarn              > /dev/null 2>&1
+    npm install --global neovim            > /dev/null 2>&1
+    npm install --global eslint            > /dev/null 2>&1
+    npm install --global gtop              > /dev/null 2>&1
+    npm install --global @fsouza/prettierd > /dev/null 2>&1
+    npm list    --global                   # > /dev/null 2>&1
 }
 
 function install-via-cargo() {

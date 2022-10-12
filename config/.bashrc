@@ -26,7 +26,7 @@ shopt -s checkwinsize
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-  xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -35,19 +35,19 @@ esac
 #force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
-  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    color_prompt=yes
-  else
-    color_prompt=
-  fi
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+        color_prompt=yes
+    else
+        color_prompt=
+    fi
 fi
 
 # Prompt
 if [ "$color_prompt" = yes ]; then
-  export PS1="\[\033[00;32m\]\u\[\033[00;35m\]@\[\033[00;34m\]\h\[\033[00;35m\]:\[\033[00;36m\]\w\n\[\033[01;32m\]\$\[\033[00m\] "
-  export PS2="\[\033[00;34m\]>\[\033[00m\] "
+    export PS1="\[\033[00;32m\]\u\[\033[00;35m\]@\[\033[00;34m\]\h\[\033[00;35m\]:\[\033[00;36m\]\w\n\[\033[01;32m\]\$\[\033[00m\] "
+    export PS2="\[\033[00;34m\]>\[\033[00m\] "
 else
-  export PS1="\u@\h:\w\n\$ "
+    export PS1="\u@\h:\w\n\$ "
 fi
 
 ## Completion
@@ -68,12 +68,12 @@ fi
 
 ### Flatpak, LOCAL {{{
 if command -v flatpak &> /dev/null; then
-  if [ -e $FLATPAK_ROOT ]; then
-    export PATH=$FLATPAK_ROOT/bin:$PATH
-  fi
+    if [ -e $FLATPAK_ROOT ]; then
+        export PATH=$FLATPAK_ROOT/bin:$PATH
+    fi
 fi
 if [ -e $LOCAL_ROOT ]; then
-  export PATH=$LOCAL_ROOT/bin:$PATH
+    export PATH=$LOCAL_ROOT/bin:$PATH
 fi
 ### }}}
 
@@ -81,31 +81,31 @@ fi
 
 ### Appendix {{{
 for i in $XDG_CONFIG_HOME/sh/rc.d/*.sh $XDG_CONFIG_HOME/sh/rc.d/*.bash ; do
-  if [ -r "$i" ]; then
-    if [ "${-#*i}" != "$-" ]; then
-      . "$i"
-    else
-      . "$i" >/dev/null
+    if [ -r "$i" ]; then
+        if [ "${-#*i}" != "$-" ]; then
+            . "$i"
+        else
+            . "$i" >/dev/null
+        fi
     fi
-  fi
 done
 ### }}}
 
 ## Local Setting
 if [ -f ~/.bashrc_local ]; then
-  . ~/.bashrc_local
+    . ~/.bashrc_local
 fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  fi
-  if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    fi
+    if [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
 # Remove duplicated path.

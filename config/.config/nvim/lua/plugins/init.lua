@@ -27,14 +27,32 @@ require("packer").startup(function(use)
     }
     use {
         'jose-elias-alvarez/null-ls.nvim',
-        requires = { 'nvim-lua/plenary.nvim' }
+        requires = { {'nvim-lua/plenary.nvim'} }
     }
+    use 'onsails/lspkind-nvim'
+    use 'MunifTanjim/prettier.nvim'
 
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
         -- run = ':TSUpdate',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    }
+
+    -- Telescope
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        requires = {
+            {'nvim-lua/plenary.nvim'},
+            {'nvim-tree/nvim-web-devicons'},
+        }
+    }
+    use {
+        'nvim-telescope/telescope-file-browser.nvim',
+        requires = {
+            {'nvim-lua/plenary.nvim'},
+            {'nvim-telescope/telescope.nvim'},
+        }
     }
 
     -- Filer
@@ -52,16 +70,28 @@ require("packer").startup(function(use)
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
 
     -- Autopairs
     use {
         'windwp/nvim-autopairs',
         config = function() require('nvim-autopairs').setup({}) end,
     }
+    -- Indent Visualization
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function() end,
+    }
 
     -- Statusline
     use 'kyazdani42/nvim-web-devicons'
-    use 'lewis6991/gitsigns.nvim'
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
     use {
         'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
@@ -96,6 +126,9 @@ end)
 require('plugins.statusline')
 require('plugins.lsp')
 require('plugins.completion')
-require('plugins.filer')
 require('plugins.colorscheme')
+require('plugins.editor')
+require('plugins.syntax')
+require('plugins.filer')
+require('plugins.telescope')
 

@@ -4,7 +4,7 @@
 
 require('mason').setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { 
+    ensure_installed = {
         "lua-language-server",
         "markdownlist",
         "stylua",
@@ -93,6 +93,23 @@ require('lspconfig')['rust_analyzer'].setup{
     }
 }
 
+
+local status, prettier = pcall(require, "prettier")
+if (not status) then return end
+
+prettier.setup({
+  bin = 'prettierd',
+  filetypes = {
+    "css",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "scss",
+    "less"
+  }
+})
 
 -- Reference highlight
 vim.cmd [[
