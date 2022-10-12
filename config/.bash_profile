@@ -44,8 +44,3 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
-
-if [ -e /home/users/kmoto/.nix-profile/etc/profile.d/nix.sh ]; then . /home/users/kmoto/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-# DO NOT EDIT THE FOLLOWING TWO LINES
-#### LPM(/home/users/kmoto/lcl)
-source /home/users/kmoto/lcl/.bash_profile
