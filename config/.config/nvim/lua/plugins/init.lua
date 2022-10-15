@@ -1,30 +1,40 @@
 -- [[ plugins.lua ]]
 
+-- Packer Installation Function
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    print("Installing packer close and reopen Neovim...")
-    return true
-  end
-  return false
+    local fn = vim.fn
+    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+        vim.cmd [[packadd packer.nvim]]
+        print("Installing packer close and reopen Neovim...")
+        return true
+    end
+    return false
 end
 
 local packer_bootstrap = ensure_packer()
+local status, packer = pcall(require, "packer")
+if (not status) then return end
+
+packer.init({
+    git = {
+        clone_timeout = 120, -- timeout, in seconds, for git clones
+    },
+    display = {
+        open_fn = require('packer.util').float,
+    },
+})
 
 -- Packer.nvim {{{
-require("packer").startup(function(use)
+packer.startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
     -- LSP
-    use {
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
-        'neovim/nvim-lspconfig',
-    }
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+    use 'neovim/nvim-lspconfig'
     use {
         'jose-elias-alvarez/null-ls.nvim',
         requires = { {'nvim-lua/plenary.nvim'} }
@@ -54,6 +64,13 @@ require("packer").startup(function(use)
             {'nvim-telescope/telescope.nvim'},
         }
     }
+    use {
+        'xiyaowong/telescope-emoji.nvim',
+        requires = {
+            {'nvim-lua/plenary.nvim'},
+            {'nvim-telescope/telescope.nvim'},
+        }
+    }
 
     -- Filer
     use {
@@ -70,8 +87,16 @@ require("packer").startup(function(use)
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-emoji'
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
+    -- AI
+    -- use 'codota/tabnine-vim'
+    use {
+        'tzachar/cmp-tabnine',
+        run = './install.sh', requires = 'hrsh7th/nvim-cmp'
+    }
 
     -- Autopairs
     use {
@@ -118,7 +143,7 @@ require("packer").startup(function(use)
     use 'cocopon/iceberg.vim'
 
     if packer_bootstrap then
-        require('packer').sync()
+        packer.sync()
     end
 end)
 -- }}}

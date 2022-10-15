@@ -1,3 +1,4 @@
+
 local status, telescope = pcall(require, "telescope")
 if (not status) then return end
 
@@ -15,7 +16,7 @@ vim.keymap.set('n', 'fh', builtin.help_tags,  {})
 local function telescope_buffer_dir()
   return vim.fn.expand('%:p:h')
 end
-require("telescope").setup {
+require("telescope").setup({
     extensions = {
         file_browser = {
             theme = "dropdown",
@@ -31,7 +32,8 @@ require("telescope").setup {
             },
         },
     },
-}
+})
+
 -- To get telescope-file-browser loaded and working with telescope,
 -- you need to call load_extension, somewhere after setup function:
 require("telescope").load_extension("file_browser")
@@ -47,4 +49,23 @@ vim.keymap.set("n", "ft", function()
         layout_config = { height = 40 }})
     end, { noremap = true }
 )
+
+require("telescope").load_extension("emoji")
+telescope.setup {
+    extensions = {
+        emoji = {
+            action = function(emoji)
+                -- argument emoji is a table.
+                -- {name="", value="", cagegory="", description=""}
+
+                vim.fn.setreg("*", emoji.value)
+                print([[Press p or "*p to paste this emoji]] .. emoji.value)
+
+                -- insert emoji when picked
+                -- vim.api.nvim_put({ emoji.value }, 'c', false, true)
+            end,
+        }
+    },
+}
+
 

@@ -1,30 +1,5 @@
 
 -- ColorScheme {{{
--- vim.cmd('autocmd ColorScheme * highlight Normal         ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight NonText        ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight LineNr         ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Folded         ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight EndOfBuffer    ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Comment        term=NONE cterm=NONE gui=NONE')
--- vim.cmd('autocmd ColorScheme * highlight SpecialComment term=NONE cterm=NONE gui=NONE')
--- vim.cmd('autocmd ColorScheme * highlight FoldColumn     ctermbg=NONE guibg=none')
--- vim.cmd('autocmd ColorScheme * highlight NormalNC       ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Constant       ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Special        ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Identifier     ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Statement      ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight PreProc        ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Type           ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Underlined     ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Todo           ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight String         ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Function       ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Conditional    ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Repeat         ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Operator       ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight Structure      ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight SignColumn     ctermbg=NONE guibg=NONE')
--- vim.cmd('autocmd ColorScheme * highlight CursorLineNr   ctermbg=NONE guibg=NONE')
 
 local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd -- Create autocommand

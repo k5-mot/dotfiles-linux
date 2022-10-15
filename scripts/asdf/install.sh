@@ -39,6 +39,7 @@ function install-via-npm() {
     npm install --global neovim            > /dev/null 2>&1
     npm install --global eslint            > /dev/null 2>&1
     npm install --global gtop              > /dev/null 2>&1
+    npm install --global --save-dev --save-exact prettier > /dev/null 2>&1
     npm install --global @fsouza/prettierd > /dev/null 2>&1
     npm list    --global                   # > /dev/null 2>&1
 }

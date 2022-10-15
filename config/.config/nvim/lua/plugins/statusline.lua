@@ -1,6 +1,8 @@
 -- [[ statusline.lua ]]
 
-require('lualine').setup({
+local status, lualine = pcall(require, "lualine")
+
+lualine.setup({
     options = {
         icons_enabled = true,
         theme = 'sonokai',
