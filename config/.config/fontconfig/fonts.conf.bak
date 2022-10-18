@@ -1,0 +1,102 @@
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+    <!-- Default font (no fc-match pattern) -->
+    <!--match>
+        <edit mode="prepend" name="family">
+            <string>Noto Sans</string>
+        </edit>
+    </match-->
+
+    <!-- Default font for the ja_JP locale (no fc-match pattern) -->
+    <!--match>
+        <test compare="contains" name="lang">
+            <string>ja</string>
+        </test>
+        <edit mode="prepend" name="family">
+            <string>Noto Sans CJK JP</string>
+        </edit>
+    </match-->
+
+    <!-- Default sans-serif font -->
+    <!--match target="pattern">
+        <test qual="any" name="family"><string>sans-serif</string></test>
+        <edit name="family" mode="prepend" binding="same"><string>Noto Sans</string>  </edit>
+    </match-->
+
+    <!-- Default serif fonts -->
+    <!--match target="pattern">
+        <test qual="any" name="family"><string>serif</string></test>
+        <edit name="family" mode="prepend" binding="same"><string>Noto Serif</string>  </edit>
+        <edit name="family" mode="append" binding="same"><string>IPAPMincho</string>  </edit>
+        <edit name="family" mode="append" binding="same"><string>HanaMinA</string>  </edit>
+    </match-->
+
+    <!-- Default monospace fonts -->
+    <!--match target="pattern">
+        <test qual="any" name="family"><string>monospace</string></test>
+        <edit name="family" mode="prepend"  binding="same"><string>Cascadia Code</string></edit>
+        <edit name="family" mode="prepend" binding="same"><string>Noto Color Emoji</string></edit>
+        <edit name="family" mode="prepend" binding="same"><string>CaskaydiaCove Nerd Font</string></edit>
+        <edit name="family" mode="prepend" binding="same"><string>Inconsolatazi4</string></edit>
+        <edit name="family" mode="append"  binding="same"><string>Noto Emoji</string></edit>
+        <edit name="family" mode="append"  binding="same"><string>IPAGothic</string></edit>
+    </match-->
+
+    <!-- Fallback fonts preference order -->
+    <alias binding="same">
+        <family>sans-serif</family>
+        <prefer>
+            <family>Noto Sans</family>
+            <family>Noto Color Emoji</family>
+            <family>Noto Emoji</family>
+            <family>Open Sans</family>
+            <family>Droid Sans</family>
+            <family>Ubuntu</family>
+            <family>Roboto</family>
+            <family>NotoSansCJK</family>
+            <family>Source Han Sans JP</family>
+            <family>IPAPGothic</family>
+            <family>VL PGothic</family>
+            <family>Koruri</family>
+        </prefer>
+    </alias>
+    <alias binding="same">
+        <family>serif</family>
+        <prefer>
+            <family>Noto Serif</family>
+            <family>Noto Color Emoji</family>
+            <family>Noto Emoji</family>
+            <family>Droid Serif</family>
+            <family>Roboto Slab</family>
+            <family>IPAPMincho</family>
+        </prefer>
+    </alias>
+    <alias>
+        <family>monospace</family>
+        <prefer>
+            <family>Noto Sans Mono</family>
+            <family>Noto Color Emoji</family>
+            <family>Cascadia Code</family>
+            <family>CaskaydiaCove Nerd Font</family>
+            <family>Twitter Color Emoji</family>
+            <family>Noto Emoji</family>
+            <family>DejaVu Sans Mono</family>
+            <family>DejaVu Sans Mono</family>
+            <family>Cousine</family>
+            <family>Noto Mono for Powerline</family>
+            <family>RobotoMono Nerd Font</family>
+            <family>Roboto Mono</family>
+            <family>NotoSansMono Nerd Font Regular</family>
+            <family>Noto Sans Mono</family>
+            <family>Inconsolatazi4</family>
+            <family>Ubuntu Mono</family>
+            <family>Droid Sans Mono</family>
+            <family>Roboto Mono</family>
+            <family>IPAGothic</family>
+        </prefer>
+    </alias>
+
+    <dir>~/.local/share/fonts</dir>
+</fontconfig>
+

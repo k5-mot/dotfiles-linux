@@ -100,9 +100,11 @@ print_colors() {
 }
 
 print-emoji() {
-    cnt = 0
-    for i in {61545..62178}; do 
-        echo -n -e "$(printf '\\u%x' $i) ";
+    for i in {$((16#0000203C))..$((16#00003299))}; do
+        echo -n -e "$(printf '\\U%x' $i) ";
+    done
+    for i in {$((16#0001F004))..$((16#0001FA95))}; do
+        echo -n -e "$(printf '\\U%x' $i) ";
     done
 }
 
