@@ -49,6 +49,7 @@ cmp.setup({
         { name = 'nvim_lua' },
         { name = 'path' },
         { name = 'cmp_tabnine' },
+        -- { name = 'copilot' },
         { name = 'emoji' },
     }),
     formatting = {
@@ -83,6 +84,7 @@ cmp.setup({
                     path        = "[Path]",
                     luasnip     = "[Snippet]",
                     emoji       = "[Emoji]",
+                    copilot     = "[Copilot]",
                 }
 
                 -- if you have lspkind installed, you can use it like
