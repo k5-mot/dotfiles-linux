@@ -60,6 +60,7 @@ function install-via-cargo() {
     cargo install texlab             > /dev/null 2>&1
     cargo install stylua             > /dev/null 2>&1
     cargo install delta              > /dev/null 2>&1
+    cargo install sheldon            > /dev/null 2>&1
     cargo install alacritty          > /dev/null 2>&1
     cargo install starship  --locked > /dev/null 2>&1
     cargo install zellij    --locked > /dev/null 2>&1

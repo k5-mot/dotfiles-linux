@@ -15,4 +15,3 @@ elseif is_mac == 1 then
 else
     require('env.linux')
 end
-

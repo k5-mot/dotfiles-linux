@@ -14,30 +14,41 @@ if (not status) then return end
 require('mason').setup()
 require("mason-lspconfig").setup({
     ensure_installed = {
-        "bash-language-server",
+        "bashls",
         "clangd",
-        "deno",
-        "elm-language-server",
-        "emmet-ls",
-        "lua-language-server",
-        "markdownlist",
-        "prettier",
-        "stylua",
+        "denols",
+        "elmls",
+        "emmet_ls",
+        "grammarly",
+        "jsonls",
+        "sumneko_lua",
+        "marksman",
+        "pyright",
+        "rust_analyzer",
+        "svlangserver",
         "svls",
         "texlab",
-        "textlint",
-        "vim-language-server",
+        "vimls",
     },
     automatic_installation = true,
 })
--- require('mason-lspconfig').setup_handlers({ function(server)
---     local opt = {
---         capabilities = require('cmp_nvim_lsp').update_capabilities(
---             vim.lsp.protocol.make_client_capabilities()
---         )
---     }
---     require('lspconfig')[server].setup(opt)
--- end })
+
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- The following example advertise capabilities to `clangd`.
+require('lspconfig').clangd.setup({
+  capabilities = capabilities,
+})
+
+local lspconfig = require('lspconfig')
+require('mason-lspconfig').setup_handlers({
+    function(server_name)
+        lspconfig[server_name].setup({
+            capabilities = capabilities,
+        })
+    end,
+})
 
 require("null-ls").setup({
     sources = {
@@ -46,6 +57,7 @@ require("null-ls").setup({
         require("null-ls").builtins.completion.spell,
     },
 })
+
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -107,7 +119,7 @@ local status, prettier = pcall(require, "prettier")
 if (not status) then return end
 
 prettier.setup({
-    bin = 'prettierd',
+    bin = 'prettier',
     filetypes = {
         "css",
         "javascript",
@@ -121,16 +133,16 @@ prettier.setup({
 })
 
 -- Reference highlight
-vim.cmd [[
-set updatetime=500
-highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
-"augroup lsp_document_highlight
-"autocmd!
-"autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
-"autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
-"augroup END
-]]
+-- vim.cmd [[
+-- set updatetime=500
+-- highlight LspReferenceText  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+-- highlight LspReferenceRead  cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+-- highlight LspReferenceWrite cterm=underline ctermfg=1 ctermbg=8 gui=underline guifg=#A00000 guibg=#104040
+-- "augroup lsp_document_highlight
+-- "autocmd!
+-- "autocmd CursorHold,CursorHoldI * lua vim.lsp.buf.document_highlight()
+-- "autocmd CursorMoved,CursorMovedI * lua vim.lsp.buf.clear_references()
+-- "augroup END
+-- ]]
 
 -- }}}
