@@ -84,7 +84,7 @@ cmp.setup({
                     path        = "[Path]",
                     luasnip     = "[Snippet]",
                     emoji       = "[Emoji]",
-                    copilot     = "[Copilot]",
+                    -- copilot     = "[Copilot]",
                 }
 
                 -- if you have lspkind installed, you can use it like

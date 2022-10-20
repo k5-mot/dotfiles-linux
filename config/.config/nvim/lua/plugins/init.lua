@@ -98,7 +98,7 @@ packer.startup(function(use)
         run = './install.sh', requires = 'hrsh7th/nvim-cmp'
     }
     -- use 'github/copilot.vim'
-    -- use 'hrsh7th/cmp-copilot'
+    use 'hrsh7th/cmp-copilot'
 
     -- Autopairs
     use {
