@@ -29,7 +29,7 @@ cd        $PORG_HOME/src/libevent/libevent-*
 ## Install
 ./configure \
     --prefix=$PORG_HOME/usr \
-    --enable-shared
+    --disable-shared
 make
 porg -lD "make install"
 

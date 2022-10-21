@@ -29,12 +29,16 @@ cd       $PORG_HOME/src/tmux/tmux-*
 
 ## Install
 PKG_CONFIG_PATH="$PORG_HOME/usr/lib/pkgconfig" \
-LDFLAGS="-L$PORG_HOME/usr/lib" \
-CFLAGS="-I$PORG_HOME/usr/include" \
 ./configure \
   --prefix=$PORG_HOME/usr \
   --enable-static \
-  --enable-utf8proc
+  --enable-utf8proc \
+  CFLAGS="-I$PORG_HOME/usr/include -I$PORG_HOME/usr/include/ncurses" \
+  LDFLAGS="-L$PORG_HOME/usr/lib -L$PORG_HOME/usr/include -L$PORG_HOME/usr/include/ncurses" \
+  LIBEVENT_CFLAGS="-I$PORG_HOME/usr/include" \
+  LIBEVENT_LIBS="-L$PORG_HOME/usr/lib -levent" \
+  LIBNCURSES_CFLAGS="-I$PORG_HOME/usr/include" \
+  LIBNCURSES_LIBS="-L$PORG_HOME/usr/lib -lncurses"
 #   --with-utf8proc=$PORG_HOME/usr \
 #   --with-ncurses=$PORG_HOME/usr \
 #   --with-libevent=$PORG_HOME/usr \

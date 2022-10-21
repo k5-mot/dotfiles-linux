@@ -26,6 +26,9 @@ echo -e "\e[34mInstalled ncurses\e[m"
 ./apps/utf8proc.sh      # > /dev/null 2>&1
 echo -e "\e[34mInstalled utf8proc\e[m"
 
+./apps/xclip.sh      # > /dev/null 2>&1
+echo -e "\e[34mInstalled xclip\e[m"
+
 ./apps/tmux.sh          # > /dev/null 2>&1
 echo -e "\e[34mInstalled tmux\e[m"
 

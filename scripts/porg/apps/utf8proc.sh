@@ -21,11 +21,12 @@ cd        $PORG_HOME/tmp
 cd        $PORG_HOME/src
 git clone --verbose https://github.com/JuliaStrings/utf8proc.git
 cd        $PORG_HOME/src/utf8proc
-git checkout -b v2.7.0 refs/tags/v2.7.0
+tag_name=$(git tag | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | sort --reverse | head -1)
+git checkout -b v$tag_name refs/tags/v$tag_name
 
 ## Install
 make prefix=$PORG_HOME/usr
-porg -lD "make install prefix=$PORG_HOME/usr"
+porg -lp utf8proc-$tag_name "make install prefix=$PORG_HOME/usr"
 make check
 
 ## Check
