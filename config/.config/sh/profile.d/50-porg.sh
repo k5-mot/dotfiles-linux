@@ -6,7 +6,9 @@
 export HOSTNAME=$(hostname -s)
 export PORG_ROOT=$HOME/.local/porg/$HOSTNAME
 if [ -e $PORG_ROOT ]; then
-  export PATH=$PORG_ROOT/bin:$PATH
+  export PATH=$PORG_ROOT/usr/bin:$PATH
+  export LD_LIBRARY_PATH=$PORG_ROOT/usr/lib:$LD_LIBRARY_PATH
+  export MANPATH=$PORG_ROOT/share/man:$MANPATH
   # export PATH=$PORG_ROOT/opt/bin:$PORG_ROOT/usr/bin:$PATH
   # export LD_LIBRARY_PATH=$PORG_ROOT/usr/lib64:$PORG_ROOT/usr/lib:$LD_LIBRARY_PATH
   # export LIBRARY_PATH=$PORG_ROOT/usr/lib64:$PORG_ROOT/usr/lib:$LIBRARY_PATH

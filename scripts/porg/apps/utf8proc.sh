@@ -19,8 +19,9 @@ cd        $PORG_HOME/tmp
 
 ## Download
 cd        $PORG_HOME/src
-git clone --verbose --recursive https://github.com/JuliaStrings/utf8proc.git
+git clone --verbose https://github.com/JuliaStrings/utf8proc.git
 cd        $PORG_HOME/src/utf8proc
+git checkout -b v2.7.0 refs/tags/v2.7.0
 
 ## Install
 make prefix=$PORG_HOME/usr

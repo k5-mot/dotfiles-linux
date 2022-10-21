@@ -28,14 +28,16 @@ tar -xvf $PORG_HOME/tmp/tmux-*.tar.gz
 cd       $PORG_HOME/src/tmux/tmux-*
 
 ## Install
-PKG_CONFIG_PATH=$PORG_HOME/usr/lib/pkgconfig \
+PKG_CONFIG_PATH="$PORG_HOME/usr/lib/pkgconfig" \
+LDFLAGS="-L$PORG_HOME/usr/lib" \
+CFLAGS="-I$PORG_HOME/usr/include" \
 ./configure \
   --prefix=$PORG_HOME/usr \
-  --with-utf8proc=$PORG_HOME/usr \
-  --with-ncurses=$PORG_HOME/usr \
-  --with-libevent=$PORG_HOME/usr \
   --enable-static \
   --enable-utf8proc
+#   --with-utf8proc=$PORG_HOME/usr \
+#   --with-ncurses=$PORG_HOME/usr \
+#   --with-libevent=$PORG_HOME/usr \
 make
 porg -lD "make install"
 

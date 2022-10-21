@@ -22,16 +22,16 @@ browser_download_url=$(curl -s https://api.github.com/repos/libevent/libevent/re
 wget --no-check-certificate $browser_download_url
 
 ## Extract
-cd        $PORG_HOME/src/libevent        
-tar -xvf  $PORG_HOME/tmp/libevent-*.tar.gz 
+cd        $PORG_HOME/src/libevent
+tar -xvf  $PORG_HOME/tmp/libevent-*.tar.gz
 cd        $PORG_HOME/src/libevent/libevent-*
 
 ## Install
 ./configure \
     --prefix=$PORG_HOME/usr \
-    --with-shared
-make               
-porg -lD "make install" 
+    --enable-shared
+make
+porg -lD "make install"
 
 ## Check
 porg libevent
