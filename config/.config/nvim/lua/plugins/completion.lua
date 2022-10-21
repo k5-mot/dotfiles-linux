@@ -49,8 +49,10 @@ cmp.setup({
         { name = 'nvim_lua' },
         { name = 'path' },
         { name = 'cmp_tabnine' },
-        -- { name = 'copilot' },
+        { name = 'copilot' },
         { name = 'emoji' },
+        { name = 'nvim_lsp_signature_help' },
+        { name = 'treesitter' },
     }),
     formatting = {
         format = lspkind.cmp_format({
@@ -73,6 +75,8 @@ cmp.setup({
             -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
             ellipsis_char = '...',
 
+            symbol_map = { Copilot = "" },
+
             -- The function below will be called before any actual modifications from lspkind
             -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
             before = function (entry, vim_item)
@@ -84,7 +88,9 @@ cmp.setup({
                     path        = "[Path]",
                     luasnip     = "[Snippet]",
                     emoji       = "[Emoji]",
-                    -- copilot     = "[Copilot]",
+                    copilot     = "[Copilot]",
+                    treesitter  = "[Treesitter]",
+                    nvim_lsp_signature_help = "[Help]",
                 }
 
                 -- if you have lspkind installed, you can use it like
@@ -96,6 +102,8 @@ cmp.setup({
                     vim_item.kind = ""
                     if detail and detail:find('.*%%.*') then
                         vim_item.kind = vim_item.kind .. ' ' .. detail
+                    else
+                        vim_item.kind = vim_item.kind .. ' ?'
                     end
 
                     if (entry.completion_item.data or {}).multiline then
@@ -122,9 +130,11 @@ cmp.setup({
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {
+    sources = cmp.config.sources({
         { name = 'buffer' }
-    }
+    }, {
+        { name = 'nvim_lsp_docment_symbol' }
+    })
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
