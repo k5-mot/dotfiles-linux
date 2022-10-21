@@ -25,19 +25,20 @@ browser_download_url="https://ftp.gnu.org/pub/gnu/ncurses/ncurses-6.3.tar.gz"
 wget --no-check-certificate $browser_download_url
 
 ## Extract
-cd       $PORG_HOME/src/ncurses       
+cd       $PORG_HOME/src/ncurses
 tar -xvf $PORG_HOME/tmp/ncurses-*.tar.gz
-cd       $PORG_HOME/src/ncurses/ncurses-*  
+cd       $PORG_HOME/src/ncurses/ncurses-*
 
 ## Install
 ./configure \
   --prefix=$PORG_HOME/usr \
   --with-pkg-config-libdir=$PORG_HOME/usr/lib/pkgconfig \
+  --with-libevent=$PORG_HOME/usr \
   --with-termlib \
   --enable-pc-files \
-  --with-shared       
-make                   
-porg -lD "make install" 
+  --with-shared
+make
+porg -lD "make install"
 
 ## Check
 porg ncurses
