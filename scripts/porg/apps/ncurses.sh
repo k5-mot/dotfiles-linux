@@ -32,9 +32,12 @@ cd       $PORG_HOME/src/ncurses/ncurses-*
 ## Install
 ./configure \
   --prefix=$PORG_HOME/usr \
-  --with-pkg-config-libdir=$PORG_HOME/usr/lib/pkgconfig \
+  --with-termlib \
+  --enable-pc-files \
   --with-default-terminfo-dir=$PORG_HOME/usr/share/terminfo \
-  --with-terminfo-dirs="$PORG_HOME/etc/terminfo:$PORG_HOME/lib/terminfo:$PORG_HOME/usr/share/terminfo"
+  --with-terminfo-dirs="$PORG_HOME/etc/terminfo:$PORG_HOME/lib/terminfo:$PORG_HOME/usr/share/terminfo" \
+  --with-pkg-config-libdir=$PORG_HOME/usr/lib/pkgconfig
+  #--with-normal \
 #   --with-termlib \
 #   --enable-pc-files \
 #   --with-shared
