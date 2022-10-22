@@ -195,6 +195,11 @@ packer.startup(function(use)
         'romgrk/barbar.nvim',
         requires = {'kyazdani42/nvim-web-devicons'},
     }
+    -- use {
+    --     'akinsho/bufferline.nvim',
+    --     tag = "v3.*",
+    --     requires = 'kyazdani42/nvim-web-devicons'
+    -- }
 
     -- Startup
     use {
@@ -220,6 +225,9 @@ packer.startup(function(use)
     end
 end)
 -- }}}
+vim.opt.termguicolors = true
+vim.cmd('colorscheme darkblue')
+-- require("bufferline").setup({})
 
 local db = require('dashboard')
 db.custom_header = {

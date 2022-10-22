@@ -18,7 +18,8 @@
 [alias]
   changelog     = "!git log --decorate | awk -f $HOME/.local/bin/generate-changelog.awk"
   ## Print commit logs.
-  graph         = log --oneline --decorate --graph --branches --tags --remotes --pretty=format:'%C(green)%h %C(blue)[%cd] %C(red)%d %C(reset)%s %C(cyan)'
+    graph         = log --oneline --decorate --graph --branches --tags --remotes --date=short --pretty=format:'%C(green)%h %C(blue)[%cd] %C(reset)%s %C(cyan)(@%cn) %C(red)%d'
+  graph1         = log --oneline --decorate --graph --branches --tags --remotes --pretty=format:'%C(green)%h %C(blue)[%cd] %C(red)%d %C(reset)%s %C(cyan)'
   ## Discard changed files.
   discard       = checkout --
   ## Reset added files.

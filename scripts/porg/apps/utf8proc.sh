@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-## libevent
+## utf8proc
 
 set -x
 export HOSTNAME=$(hostname -s)
@@ -32,3 +32,4 @@ make check
 ## Check
 porg utf8proc
 cd $HOME
+

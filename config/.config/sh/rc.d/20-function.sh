@@ -99,13 +99,17 @@ print_colors() {
   echo -e "\e[0m"
 }
 
-print-emoji() {
+print-emoji1() {
     for i in {$((16#0000203C))..$((16#00003299))}; do
         echo -n -e "$(printf '\\U%x' $i) ";
     done
     for i in {$((16#0001F004))..$((16#0001FA95))}; do
         echo -n -e "$(printf '\\U%x' $i) ";
     done
+}
+
+print-emoji() {
+    curl https://unicode.org/Public/emoji/15.0/emoji-test.txt | cat
 }
 
 

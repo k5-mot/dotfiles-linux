@@ -3,14 +3,16 @@ return {
     font = wezterm.font_with_fallback {
         'Cascadia Code',
         'Noto Color Emoji',
+        'Noto Emoji',
+        'Powerline Extra Symbols',
         'CaskaydiaCove Nerd Font',
         -- 'RictyDiminished',
+        'DejaVu Sans Mono',
         -- 'Fira Code',
         -- 'JetBrains Mono',
-        'Powerline Extra Symbols',
     },
     font_size = 11.0,
-
+    -- default_prog = { '/bin/zsh', '-l' },
     check_for_updates = false,
 
     -- color_scheme = "Gruvbox Dark",
@@ -26,7 +28,7 @@ return {
         {
             source = {
                 -- File = '/home/users/kmoto/Pictures/Wallpapers/white.jpg',
-                File = "/home/users/kmoto/Pictures/Wallpapers/tile.gif",
+                File = "/home/users/kmoto/Pictures/Wallpapers/mount_fuji2.jpg",
             },
             attachment = 'Fixed',
             width  = '100%',
@@ -34,7 +36,7 @@ return {
             -- height = '100%',
             -- width  = 'Contain',
             hsb = {
-                brightness = 0.15,
+                brightness = 0.25,
                 hue = 1.0,
                 saturation = 1.0,
             },

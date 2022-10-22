@@ -103,7 +103,7 @@ function setup-asdf() {
     asdf plugin add ghq        https://github.com/kajisha/asdf-ghq.git                > /dev/null 2>&1
     asdf plugin add vim        https://github.com/tsuyoshicho/asdf-vim.git            > /dev/null 2>&1
     asdf plugin add neovim     https://github.com/richin13/asdf-neovim.git            > /dev/null 2>&1
-    asdf plugin add tmux       https://github.com/aphecetche/asdf-tmux.git            > /dev/null 2>&1
+    # asdf plugin add tmux       https://github.com/aphecetche/asdf-tmux.git            > /dev/null 2>&1
     asdf plugin list
 
     echo -e "\e[34mInstall env\e[m"
@@ -126,7 +126,7 @@ function setup-asdf() {
     asdf install ghq        latest           > /dev/null 2>&1
     asdf install vim        latest           > /dev/null 2>&1
     asdf install neovim     0.7.2            > /dev/null 2>&1
-    asdf install tmux       latest           > /dev/null 2>&1
+    # asdf install tmux       latest           > /dev/null 2>&1
     asdf list
 
     echo -e "\e[33m  Installed\e[m"

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 ##
-## APT (Advanced Packaging Tool)
-## URL: https://salsa.debian.org/apt-team/apt.git
+## DNF (Dandified Yum)
+## URL: https://github.com/rpm-software-management/dnf
 ##
 
 ## Update
@@ -30,15 +30,15 @@ sudo dnf install -y gcc-gfortran libgfortran
 sudo dnf install -y perl-devel
 sudo dnf install -y zsh
 
-sudo dnf install -y snapd
-sudo systemctl enable snapd.socket
-sudo systemctl start snapd.socket
-sudo systemctl status snapd.socket
-sudo ln -s /var/lib/snapd/snap /snap
-sudo snap install snap-store
-
-sudo snap install -y newsboat
-sudo snap install -y neomutt
+## Snapcraft
+# sudo dnf install -y snapd
+# sudo systemctl enable snapd.socket
+# sudo systemctl start  snapd.socket
+# sudo systemctl status snapd.socket
+# sudo ln -s /var/lib/snapd/snap /snap
+# sudo snap install snap-store
+# sudo snap install -y newsboat
+# sudo snap install -y neomutt
 
 #sudo dnf install -y curl
 #sudo dnf install -y wget
