@@ -36,10 +36,12 @@ cd       $PORG_HOME/src/ncurses/ncurses-*
   --enable-pc-files \
   --with-default-terminfo-dir=$PORG_HOME/usr/share/terminfo \
   --with-terminfo-dirs="$PORG_HOME/etc/terminfo:$PORG_HOME/lib/terminfo:$PORG_HOME/usr/share/terminfo" \
-  --with-pkg-config-libdir=$PORG_HOME/usr/lib/pkgconfig
-  #--with-normal \
-#   --with-termlib \
-#   --enable-pc-files \
+  --with-pkg-config=$PORG_HOME/usr/lib/pkgconfig \
+  --with-pkg-config-libdir=$PORG_HOME/usr/lib/pkgconfig \
+  CFLAGS="-I$PORG_HOME/usr/include " \
+  CPPFLAGS="-I$PORG_HOME/usr/include " \
+  LDFLAGS="-L$PORG_HOME/usr/lib -L$PORG_HOME/usr/include " \
+  LIBS="-static-libgcc -Wl,-Bstatic,-levent,-levent_core,-levent_extra,-levent_openssl,-levent_pthreads,-Bdynamic "
 #   --with-shared
 make
 porg -lD "make install"

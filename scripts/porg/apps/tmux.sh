@@ -28,18 +28,19 @@ tar -xvf $PORG_HOME/tmp/tmux-*.tar.gz
 cd       $PORG_HOME/src/tmux/tmux-*
 
 ## Install
-PKG_CONFIG_PATH="$PORG_HOME/usr/lib/pkgconfig" \
+PKG_CONFIG_PATH="$PORG_HOME/usr/lib/pkgconfig:$PKG_CONFIG_PATH" \
 ./configure \
   --prefix=$PORG_HOME/usr \
   --enable-utf8proc \
   CFLAGS="-I$PORG_HOME/usr/include -I$PORG_HOME/usr/include/ncurses " \
   CPPFLAGS="-I$PORG_HOME/usr/include -I$PORG_HOME/usr/include/ncurses " \
   LDFLAGS="-L$PORG_HOME/usr/lib -L$PORG_HOME/usr/include -L$PORG_HOME/usr/include/ncurses " \
-  LIBS="-lutf8proc " \
+  LIBS="-static-libgcc -Wl,-Bstatic,-lutf8proc,-Bdynamic " \
   LIBEVENT_CFLAGS="-I$PORG_HOME/usr/include " \
-  LIBEVENT_LIBS="-L$PORG_HOME/usr/lib -levent " \
+  LIBEVENT_LIBS="-L$PORG_HOME/usr/lib -Wl,-Bstatic,-levent,-levent_core,-levent_extra,-levent_openssl,-levent_pthreads,-Bdynamic " \
   LIBNCURSES_CFLAGS="-I$PORG_HOME/usr/include " \
-  LIBNCURSES_LIBS="-L$PORG_HOME/usr/lib -lncurses "
+  LIBNCURSES_LIBS="-L$PORG_HOME/usr/lib -Wl,-Bstatic,-lncurses,-Bdynamic "
+  #LIBEVENT_LIBS="-L$PORG_HOME/usr/lib -Wl,-Bstatic,-levent,-Bdynamic " \
 # --enable-static \
 #   --with-utf8proc=$PORG_HOME/usr \
 #   --with-ncurses=$PORG_HOME/usr \
