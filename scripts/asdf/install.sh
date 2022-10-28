@@ -151,7 +151,7 @@ function setup-asdf() {
     asdf global  ghq        latest           > /dev/null 2>&1
     asdf global  vim        latest           > /dev/null 2>&1
     asdf global  neovim     0.7.2            > /dev/null 2>&1
-    asdf global  tmux       latest           > /dev/null 2>&1
+    # asdf global  tmux       latest           > /dev/null 2>&1
     cat $HOME/.tool-versions
 
     asdf reshim python
