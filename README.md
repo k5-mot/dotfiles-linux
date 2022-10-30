@@ -12,26 +12,29 @@
 
 ## :rainbow: Features
 
-### :turtle: Shell
+### :wrench: Tool
 
-- zsh
+- Shell [bash](https://www.gnu.org/software/bash/)
+- Shell [zsh](https://zsh.sourceforge.io/)
+- Editor [Vim](https://github.com/vim/vim)
+- Editor [Neovim](https://github.com/neovim/neovim)
+- Editor [Visual Studio Code](https://code.visualstudio.com/)
+- Terminal Multiplexer [tmux](https://github.com/tmux/tmux)
+- Terminal Emulator [Alacritty](https://github.com/alacritty/alacritty)
+- Terminal Emulator [Wezterm](https://github.com/wez/wezterm)
+- Version Control System [Git](https://git-scm.com/)
 
-### :penguin: Editor
+### :scroll: Script
 
-- Neovim
+- Package Manager [apt](https://salsa.debian.org/apt-team/apt)
+- Package Manager [dnf](https://github.com/rpm-software-management/dnf)
+- Rootless Package Manager [porg](https://porg.sourceforge.net/)
+- GUI Application Manager [Flatpak](https://flatpak.org/)
+  - GUI Application Repository [Flathub](https://flathub.org/)
 
-### :swan: Tool
+## :floppy_disk: Installation
 
-- tmux
-
-### :owl: Script
-
-- apt
-- porg
-
-## :accordion: Installation
-
-```bash
+```shell
 git clone https://github.com/k5-mot/dotfiles.git $HOME
 cd $HOME/dotfiles
 make install
@@ -42,7 +45,7 @@ def main():
     print("Hello")
 ```
 
-## :scroll: Note
+## :bookmark_tabs: Note
 
 Good luck!!!
 
@@ -50,7 +53,7 @@ Good luck!!!
 
 - k5-mot
 
-## :heart: License
+## :shield: License
 
 Copyright (c) 2020-2022 k5-mot All Rights Reserved.
 
