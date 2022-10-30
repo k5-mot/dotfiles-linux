@@ -81,6 +81,7 @@ function setup-asdf() {
     git clone --verbose https://github.com/asdf-vm/asdf.git $XDG_DATA_HOME/asdf --branch v0.10.2 > /dev/null 2>&1
     . $XDG_DATA_HOME/asdf/asdf.sh               > /dev/null 2>&1
     . $XDG_DATA_HOME/asdf/completions/asdf.bash > /dev/null 2>&1
+    export FPATH="$ASDF_DIR/completions:$FPATH"
 
     echo -e "\e[34mAdd plugins\e[m"
 
@@ -108,24 +109,24 @@ function setup-asdf() {
 
     echo -e "\e[34mInstall env\e[m"
 
-    asdf install python     3.9.14           > /dev/null 2>&1
-    asdf install ruby       3.1.2            > /dev/null 2>&1
-    asdf install nodejs     16.17.1          > /dev/null 2>&1
-    asdf install rust       stable           > /dev/null 2>&1
-    asdf install go         1.18.7           > /dev/null 2>&1
-    asdf install java       openjdk-18.0.2.1 > /dev/null 2>&1
-    asdf install julia      latest           > /dev/null 2>&1
-    asdf install deno       latest           > /dev/null 2>&1
-    asdf install lua        latest           > /dev/null 2>&1
-    asdf install zig        latest           > /dev/null 2>&1
-    asdf install jq         latest           > /dev/null 2>&1
-    asdf install peco       latest           > /dev/null 2>&1
-    asdf install git        latest           > /dev/null 2>&1
-    asdf install github-cli latest           > /dev/null 2>&1
-    asdf install fzf        latest           > /dev/null 2>&1
-    asdf install ghq        latest           > /dev/null 2>&1
-    asdf install vim        latest           > /dev/null 2>&1
-    asdf install neovim     0.7.2            > /dev/null 2>&1
+    asdf install python     3.9.14           # > /dev/null 2>&1
+    asdf install ruby       3.1.2            # > /dev/null 2>&1
+    asdf install nodejs     16.17.1          # > /dev/null 2>&1
+    asdf install rust       stable           # > /dev/null 2>&1
+    asdf install go         1.18.7           # > /dev/null 2>&1
+    asdf install java       openjdk-18.0.2.1 # > /dev/null 2>&1
+    asdf install julia      latest           # > /dev/null 2>&1
+    asdf install deno       latest           # > /dev/null 2>&1
+    asdf install lua        latest           # > /dev/null 2>&1
+    asdf install zig        latest           # > /dev/null 2>&1
+    asdf install jq         latest           # > /dev/null 2>&1
+    asdf install peco       latest           # > /dev/null 2>&1
+    asdf install git        latest           # > /dev/null 2>&1
+    asdf install github-cli latest           # > /dev/null 2>&1
+    asdf install fzf        latest           # > /dev/null 2>&1
+    asdf install ghq        latest           # > /dev/null 2>&1
+    asdf install vim        latest           # > /dev/null 2>&1
+    asdf install neovim     0.7.2            # > /dev/null 2>&1
     # asdf install tmux       latest           > /dev/null 2>&1
     asdf list
 
@@ -153,6 +154,11 @@ function setup-asdf() {
     asdf global  neovim     0.7.2            > /dev/null 2>&1
     # asdf global  tmux       latest           > /dev/null 2>&1
     cat $HOME/.tool-versions
+
+    if [ -d $ASDF_DIR/installs/rust ]; then
+        export PATH=$ASDF_DIR/installs/rust/stable/bin:$PATH
+        source $ASDF_DIR/installs/rust/stable/env
+    fi
 
     asdf reshim python
     asdf reshim ruby

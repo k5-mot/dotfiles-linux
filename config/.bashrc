@@ -63,6 +63,11 @@ export ASDF_DATA_DIR=$ASDF_DIR
 # export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=tool-version
 if [ -d $ASDF_DIR ]; then
     . $XDG_DATA_HOME/asdf/asdf.sh
+    export FPATH="$ASDF_DIR/completions:$FPATH"
+    if [ -d $ASDF_DIR/installs/rust ]; then
+        export PATH=$ASDF_DIR/installs/rust/stable/bin:$PATH
+        source $ASDF_DIR/installs/rust/stable/env
+    fi
 fi
 ### }}}
 
