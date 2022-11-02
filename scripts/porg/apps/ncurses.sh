@@ -30,6 +30,10 @@ tar -xvf $PORG_HOME/tmp/ncurses-*.tar.gz
 cd       $PORG_HOME/src/ncurses/ncurses-*
 
 ## Install
+mkdir -pv \
+    $PORG_HOME/etc/terminfo \
+    $PORG_HOME/lib/terminfo \
+    $PORG_HOME/usr/share/terminfo > /dev/null 2>&1
 ./configure \
   --prefix=$PORG_HOME/usr \
   --with-termlib \
