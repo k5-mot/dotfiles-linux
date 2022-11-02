@@ -23,6 +23,7 @@ return {
     -- color_scheme = "OneDark (Gogh)",
     -- color_scheme = "OneHalfDark",
     color_scheme = "tokyonight-storm",
+    -- color_scheme = "Sonokai (Gogh)",
 
     background = {
         {

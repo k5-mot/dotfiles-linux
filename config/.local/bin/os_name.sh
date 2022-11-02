@@ -62,5 +62,5 @@ else
   distro_icon="\uf17c"
 fi
 
-echo "${distro_name} "
+echo "${distro_name}"
 
