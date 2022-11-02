@@ -112,5 +112,7 @@ print-emoji() {
     curl https://unicode.org/Public/emoji/15.0/emoji-test.txt | cat
 }
 
-
+print-color() {
+    curl -s https://gist.githubusercontent.com/lifepillar/09a44b8cf0f9397465614e622979107f/raw/24-bit-color.sh | bash
+}
 
