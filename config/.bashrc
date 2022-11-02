@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+alias where="type -a"
+
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;
