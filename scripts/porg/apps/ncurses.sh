@@ -36,7 +36,6 @@ mkdir -pv \
     $PORG_HOME/usr/share/terminfo > /dev/null 2>&1
 ./configure \
   --prefix=$PORG_HOME/usr \
-  --with-termlib \
   --enable-pc-files \
   --with-default-terminfo-dir=$PORG_HOME/usr/share/terminfo \
   --with-terminfo-dirs="$PORG_HOME/etc/terminfo:$PORG_HOME/lib/terminfo:$PORG_HOME/usr/share/terminfo" \
@@ -47,6 +46,7 @@ mkdir -pv \
   LDFLAGS="-L$PORG_HOME/usr/lib -L$PORG_HOME/usr/include " \
   LIBS="-static-libgcc -Wl,-Bstatic,-levent,-levent_core,-levent_extra,-levent_openssl,-levent_pthreads,-Bdynamic "
 #   --with-shared
+#   --with-termlib
 make
 porg -lD "make install"
 
