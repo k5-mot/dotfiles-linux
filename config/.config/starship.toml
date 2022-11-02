@@ -15,7 +15,7 @@
 # # [\uE0B4](fg:#3A95C7 bg:#C678DD)$time\
 #
 # scan_timeout    = 30
-# command_timeout = 500
+command_timeout = 500
 # add_newline     = true
 #
 # [character]

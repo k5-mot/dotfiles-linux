@@ -159,6 +159,9 @@ function setup-asdf() {
         export PATH=$ASDF_DIR/installs/rust/stable/bin:$PATH
         source $ASDF_DIR/installs/rust/stable/env
     fi
+    if [ -d $ASDF_DIR/installs/nodejs ]; then
+        export PATH=$HOME/.local/share/npm/bin:$PATH
+    fi
 
     asdf reshim python
     asdf reshim ruby

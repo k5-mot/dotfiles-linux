@@ -68,6 +68,11 @@ if [ -d $ASDF_DIR ]; then
         export PATH=$ASDF_DIR/installs/rust/stable/bin:$PATH
         source $ASDF_DIR/installs/rust/stable/env
     fi
+    if [ -d $ASDF_DIR/installs/nodejs ]; then
+        if [ -d $XDG_DATA_HOME/npm ]; then
+            export PATH=$XDG_DATA_HOME/npm/bin:$PATH
+        fi
+    fi
 fi
 ### }}}
 
