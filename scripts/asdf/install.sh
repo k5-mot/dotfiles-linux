@@ -46,6 +46,7 @@ function install-via-npm() {
 
 function install-via-cargo() {
     rustup update                    > /dev/null 2>&1
+    rustup default stable            > /dev/null 2>&1
     cargo --version                  # > /dev/null 2>&1
     cargo install exa                > /dev/null 2>&1
     cargo install bat                > /dev/null 2>&1
