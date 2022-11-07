@@ -9,20 +9,19 @@
 ##
 
 ## Setup
-export HOSTNAME=$(hostname -s)
-export PORG_HOME=$HOME/.local/porg/$HOSTNAME
+export APPIMAGE_ROOT=$HOME/.local/appimage
 if command -v zap &> /dev/null; then
     zap remove nvim
     zap remove tmux
 fi
-mkdir -pv $HOME/.local/bin
-rm -rfv   $HOME/.local/bin/zap
+rm -rfv   $APPIMAGE_ROOT/bin
+mkdir -pv $APPIMAGE_ROOT/bin
 
 ## Download
 wget --no-check-certificate \
   https://github.com/srevinsaju/zap/releases/download/continuous/zap-amd64 \
-  -O $HOME/.local/bin/zap
-chmod +x $HOME/.local/bin/zap
+  -O $HOME/.local/appimage/bin/zap
+chmod +x $APPIMAGE_ROOT/bin/zap
 
 ## Check
 zap --help

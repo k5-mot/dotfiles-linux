@@ -462,6 +462,12 @@ fi
 # fi
 ### }}}
 
+export APPIMAGE_ROOT=$HOME/.local/appimage
+if [ -e $APPIMAGE_ROOT ]; then
+    export PATH=$APPIMAGE_ROOT/bin:$PATH
+fi
+
+export FLATPAK_ROOT=$HOME/.local/flatpak
 if command -v flatpak &> /dev/null; then
   if [ -e $FLATPAK_ROOT ]; then
     export PATH=$FLATPAK_ROOT/bin:$PATH
