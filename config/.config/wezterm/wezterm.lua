@@ -11,7 +11,7 @@ return {
         -- 'Fira Code',
         -- 'JetBrains Mono',
     },
-    font_size = 11.0,
+    font_size = 10.0,
     -- default_prog = { '/bin/zsh', '-l' },
     check_for_updates = false,
 
