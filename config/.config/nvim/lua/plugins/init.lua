@@ -220,6 +220,9 @@ packer.startup(function(use)
     use 'junegunn/seoul256.vim'
     use 'cocopon/iceberg.vim'
 
+    -- For tmux
+    use 'edkolev/tmuxline.vim'
+
     if packer_bootstrap then
         packer.sync()
     end
