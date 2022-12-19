@@ -24,7 +24,17 @@ alias lt='exa --tree --icons'
 
 
 ## Functions
-benchmark_zsh-vanilla() {
+cdp() {
+    local linkpath="$1"
+    if [ -z "$linkpath" ]; then
+        linkpath="$(pwd)"
+    fi
+    local realpath="$(realpath $linkpath)"
+    cd "$realpath"
+}
+
+
+zsh-benchmark-vanilla() {
   touch /tmp/.zshrc
   touch /tmp/.zshenv
   for i in $(seq 1 10); do
@@ -32,14 +42,19 @@ benchmark_zsh-vanilla() {
   done
 }
 
-
-benchmark_zsh() {
+zsh-benchmark() {
   for i in $(seq 1 10); do
     time ( zsh -i -c exit )
   done
 }
 
-benchmark_bash() {
+bash-benchmark-vanilla() {
+  for i in $(seq 1 10); do
+    time ( bash --noprofile --norc --rcfile /etc/profile --rcfile /etc/bashrc -i -c exit )
+  done
+}
+
+bash-benchmark() {
   for i in $(seq 1 10); do
     time ( bash -i -c exit )
   done
