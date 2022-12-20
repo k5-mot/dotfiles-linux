@@ -75,6 +75,11 @@ if [ -d $ASDF_DIR ]; then
             export PATH=$XDG_DATA_HOME/npm/bin:$PATH
         fi
     fi
+    if [ -d $ASDF_DIR/installs/rust ]; then
+        if [ -d $XDG_DATA_HOME/cargo ]; then
+            export PATH=$XDG_DATA_HOME/cargo/bin:$PATH
+        fi
+    fi
 fi
 ### }}}
 
