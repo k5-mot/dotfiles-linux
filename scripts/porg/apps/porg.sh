@@ -10,7 +10,6 @@ export PORG_HOME=$HOME/.local/porg/$HOSTNAME
 ## Remove
 if (type "porg" > /dev/null 2>&1); then
     porg -r porg
-
 fi
 rm -rfv   $PORG_HOME                        > /dev/null 2>&1
 
