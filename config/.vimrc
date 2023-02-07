@@ -22,6 +22,12 @@ set runtimepath+=$VIM_DATA_HOME
 " Define Keymap Leader <Leader>
 let mapleader = ','
 
+" set termguicolors
+set term=xterm-256color
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum" " 文字色
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum" " 背景色]
+
+
 set t_Co=256
 set guicursor+=c:ver10
 

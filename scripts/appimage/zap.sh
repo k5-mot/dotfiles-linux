@@ -33,6 +33,7 @@ if command -v zap &> /dev/null; then
     # zap install freecad           --executable freecad
     zap install --github --from neovim/neovim            --executable nvim
     zap install --github --from nelsonenzo/tmux-appimage --executable tmux
+    zap install --github --from vim/vim-appimage         --executable vim
     # zap install --github --from FreeCAD/FreeCAD          --executable freecad
     # zap install --from https://inkscape.org/ja/gallery/item/34672/Inkscape-9c6d41e-x86_64.AppImage --executable inkscape
 fi
