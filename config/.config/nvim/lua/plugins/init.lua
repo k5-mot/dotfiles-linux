@@ -40,17 +40,17 @@ packer.startup(function(use)
     }
     use 'onsails/lspkind-nvim'
     use 'MunifTanjim/prettier.nvim'
-    use {
-        "glepnir/lspsaga.nvim",
-        branch = "main",
-        config = function()
-            local saga = require("lspsaga")
+    -- use {
+    --     "glepnir/lspsaga.nvim",
+    --     branch = "main",
+    --     config = function()
+    --         local saga = require("lspsaga")
 
-            saga.init_lsp_saga({
-                -- your configuration
-            })
-        end,
-    }
+    --         saga.init_lsp_saga({
+    --             -- your configuration
+    --         })
+    --     end,
+    -- }
 
     -- Treesitter
     use {
@@ -330,9 +330,10 @@ require('plugins.filer')
 require('plugins.telescope')
 
 local keymap = vim.keymap.set
-local saga = require('lspsaga')
+local status, lspsaga = pcall(require, "lspsaga")
+if (not status) then return end
 
-saga.init_lsp_saga()
+lspsaga.init_lsp_saga()
 
 -- Lsp finder find the symbol definition implement reference
 -- if there is no implement it will hide

@@ -29,9 +29,9 @@ cd        $PORG_HOME/src/libevent/libevent-*
 ## Install
 ./configure \
     --prefix=$PORG_HOME/usr \
-    --disable-shared \
-    --disable-libevent-regress \
-    LIBS="-static-libgcc "
+    --disable-shared
+#    --disable-libevent-regress \
+#    LIBS="-static-libgcc "
 make
 make verify
 porg -lD "make install"

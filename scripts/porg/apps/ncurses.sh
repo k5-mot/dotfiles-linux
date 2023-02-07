@@ -30,21 +30,22 @@ tar -xvf $PORG_HOME/tmp/ncurses-*.tar.gz
 cd       $PORG_HOME/src/ncurses/ncurses-*
 
 ## Install
-mkdir -pv \
-    $PORG_HOME/etc/terminfo \
-    $PORG_HOME/lib/terminfo \
-    $PORG_HOME/usr/share/terminfo > /dev/null 2>&1
+#mkdir -pv \
+#    $PORG_HOME/etc/terminfo \
+#    $PORG_HOME/lib/terminfo \
+#    $PORG_HOME/usr/share/terminfo > /dev/null 2>&1
 ./configure \
-  --prefix=$PORG_HOME/usr \
-  --enable-pc-files \
-  --with-default-terminfo-dir=$PORG_HOME/usr/share/terminfo \
-  --with-terminfo-dirs="$PORG_HOME/etc/terminfo:$PORG_HOME/lib/terminfo:$PORG_HOME/usr/share/terminfo" \
-  --with-pkg-config=$PORG_HOME/usr/lib/pkgconfig \
-  --with-pkg-config-libdir=$PORG_HOME/usr/lib/pkgconfig \
-  CFLAGS="-I$PORG_HOME/usr/include " \
-  CPPFLAGS="-I$PORG_HOME/usr/include " \
-  LDFLAGS="-L$PORG_HOME/usr/lib -L$PORG_HOME/usr/include " \
-  LIBS="-static-libgcc -Wl,-Bstatic,-levent,-levent_core,-levent_extra,-levent_openssl,-levent_pthreads,-Bdynamic "
+    --prefix=$PORG_HOME/usr \
+    --enable-pc-files \
+    --with-pkg-config=$PORG_HOME/usr/lib/pkgconfig
+#    --with-pkg-config-libdir=$PORG_HOME/usr/lib/pkgconfig \
+#    --disable-shared \
+#    --with-default-terminfo-dir=$PORG_HOME/usr/share/terminfo \
+#    --with-terminfo-dirs="$PORG_HOME/etc/terminfo:$PORG_HOME/lib/terminfo:$PORG_HOME/usr/share/terminfo" \
+#    CFLAGS="-I$PORG_HOME/usr/include " \
+#    CPPFLAGS="-I$PORG_HOME/usr/include " \
+#    LDFLAGS="-L$PORG_HOME/usr/lib -L$PORG_HOME/usr/include " \
+#    LIBS="-static-libgcc -Wl,-Bstatic,-levent,-levent_core,-levent_extra,-levent_openssl,-levent_pthreads,-Bdynamic "
 #   --with-shared
 #   --with-termlib
 make

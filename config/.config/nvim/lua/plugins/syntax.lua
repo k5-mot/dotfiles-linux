@@ -35,7 +35,7 @@ require("nvim-treesitter.configs").setup({
         "ruby",
         "rust",
         "scss",
-        "sql",
+        -- "sql",
         "toml",
         -- "tsx",
         -- "typescript",
