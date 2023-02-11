@@ -12,6 +12,7 @@ if (type "porg" > /dev/null 2>&1); then
   porg -r cmake
 fi
 rm -rfv   $PORG_HOME/src/cmake
+rm -rfv   $PORG_HOME/tmp/cmake-*.tar.gz
 
 ## Setup
 mkdir -pv $PORG_HOME/src/cmake
