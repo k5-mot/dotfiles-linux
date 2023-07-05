@@ -88,6 +88,3 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[user]
-	name = k5-mot
-	email = k5.mot.888@gmail.com

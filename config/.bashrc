@@ -1,5 +1,23 @@
 #!/usr/bin/env bash
 
+### BLE {{{
+
+export BLE_SH=$HOME/.local/share/blesh/ble.sh
+if [ ! -f $BLE_SH ]; then
+    mkdir -pv $HOME/.local/tmp
+    cd        $HOME/.local/tmp
+    git clone --recursive https://github.com/akinomyoga/ble.sh.git
+    make -C ble.sh install PREFIX=$HOME/.local
+fi
+
+### }}}
+
+# Add this lines at the top of .bashrc:
+[[ $- == *i* ]] && source $HOME/.local/share/blesh/ble.sh --noattach
+
+# your bashrc settings come here...
+
+
 alias where="type -a"
 
 # If not running interactively, don't do anything
@@ -57,6 +75,7 @@ unset color_prompt force_color_prompt
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 bind '"\e[Z":menu-complete-backward'
+
 
 ### ASDF {{{
 export ASDF_CONFIG_FILE=$XDG_CONFIG_HOME/asdf/asdfrc
@@ -151,3 +170,5 @@ export C_INCLUDE_PATH=$(echo $C_INCLUDE_PATH | sed -e 's/::/:/g' | sed 's/^://g'
 export CPLUS_INCLUDE_PATH=$(echo $CPLUS_INCLUDE_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 export PKG_CONFIG_PATH=$(echo $PKG_CONFIG_PATH | sed -e 's/::/:/g' | sed 's/^://g' | sed 's/:$//g')
 
+# Add this line at the end of .bashrc:
+[[ ${BLE_VERSION-} ]] && ble-attach
