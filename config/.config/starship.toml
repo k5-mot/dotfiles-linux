@@ -1,4 +1,15 @@
-
+format = """
+$directory\
+$username\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$cmd_duration\
+$line_break\
+$character\
+"""
 # format = """\
 # [\uE0B6](fg:#E45649    bg:none  )$username\
 # [\uE0B4](fg:#E45649    bg:#50A14F )$hostname$localip\
@@ -28,11 +39,11 @@ command_timeout = 500
 # # vimcmd_visual_symbol      = "[\uf054](bold #C18401)"
 # # disabled                  = false
 #
-# [username]
+[username]
 # style_user  = "fg:#fafafa bg:#E45649"
 # style_root  = "fg:#fafafa bg:#E45649"
 # format      = "[\uf007 $user]($style)"
-# show_always = true
+show_always = true
 # disabled    = false
 #
 # [hostname]
@@ -44,7 +55,7 @@ command_timeout = 500
 # disabled   = false
 #
 # [localip]
-# ssh_only = true
+# ssh_only = false
 # format   = "[\ue0b5 \uf953$localipv4 ]($style)"
 # style    = "fg:#fafafa bg:#50A14F"
 # disabled = false
