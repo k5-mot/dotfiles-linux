@@ -43,7 +43,9 @@ if [ "$ZSH_VERSION" -ge 50400 ]; then
     # zinit light zsh-users/zsh-syntax-highlighting
     # zinit ice wait lucid
     zinit light chrissicool/zsh-256color
-    zinit light zdharma-continuum/fast-syntax-highlighting
+    zinit light zsh-users/zsh-syntax-highlighting
+    # zinit light zdharma-continuum/fast-syntax-highlighting
+    # zinit light zdharma-continuum/fast-syntax-highlighting
     zinit light zdharma-continuum/history-search-multi-word
 
     # zinit ice pick"async.zsh" src"pure.zsh" # with zsh-async library that's bundled with it.
@@ -55,8 +57,8 @@ if [ "$ZSH_VERSION" -ge 50400 ]; then
     # zinit ice from"gh-r" as"program"
     # zinit light junegunn/fzf
 
-    zinit ice from"gh-r" as"program" mv"docker* -> docker-compose"
-    zinit load docker/compose
+    # zinit ice from"gh-r" as"program" mv"docker* -> docker-compose"
+    # zinit load docker/compose
 
     # zinit ice from"gh-r" as"program"
     # zinit load stedolan/jq
