@@ -109,3 +109,5 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export BAT_THEME="OneHalfDark"
 export LOCAL_ROOT="$HOME/.local"
 
+
+export WINHOME=$(wslpath $(cmd.exe /C "echo %USERPROFILE%" 2>/dev/null | tr -d '\r'))
