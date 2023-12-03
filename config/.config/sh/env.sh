@@ -11,11 +11,11 @@ export DG_DATA_HOME="$HOME/.local/share"
 
 ## ### Locale {{{
 ## Basic locale
-export LANG="en_US.UTF-8"
+# export LANG="en_US.UTF-8"
 ## Translation priorities
-export LANGUAGE="en_US"
+# export LANGUAGE="en_US"
 ## All locale
-export LC_ALL="en_US.UTF-8"
+# export LC_ALL="en_US.UTF-8"
 ### }}}
 
 ### Environment variable {{{

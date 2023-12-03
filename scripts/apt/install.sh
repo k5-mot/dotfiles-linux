@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-##
-## APT (Advanced Packaging Tool)
-## URL: https://salsa.debian.org/apt-team/apt.git
-##
+###
+### APT (Advanced Packaging Tool)
+### URL: https://salsa.debian.org/apt-team/apt.git
+###
 
-## Update
+### Update installed packages
 sudo apt update
 sudo apt upgrade -y
 sudo apt full-upgrade -y
@@ -13,125 +13,65 @@ sudo apt autoremove -y
 sudo apt autoclean
 sudo apt clean
 
-## Change package server to mirror servers
-#sudo sed -i.bak -r 's!(deb|deb-src) \S+!\1 mirror://mirrors.ubuntu.com/mirrors.txt!' /etc/apt/
+### Install required packages
+sudo apt install -y build-essential git cmake pkg-config curl wget
+sudo apt install --install-suggests -y vim neovim zsh tmux
 
-## Install
-sudo apt install --install-suggests -y build-essential git cmake pkg-config
-sudo apt install --install-suggests -y vim emacs neovim zsh tmux curl wget python3 python3-dev
+# For Python (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
+sudo apt install -y build-essential \
+	libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
+	libsqlite3-dev curl libncursesw5-dev xz-utils \
+	tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 
-# sudo apt install -y libcurl4-openssl-dev libexpat1-dev # For Git
-# sudo apt install -y libx11-dev
-# sudo apt install -y libxmu-dev
-# sudo apt install -y libxi-dev
-# sudo apt install -y libffi-dev
-# sudo apt install -y libssl-dev
-# sudo apt install -y zlib1g-dev
-# sudo apt install -y liblzma-dev
-# sudo apt install -y libbz2-dev
-# sudo apt install -y libreadline-dev
-# sudo apt install -y libsqlite3-dev
-# sudo apt install -y automake
-# sudo apt install -y autoconf
-# sudo apt install -y pkg-config
-# sudo apt install -y bison
-# sudo apt install -y autotools-dev
-# sudo apt install -y libevent-dev
-# sudo apt install -y libncurses-dev
-# sudo apt install -y make
-# sudo apt install -y gcc
-# sudo apt install -y subversion
-# sudo apt install -y g++
-# sudo apt install -y ninja-build
-# sudo apt install -y gettext
-# sudo apt install -y libtool
-# sudo apt install -y libtool-bin
-# sudo apt install -y unzip
-# sudo apt install -y libgl1-mesa-dev
-# sudo apt install -y libglib2.0-0
-# sudo apt install -y libsm6
-# sudo apt install -y libxrender1
-# sudo apt install -y libxext6
-# sudo apt install -y libglu1-mesa-dev
-# sudo apt install -y mesa-common-dev
-# sudo apt install -y libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
-# sudo apt install -y libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
-# sudo apt install -y asciidoc xmlto docbook2x
-# #sudo apt install -y build-dep
-# sudo apt install -y libcurl4-openssl-dev
-# sudo apt install -y xorg-dev
-# sudo apt install -y libtinfo-dev
-# sudo apt install -y libgnutls28-dev
-# sudo apt install -y gettext
-# sudo apt install -y libgtk2.0-dev
-# sudo apt install -y libssl-dev
-# sudo apt install -y libreadline-dev
-# sudo apt install -y zlib1g-dev
-# sudo apt install -y libbz2-dev
-# sudo apt install -y libsqlite3-dev
-# sudo apt install -y libncurses5-dev
-# sudo apt install -y libncursesw5-dev
-# sudo apt install -y libkrb5-dev
-# sudo apt install -y npm
-# sudo apt install -y vim
-# sudo apt install -y emacs
-# sudo apt install -y neovim
-# sudo apt install -y zsh
-# sudo apt install -y tmux
-# sudo apt install -y curl
-# sudo apt install -y wget
-# #sudo apt install -y llvm
-# #sudo apt install -y sqlite3
-# sudo apt install -y python
-# sudo apt install -y python-dev
-# sudo apt install -y python3
-# sudo apt install -y python3-dev
-#sudo apt install -y python-tk
-#sudo apt install -y python3-tk
-#sudo apt install -y tk-dev
-#sudo apt install -y aria2
-#sudo apt install -y octave
-#sudo apt install -y autoconf
-#sudo apt install -y bison
-#sudo apt install -y libssl-dev
-#sudo apt install -y libyaml-dev
-#sudo apt install -y libreadline6-dev
-#sudo apt install -y zlib1g-dev
-#sudo apt install -y libncurses5-dev
-#sudo apt install -y libffi-dev
-#sudo apt install -y libgdbm6
-#sudo apt install -y libgdbm-dev
-#sudo apt install -y libdb-dev
-#sudo apt install -y clang-tools
-#sudo apt install -y clangd
-#sudo apt install -y ccls
-#sudo npm install -g n
-#sudo n stable
-#sudo apt install -y ccache
+# For Ruby (https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)
+sudo apt install -y autoconf patch build-essential \
+	rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev \
+	libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev \
+	libdb-dev uuid-dev
 
-# Pinta
-#sudo apt install -y pinta
-## GIMP
-#sudo apt install -y gimp
-## Inkscape
-#sudo add-apt-repository -y ppa:inkscape.dev/stable
-#sudo apt update
-#sudo apt install -y inkscape
-## SimpleScreenRecorder
-#sudo add-apt-repository ppa:maarten-baert/simplescreenrecorder
-#sudo apt update
-#sudo apt install -y simplescreenrecorder
-## Shotcut
-#sudo add-apt-repository ppa:haraldhv/shotcut
-#sudo apt update
-#sudo apt install -y libsdl2-2.0-0
-#sudo apt install -y shotcut
-## Transmission
-#sudo apt install -y transmission
-## Gparted
-#sudo apt install -y gparted gpart
-## Google Chrome
-#wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-#sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-#sudo apt update
-#sudo apt install -y google-chrome-stable
+# For NodeJS (https://github.com/nodejs/node/blob/main/BUILDING.md#unix-prerequisites)
+sudo apt install -y python3 g++ make python3-pip
+
+# For Lua (https://github.com/Stratus3D/asdf-lua)
+# sudo apt install --install-suggests -y linux-headers-$(uname -r) build-essential
+
+# For Vim (https://github.com/vim/vim/blob/master/src/INSTALL)
+sudo apt install -y git make clang libtool-bin \
+	libxt-dev libgtk-3-dev libpython3-dev valgrind
+
+# For Neovim (https://github.com/neovim/neovim/wiki/Building-Neovim#build-prerequisites)
+sudo apt install -y ninja-build gettext cmake unzip curl
+
+# For tmux (https://github.com/tmux/tmux/wiki/Installing)
+sudo apt install -y \
+	libevent-dev ncurses-dev build-essential bison pkg-config \
+	libutf8proc-dev libutempter0
+# libevent ncurses
+
+
+### Install Docker (https://docs.docker.com/engine/install/ubuntu/)
+
+# Uninstall old versions
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do
+    sudo apt remove $pkg;
+done
+
+# Add Docker's official GPG key
+sudo apt update
+sudo apt install -y ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg --batch --yes
+chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Add the repository to Apt sources
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+
+# Install latest versions
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+# Verify that the Docker Engine installation is successful
+sudo docker run hello-world
