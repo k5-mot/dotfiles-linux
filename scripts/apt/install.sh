@@ -14,7 +14,7 @@ sudo apt autoclean
 sudo apt clean
 
 ### Install required packages
-sudo apt install -y build-essential git cmake pkg-config curl wget
+sudo apt install -y build-essential git cmake pkg-config curl wget xclip
 sudo apt install --install-suggests -y vim neovim zsh tmux
 
 # For Python (https://github.com/pyenv/pyenv/wiki#suggested-build-environment)
